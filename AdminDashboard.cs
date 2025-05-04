@@ -56,7 +56,7 @@ namespace Nursing_Election
 
             viewButton.Click += (s, e) =>
             {
-                MessageBox.Show($"Position: {positionTitle}\nDescription: {description}", "Position Details");
+                MessageBox.Show($"Position: {positionTitle}\nDescription of the position: {description}", "Position Details");
             };
 
             positionPanel.Controls.Add(viewButton);
