@@ -48,7 +48,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btn_add_candidate = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -240,7 +240,7 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.button2);
+            this.tabPage3.Controls.Add(this.btn_add_candidate);
             this.tabPage3.Controls.Add(this.flowLayoutPanel2);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
@@ -257,15 +257,15 @@
             this.flowLayoutPanel2.Size = new System.Drawing.Size(907, 504);
             this.flowLayoutPanel2.TabIndex = 0;
             // 
-            // button2
+            // btn_add_candidate
             // 
-            this.button2.Location = new System.Drawing.Point(44, 18);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Add";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btn_add_candidate.Location = new System.Drawing.Point(44, 18);
+            this.btn_add_candidate.Name = "btn_add_candidate";
+            this.btn_add_candidate.Size = new System.Drawing.Size(75, 23);
+            this.btn_add_candidate.TabIndex = 1;
+            this.btn_add_candidate.Text = "Add";
+            this.btn_add_candidate.UseVisualStyleBackColor = true;
+            this.btn_add_candidate.Click += new System.EventHandler(this.button2_Click);
             // 
             // AdminDashboard
             // 
@@ -314,7 +314,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_add_candidate;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
     }
 }
