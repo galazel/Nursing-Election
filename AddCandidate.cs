@@ -8,6 +8,7 @@ namespace Nursing_Election
     {
         private string name, motto;
         private int studentId;
+        private static int noOfCandidates = 0;
         private Image candidateImage;
 
         public AddCandidate()
@@ -16,17 +17,25 @@ namespace Nursing_Election
         }
         public void SetName(string name)
         {
+            tb_name_candidate.Text = name;
             this.name = name;
         }
 
         public void SetMotto(string motto)
         {
+            tb_candidate_motto.Text = motto;
             this.motto = motto;
         }
 
         public void SetStudentId(int studentId)
         {
+            tb_student_id_candidate.Text = studentId.ToString();
             this.studentId = studentId;
+        }
+        public void SetCandidateImage(Image image)
+        {
+            pictureBox1.Image = image;
+            this.candidateImage = image;
         }
         public string GetName()
         {
@@ -47,6 +56,11 @@ namespace Nursing_Election
         {
             return candidateImage;
         }
+        public int GetNoOfCandidates()
+        {
+            return noOfCandidates;
+        }
+
 
         private void tb_student_id_candidate_TextChanged(object sender, EventArgs e)
         {
@@ -70,6 +84,17 @@ namespace Nursing_Election
         {
             
         }
+
+        private void tb_name_candidate_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tb_candidate_motto_TextChanged(object sender, EventArgs e)
+        {
+         
+        }
+
         private void btn_confirm_candidate_Click(object sender, EventArgs e)
         {
             name = tb_name_candidate.Text.Trim();
@@ -91,6 +116,8 @@ namespace Nursing_Election
                 return;
             }
 
+            MessageBox.Show("Candidate Added Successfully!");
+            ++noOfCandidates;
             this.Close();
         }
     }

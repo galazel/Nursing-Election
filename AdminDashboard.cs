@@ -6,6 +6,7 @@ namespace Nursing_Election
 {
     public partial class AdminDashboard : Form
     {
+        private AddPostion position = new AddPostion();
         public AdminDashboard()
         {
             InitializeComponent();
@@ -14,11 +15,11 @@ namespace Nursing_Election
         private void AddPosition(string positionTitle, string description)
         {
             Panel positionPanel = new Panel();
-            positionPanel.Size = new Size(250, 200);
+            positionPanel.Size = new Size(200, 160);
             positionPanel.BackColor = Color.White;
             positionPanel.Margin = new Padding(10);
             positionPanel.BorderStyle = BorderStyle.FixedSingle;
-            positionPanel.Padding = new Padding(10);
+            positionPanel.Padding = new Padding(5);
 
             System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
             int radius = 10;
@@ -31,27 +32,27 @@ namespace Nursing_Election
 
             Label titleLabel = new Label();
             titleLabel.Text = positionTitle;
-            titleLabel.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            titleLabel.Font = new Font("Segoe UI", 10, FontStyle.Bold);
             titleLabel.ForeColor = Color.Black;
             titleLabel.Dock = DockStyle.Top;
             titleLabel.TextAlign = ContentAlignment.MiddleCenter;
-            titleLabel.Height = 30;
+            titleLabel.Height = 25;
 
             Label descriptionLabel = new Label();
             descriptionLabel.Text = description;
             descriptionLabel.Tag = description;
-            descriptionLabel.Font = new Font("Segoe UI", 9);
+            descriptionLabel.Font = new Font("Segoe UI", 8);
             descriptionLabel.ForeColor = Color.Gray;
             descriptionLabel.Dock = DockStyle.Top;
             descriptionLabel.TextAlign = ContentAlignment.TopLeft;
-            descriptionLabel.Padding = new Padding(5);
-            descriptionLabel.Height = 50;
+            descriptionLabel.Padding = new Padding(3);
+            descriptionLabel.Height = 40;
 
             FlowLayoutPanel buttonPanel = new FlowLayoutPanel();
             buttonPanel.Dock = DockStyle.Bottom;
-            buttonPanel.Height = 40;
+            buttonPanel.Height = 35;
             buttonPanel.FlowDirection = FlowDirection.LeftToRight;
-            buttonPanel.Padding = new Padding(5);
+            buttonPanel.Padding = new Padding(3);
             buttonPanel.BackColor = Color.White;
 
             Button viewButton = new Button();
@@ -60,7 +61,8 @@ namespace Nursing_Election
             viewButton.ForeColor = Color.White;
             viewButton.FlatStyle = FlatStyle.Flat;
             viewButton.FlatAppearance.BorderSize = 0;
-            viewButton.Width = 60;
+            viewButton.Width = 50;
+            viewButton.Font = new Font("Segoe UI", 8);
             viewButton.Click += (s, e) =>
             {
                 MessageBox.Show($"Position: {titleLabel.Text}\nDescription: {descriptionLabel.Tag}", "Position Details");
@@ -72,7 +74,8 @@ namespace Nursing_Election
             updateButton.ForeColor = Color.White;
             updateButton.FlatStyle = FlatStyle.Flat;
             updateButton.FlatAppearance.BorderSize = 0;
-            updateButton.Width = 60;
+            updateButton.Width = 50;
+            updateButton.Font = new Font("Segoe UI", 8);
             updateButton.Click += (s, e) =>
             {
                 AddPostion updateForm = new AddPostion();
@@ -94,11 +97,12 @@ namespace Nursing_Election
 
             Button deleteButton = new Button();
             deleteButton.Text = "Delete";
-            deleteButton.BackColor = Color.FromArgb(220, 53, 69); 
+            deleteButton.BackColor = Color.FromArgb(220, 53, 69);
             deleteButton.ForeColor = Color.White;
             deleteButton.FlatStyle = FlatStyle.Flat;
             deleteButton.FlatAppearance.BorderSize = 0;
-            deleteButton.Width = 60;
+            deleteButton.Width = 50;
+            deleteButton.Font = new Font("Segoe UI", 8);
             deleteButton.Click += (s, e) =>
             {
                 flowLayoutPanel1.Controls.Remove(positionPanel);
@@ -116,7 +120,6 @@ namespace Nursing_Election
             flowLayoutPanel1.Controls.Add(positionPanel);
         }
 
-
         private void button1_Click(object sender, EventArgs e)
         {
             AddPostion position = new AddPostion();
@@ -128,63 +131,55 @@ namespace Nursing_Election
                 if (!string.IsNullOrEmpty(positionTitle) && !string.IsNullOrEmpty(description))
                 {
                     AddPosition(positionTitle, description);
+                    lb_no_of_positions.Text = position.GetNoOfPositions().ToString();
                 }
             };
         }
 
-
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
-
         }
 
         private void tabPage3_Click(object sender, EventArgs e)
         {
-
         }
 
         public void AddCandidate(string name, string motto, int studentId, Image candidateImage)
         {
             Panel candidatePanel = new Panel();
-            candidatePanel.Size = new Size(250, 200);
+            candidatePanel.Size = new Size(850, 80); 
             candidatePanel.BackColor = Color.White;
-            candidatePanel.Margin = new Padding(10);
             candidatePanel.BorderStyle = BorderStyle.FixedSingle;
-            candidatePanel.Padding = new Padding(10);
+            candidatePanel.Margin = new Padding(5);
 
-            System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
-            int radius = 10;
-            path.AddArc(0, 0, radius, radius, 180, 90);
-            path.AddArc(candidatePanel.Width - radius, 0, radius, radius, 270, 90);
-            path.AddArc(candidatePanel.Width - radius, candidatePanel.Height - radius, radius, radius, 0, 90);
-            path.AddArc(0, candidatePanel.Height - radius, radius, radius, 90, 90);
-            path.CloseAllFigures();
-            candidatePanel.Region = new Region(path);
+            PictureBox profilePicture = new PictureBox();
+            profilePicture.Image = candidateImage;
+            profilePicture.SizeMode = PictureBoxSizeMode.StretchImage;
+            profilePicture.Size = new Size(50, 50); 
+            profilePicture.Location = new Point(10, 15);
 
             Label nameLabel = new Label();
             nameLabel.Text = name;
-            nameLabel.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            nameLabel.Font = new Font("Segoe UI", 9, FontStyle.Bold); 
             nameLabel.ForeColor = Color.Black;
-            nameLabel.Dock = DockStyle.Top;
-            nameLabel.TextAlign = ContentAlignment.MiddleCenter;
-            nameLabel.Height = 30;
+            nameLabel.AutoSize = true;
+            nameLabel.Location = new Point(70, 15);
 
             Label mottoLabel = new Label();
             mottoLabel.Text = motto;
-            mottoLabel.Tag = motto;
-            mottoLabel.Font = new Font("Segoe UI", 9);
+            mottoLabel.Font = new Font("Segoe UI", 8, FontStyle.Italic);
             mottoLabel.ForeColor = Color.Gray;
-            mottoLabel.Dock = DockStyle.Top;
-            mottoLabel.TextAlign = ContentAlignment.TopLeft;
-            mottoLabel.Padding = new Padding(5);
-            mottoLabel.Height = 50;
+            mottoLabel.AutoSize = true;
+            mottoLabel.Location = new Point(70, 35);
 
             FlowLayoutPanel buttonPanel = new FlowLayoutPanel();
-            buttonPanel.Dock = DockStyle.Bottom;
-            buttonPanel.Height = 40;
             buttonPanel.FlowDirection = FlowDirection.LeftToRight;
-            buttonPanel.Padding = new Padding(5);
-            buttonPanel.BackColor = Color.White;
+            buttonPanel.AutoSize = true;
+            buttonPanel.Location = new Point(650, 25);
+            buttonPanel.Padding = new Padding(0);
+
+            int btnWidth = 55;
+            int btnHeight = 25;
 
             Button viewButton = new Button();
             viewButton.Text = "View";
@@ -192,64 +187,69 @@ namespace Nursing_Election
             viewButton.ForeColor = Color.White;
             viewButton.FlatStyle = FlatStyle.Flat;
             viewButton.FlatAppearance.BorderSize = 0;
-            viewButton.Width = 60;
-
+            viewButton.Size = new Size(btnWidth, btnHeight);
+            viewButton.Font = new Font("Segoe UI", 7);
             viewButton.Click += (s, e) =>
             {
-                MessageBox.Show($"Candidate: {nameLabel.Text}\nMotto: {mottoLabel.Tag}", "Candidate Details");
+                MessageBox.Show($"Name: {name}\nMotto: {motto}", "Candidate Info");
             };
-            Button updateButton = new Button();
-            updateButton.Text = "Edit";
-            updateButton.BackColor = Color.Orange;
-            updateButton.ForeColor = Color.White;
-            updateButton.FlatStyle = FlatStyle.Flat;
-            updateButton.FlatAppearance.BorderSize = 0;
-            updateButton.Width = 60;
-            updateButton.Click += (s, e) =>
+
+            Button editButton = new Button();
+            editButton.Text = "Edit";
+            editButton.BackColor = Color.Orange;
+            editButton.ForeColor = Color.White;
+            editButton.FlatStyle = FlatStyle.Flat;
+            editButton.FlatAppearance.BorderSize = 0;
+            editButton.Size = new Size(btnWidth, btnHeight);
+            editButton.Font = new Font("Segoe UI", 7);
+            editButton.Click += (s, e) =>
             {
                 AddCandidate updateForm = new AddCandidate();
-                updateForm.SetStudentId(studentId);
-                updateForm.SetName(name);
+                updateForm.SetName(nameLabel.Text);
                 updateForm.SetMotto(motto);
+                updateForm.SetStudentId(studentId);
+                updateForm.SetCandidateImage(profilePicture.Image);
                 updateForm.Show();
                 updateForm.FormClosing += (sender2, args2) =>
                 {
                     string updatedName = updateForm.GetName();
                     string updatedMotto = updateForm.GetMotto();
-                    int updatedStudentId = updateForm.GetStudentId();
+                    int updatedId = updateForm.GetStudentId();
                     Image updatedImage = updateForm.GetCandidateImage();
-                    if (!string.IsNullOrEmpty(updatedName) && !string.IsNullOrEmpty(updatedMotto) && updatedStudentId > 0)
+                    if (!string.IsNullOrEmpty(updatedName) && !string.IsNullOrEmpty(updatedMotto) && updatedId > 0)
                     {
                         nameLabel.Text = updatedName;
                         mottoLabel.Text = updatedMotto;
-                        mottoLabel.Tag = updatedMotto;
+                        profilePicture.Image = updatedImage;
                     }
                 };
             };
+
             Button deleteButton = new Button();
             deleteButton.Text = "Delete";
             deleteButton.BackColor = Color.FromArgb(220, 53, 69);
             deleteButton.ForeColor = Color.White;
             deleteButton.FlatStyle = FlatStyle.Flat;
             deleteButton.FlatAppearance.BorderSize = 0;
-            deleteButton.Width = 60;
+            deleteButton.Size = new Size(btnWidth, btnHeight);
+            deleteButton.Font = new Font("Segoe UI", 7);
             deleteButton.Click += (s, e) =>
             {
                 flowLayoutPanel2.Controls.Remove(candidatePanel);
                 candidatePanel.Dispose();
             };
+
             buttonPanel.Controls.Add(viewButton);
-            buttonPanel.Controls.Add(updateButton);
+            buttonPanel.Controls.Add(editButton);
             buttonPanel.Controls.Add(deleteButton);
-            candidatePanel.Controls.Add(buttonPanel);
-            candidatePanel.Controls.Add(mottoLabel);
+
+            candidatePanel.Controls.Add(profilePicture);
             candidatePanel.Controls.Add(nameLabel);
-            candidatePanel.Controls.Add(new PictureBox() { Image = candidateImage, SizeMode = PictureBoxSizeMode.StretchImage, Dock = DockStyle.Top, Height = 100 });
-            
+            candidatePanel.Controls.Add(mottoLabel);
+            candidatePanel.Controls.Add(buttonPanel);
+
             flowLayoutPanel2.Controls.Add(candidatePanel);
-
         }
-
 
 
         private void button2_Click(object sender, EventArgs e)
@@ -265,8 +265,24 @@ namespace Nursing_Election
                 if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(motto) && studentId > 0)
                 {
                     AddCandidate(name, motto, studentId, candidateImage);
+                    lb_no_of_candidates.Text = candidate.GetNoOfCandidates().ToString();
                 }
-            };  
+            };
+        }
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to logout?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                new Login().Show();
+                this.Hide(); 
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

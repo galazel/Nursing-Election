@@ -13,6 +13,7 @@ namespace Nursing_Election
     public partial class AddPostion : Form
     {
         private string positionTitle, description;
+        private static int noOfPositions = 0;
         public AddPostion()
         {
             InitializeComponent();
@@ -34,9 +35,11 @@ namespace Nursing_Election
                 MessageBox.Show("Please fill in all fields.");
                 return;
             }
+            ++noOfPositions;
             MessageBox.Show("Position Added Successfully!");
             this.Close();
         }
+
         public void SetPositionTitle(string title)
         {
             tb_position.Text = title;
@@ -52,6 +55,10 @@ namespace Nursing_Election
         public string GetDescription()
         {
             return description;
+        }
+        public int GetNoOfPositions()
+        {
+            return noOfPositions;
         }
 
 

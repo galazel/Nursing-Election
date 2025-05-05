@@ -89,6 +89,7 @@
             this.tb_name_candidate.Name = "tb_name_candidate";
             this.tb_name_candidate.Size = new System.Drawing.Size(333, 29);
             this.tb_name_candidate.TabIndex = 4;
+            this.tb_name_candidate.TextChanged += new System.EventHandler(this.tb_name_candidate_TextChanged);
             // 
             // tb_student_id_candidate
             // 
@@ -106,6 +107,7 @@
             this.tb_candidate_motto.Name = "tb_candidate_motto";
             this.tb_candidate_motto.Size = new System.Drawing.Size(333, 29);
             this.tb_candidate_motto.TabIndex = 6;
+            this.tb_candidate_motto.TextChanged += new System.EventHandler(this.tb_candidate_motto_TextChanged);
             // 
             // btn_confirm_candidate
             // 
@@ -136,6 +138,7 @@
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.DoubleBuffered = true;
             this.Name = "AddCandidate";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddCandidate";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
