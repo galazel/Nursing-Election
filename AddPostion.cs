@@ -22,6 +22,13 @@ namespace Nursing_Election
         {
             positionTitle = tb_position.Text;
             description = tb_description.Text;
+
+            if(positionTitle.Length > 50 || description.Length > 100)
+            {
+                MessageBox.Show("Title or Description is too long. Please limit to 50 and 200 characters respectively.");
+                return;
+            }
+
             if (string.IsNullOrEmpty(positionTitle) || string.IsNullOrEmpty(description))
             {
                 MessageBox.Show("Please fill in all fields.");
@@ -29,6 +36,14 @@ namespace Nursing_Election
             }
             MessageBox.Show("Position Added Successfully!");
             this.Close();
+        }
+        public void SetPositionTitle(string title)
+        {
+            tb_position.Text = title;
+        }
+        public void SetDescription(string desc)
+        {
+            tb_description.Text = desc;
         }
         public string GetPositionTitle()
         {
