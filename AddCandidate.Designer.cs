@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddCandidate));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lb_name_candidate = new System.Windows.Forms.Label();
             this.lb_student_id_candidate = new System.Windows.Forms.Label();
@@ -41,11 +42,15 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Location = new System.Drawing.Point(61, 70);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(201, 195);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // lb_name_candidate
             // 
@@ -92,6 +97,7 @@
             this.tb_student_id_candidate.Name = "tb_student_id_candidate";
             this.tb_student_id_candidate.Size = new System.Drawing.Size(333, 29);
             this.tb_student_id_candidate.TabIndex = 5;
+            this.tb_student_id_candidate.TextChanged += new System.EventHandler(this.tb_student_id_candidate_TextChanged);
             // 
             // tb_candidate_motto
             // 
@@ -110,11 +116,14 @@
             this.btn_confirm_candidate.TabIndex = 7;
             this.btn_confirm_candidate.Text = "Confirm";
             this.btn_confirm_candidate.UseVisualStyleBackColor = true;
+            this.btn_confirm_candidate.Click += new System.EventHandler(this.btn_confirm_candidate_Click);
             // 
             // AddCandidate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(690, 376);
             this.Controls.Add(this.btn_confirm_candidate);
             this.Controls.Add(this.tb_candidate_motto);
@@ -124,6 +133,8 @@
             this.Controls.Add(this.lb_student_id_candidate);
             this.Controls.Add(this.lb_name_candidate);
             this.Controls.Add(this.pictureBox1);
+            this.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DoubleBuffered = true;
             this.Name = "AddCandidate";
             this.Text = "AddCandidate";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

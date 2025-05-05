@@ -6,7 +6,6 @@ namespace Nursing_Election
 {
     public partial class AdminDashboard : Form
     {
-        private int noOfCandidates = 0; 
         public AdminDashboard()
         {
             InitializeComponent();
@@ -144,9 +143,130 @@ namespace Nursing_Election
 
         }
 
+        public void AddCandidate(string name, string motto, int studentId, Image candidateImage)
+        {
+            Panel candidatePanel = new Panel();
+            candidatePanel.Size = new Size(250, 200);
+            candidatePanel.BackColor = Color.White;
+            candidatePanel.Margin = new Padding(10);
+            candidatePanel.BorderStyle = BorderStyle.FixedSingle;
+            candidatePanel.Padding = new Padding(10);
+
+            System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
+            int radius = 10;
+            path.AddArc(0, 0, radius, radius, 180, 90);
+            path.AddArc(candidatePanel.Width - radius, 0, radius, radius, 270, 90);
+            path.AddArc(candidatePanel.Width - radius, candidatePanel.Height - radius, radius, radius, 0, 90);
+            path.AddArc(0, candidatePanel.Height - radius, radius, radius, 90, 90);
+            path.CloseAllFigures();
+            candidatePanel.Region = new Region(path);
+
+            Label nameLabel = new Label();
+            nameLabel.Text = name;
+            nameLabel.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            nameLabel.ForeColor = Color.Black;
+            nameLabel.Dock = DockStyle.Top;
+            nameLabel.TextAlign = ContentAlignment.MiddleCenter;
+            nameLabel.Height = 30;
+
+            Label mottoLabel = new Label();
+            mottoLabel.Text = motto;
+            mottoLabel.Tag = motto;
+            mottoLabel.Font = new Font("Segoe UI", 9);
+            mottoLabel.ForeColor = Color.Gray;
+            mottoLabel.Dock = DockStyle.Top;
+            mottoLabel.TextAlign = ContentAlignment.TopLeft;
+            mottoLabel.Padding = new Padding(5);
+            mottoLabel.Height = 50;
+
+            FlowLayoutPanel buttonPanel = new FlowLayoutPanel();
+            buttonPanel.Dock = DockStyle.Bottom;
+            buttonPanel.Height = 40;
+            buttonPanel.FlowDirection = FlowDirection.LeftToRight;
+            buttonPanel.Padding = new Padding(5);
+            buttonPanel.BackColor = Color.White;
+
+            Button viewButton = new Button();
+            viewButton.Text = "View";
+            viewButton.BackColor = Color.DodgerBlue;
+            viewButton.ForeColor = Color.White;
+            viewButton.FlatStyle = FlatStyle.Flat;
+            viewButton.FlatAppearance.BorderSize = 0;
+            viewButton.Width = 60;
+
+            viewButton.Click += (s, e) =>
+            {
+                MessageBox.Show($"Candidate: {nameLabel.Text}\nMotto: {mottoLabel.Tag}", "Candidate Details");
+            };
+            Button updateButton = new Button();
+            updateButton.Text = "Edit";
+            updateButton.BackColor = Color.Orange;
+            updateButton.ForeColor = Color.White;
+            updateButton.FlatStyle = FlatStyle.Flat;
+            updateButton.FlatAppearance.BorderSize = 0;
+            updateButton.Width = 60;
+            updateButton.Click += (s, e) =>
+            {
+                AddCandidate updateForm = new AddCandidate();
+                updateForm.SetStudentId(studentId);
+                updateForm.SetName(name);
+                updateForm.SetMotto(motto);
+                updateForm.Show();
+                updateForm.FormClosing += (sender2, args2) =>
+                {
+                    string updatedName = updateForm.GetName();
+                    string updatedMotto = updateForm.GetMotto();
+                    int updatedStudentId = updateForm.GetStudentId();
+                    Image updatedImage = updateForm.GetCandidateImage();
+                    if (!string.IsNullOrEmpty(updatedName) && !string.IsNullOrEmpty(updatedMotto) && updatedStudentId > 0)
+                    {
+                        nameLabel.Text = updatedName;
+                        mottoLabel.Text = updatedMotto;
+                        mottoLabel.Tag = updatedMotto;
+                    }
+                };
+            };
+            Button deleteButton = new Button();
+            deleteButton.Text = "Delete";
+            deleteButton.BackColor = Color.FromArgb(220, 53, 69);
+            deleteButton.ForeColor = Color.White;
+            deleteButton.FlatStyle = FlatStyle.Flat;
+            deleteButton.FlatAppearance.BorderSize = 0;
+            deleteButton.Width = 60;
+            deleteButton.Click += (s, e) =>
+            {
+                flowLayoutPanel2.Controls.Remove(candidatePanel);
+                candidatePanel.Dispose();
+            };
+            buttonPanel.Controls.Add(viewButton);
+            buttonPanel.Controls.Add(updateButton);
+            buttonPanel.Controls.Add(deleteButton);
+            candidatePanel.Controls.Add(buttonPanel);
+            candidatePanel.Controls.Add(mottoLabel);
+            candidatePanel.Controls.Add(nameLabel);
+            candidatePanel.Controls.Add(new PictureBox() { Image = candidateImage, SizeMode = PictureBoxSizeMode.StretchImage, Dock = DockStyle.Top, Height = 100 });
+            
+            flowLayoutPanel2.Controls.Add(candidatePanel);
+
+        }
+
+
+
         private void button2_Click(object sender, EventArgs e)
         {
-
+            AddCandidate candidate = new AddCandidate();
+            candidate.Show();
+            candidate.FormClosing += (s, args) =>
+            {
+                string name = candidate.GetName();
+                string motto = candidate.GetMotto();
+                int studentId = candidate.GetStudentId();
+                Image candidateImage = candidate.GetCandidateImage();
+                if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(motto) && studentId > 0)
+                {
+                    AddCandidate(name, motto, studentId, candidateImage);
+                }
+            };  
         }
     }
 }
