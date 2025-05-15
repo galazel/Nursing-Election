@@ -7,6 +7,7 @@ namespace Nursing_Election
     public partial class AdminDashboard : Form
     {
         private AddPostion position = new AddPostion();
+        private AddCandidate candidate = new AddCandidate();
         public AdminDashboard()
         {
             InitializeComponent();
@@ -107,6 +108,10 @@ namespace Nursing_Election
             {
                 flowLayoutPanel1.Controls.Remove(positionPanel);
                 positionPanel.Dispose();
+                position.SetNoOfPositions(position.GetNoOfPositions() - 1);
+                int noOfPositions = position.GetNoOfPositions();
+                lb_no_of_positions.Text = noOfPositions.ToString();
+
             };
 
             buttonPanel.Controls.Add(viewButton);
@@ -122,16 +127,16 @@ namespace Nursing_Election
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AddPostion position = new AddPostion();
-            position.Show();
-            position.FormClosing += (s, args) =>
+            AddPostion position1 = new AddPostion();
+            position1.Show();
+            position1.FormClosing += (s, args) =>
             {
-                string positionTitle = position.GetPositionTitle();
-                string description = position.GetDescription();
+                string positionTitle = position1.GetPositionTitle();
+                string description = position1.GetDescription();
                 if (!string.IsNullOrEmpty(positionTitle) && !string.IsNullOrEmpty(description))
                 {
                     AddPosition(positionTitle, description);
-                    lb_no_of_positions.Text = position.GetNoOfPositions().ToString();
+                    lb_no_of_positions.Text = position1.GetNoOfPositions().ToString();
                 }
             };
         }
@@ -237,6 +242,10 @@ namespace Nursing_Election
             {
                 flowLayoutPanel2.Controls.Remove(candidatePanel);
                 candidatePanel.Dispose();
+                candidate.SetNoOfCandidates(candidate.GetNoOfCandidates() - 1);
+                int noOfCandidates = candidate.GetNoOfCandidates();
+                lb_no_of_candidates.Text = noOfCandidates.ToString();
+
             };
 
             buttonPanel.Controls.Add(viewButton);
@@ -254,18 +263,18 @@ namespace Nursing_Election
 
         private void button2_Click(object sender, EventArgs e)
         {
-            AddCandidate candidate = new AddCandidate();
-            candidate.Show();
-            candidate.FormClosing += (s, args) =>
+            AddCandidate candidate1 = new AddCandidate();
+            candidate1.Show();
+            candidate1.FormClosing += (s, args) =>
             {
-                string name = candidate.GetName();
-                string motto = candidate.GetMotto();
-                int studentId = candidate.GetStudentId();
-                Image candidateImage = candidate.GetCandidateImage();
+                string name = candidate1.GetName();
+                string motto = candidate1.GetMotto();
+                int studentId = candidate1.GetStudentId();
+                Image candidateImage = candidate1.GetCandidateImage();
                 if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(motto) && studentId > 0)
                 {
                     AddCandidate(name, motto, studentId, candidateImage);
-                    lb_no_of_candidates.Text = candidate.GetNoOfCandidates().ToString();
+                    lb_no_of_candidates.Text = candidate1.GetNoOfCandidates().ToString();
                 }
             };
         }

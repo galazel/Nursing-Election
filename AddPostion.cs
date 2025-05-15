@@ -56,6 +56,10 @@ namespace Nursing_Election
         {
             return description;
         }
+        public void SetNoOfPositions(int no)
+        {
+            noOfPositions = no;
+        }
         public int GetNoOfPositions()
         {
             return noOfPositions;

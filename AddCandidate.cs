@@ -56,6 +56,10 @@ namespace Nursing_Election
         {
             return candidateImage;
         }
+        public void SetNoOfCandidates(int no)
+        {
+            noOfCandidates = no;
+        }
         public int GetNoOfCandidates()
         {
             return noOfCandidates;

@@ -45,7 +45,7 @@
             this.lb_no_of_positions = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label10 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_add_position = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.label11 = new System.Windows.Forms.Label();
@@ -223,7 +223,7 @@
             this.tabPage2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tabPage2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tabPage2.Controls.Add(this.label10);
-            this.tabPage2.Controls.Add(this.button1);
+            this.tabPage2.Controls.Add(this.btn_add_position);
             this.tabPage2.Controls.Add(this.flowLayoutPanel1);
             this.tabPage2.Location = new System.Drawing.Point(4, 28);
             this.tabPage2.Name = "tabPage2";
@@ -236,22 +236,22 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(11, 29);
+            this.label10.Location = new System.Drawing.Point(36, 29);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(207, 19);
             this.label10.TabIndex = 2;
             this.label10.Text = "Positions for Election";
             // 
-            // button1
+            // btn_add_position
             // 
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Location = new System.Drawing.Point(224, 20);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(35, 36);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "+";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btn_add_position.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_add_position.Location = new System.Drawing.Point(249, 29);
+            this.btn_add_position.Name = "btn_add_position";
+            this.btn_add_position.Size = new System.Drawing.Size(28, 27);
+            this.btn_add_position.TabIndex = 0;
+            this.btn_add_position.Text = "+";
+            this.btn_add_position.UseVisualStyleBackColor = true;
+            this.btn_add_position.Click += new System.EventHandler(this.button1_Click);
             // 
             // flowLayoutPanel1
             // 
@@ -281,7 +281,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(15, 27);
+            this.label11.Location = new System.Drawing.Point(50, 27);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(198, 19);
             this.label11.TabIndex = 2;
@@ -290,9 +290,9 @@
             // btn_add_candidate
             // 
             this.btn_add_candidate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_add_candidate.Location = new System.Drawing.Point(219, 20);
+            this.btn_add_candidate.Location = new System.Drawing.Point(254, 27);
             this.btn_add_candidate.Name = "btn_add_candidate";
-            this.btn_add_candidate.Size = new System.Drawing.Size(32, 33);
+            this.btn_add_candidate.Size = new System.Drawing.Size(25, 26);
             this.btn_add_candidate.TabIndex = 1;
             this.btn_add_candidate.Text = "+";
             this.btn_add_candidate.UseVisualStyleBackColor = true;
@@ -381,7 +381,7 @@
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_add_position;
         private System.Windows.Forms.Button btn_add_candidate;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.MenuStrip menuStrip1;
