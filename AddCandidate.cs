@@ -1,19 +1,24 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
 namespace Nursing_Election
 {
-    public partial class AddCandidate : Form
+    public partial class AddCandidate : Form 
     {
         private string name, motto;
         private int studentId;
         private static int noOfCandidates = 0;
         private Image candidateImage;
+        public static ArrayList positions = new ArrayList();
+
 
         public AddCandidate()
         {
-            InitializeComponent();
+            InitializeComponent(); 
+            SetPositionTitle();
         }
         public void SetName(string name)
         {
@@ -41,12 +46,10 @@ namespace Nursing_Election
         {
             return name;
         }
-
         public string GetMotto()
         {
             return motto;
         }
-
         public int GetStudentId()
         {
             return studentId;
@@ -63,6 +66,23 @@ namespace Nursing_Election
         public int GetNoOfCandidates()
         {
             return noOfCandidates;
+        }
+        public void SetPositionTitle()
+        {
+            foreach(string title in positions)
+            {
+                if (cb_positions.Items.Contains(title))
+                    continue;
+                cb_positions.Items.Add(title);
+            }
+
+        }
+        public void SetPositionTitles(ArrayList titles)
+        {
+            positions.Clear();
+            foreach (string title in titles)
+               positions.Add(title);
+
         }
 
 
@@ -99,6 +119,21 @@ namespace Nursing_Election
          
         }
 
+        private void AddCandidate_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cm_positions_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void cb_positions_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void btn_confirm_candidate_Click(object sender, EventArgs e)
         {
             name = tb_name_candidate.Text.Trim();
@@ -124,5 +159,6 @@ namespace Nursing_Election
             ++noOfCandidates;
             this.Close();
         }
+
     }
 }

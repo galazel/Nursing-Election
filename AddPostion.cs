@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,6 +18,7 @@ namespace Nursing_Election
         public AddPostion()
         {
             InitializeComponent();
+           
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -35,9 +37,13 @@ namespace Nursing_Election
                 MessageBox.Show("Please fill in all fields.");
                 return;
             }
-            ++noOfPositions;
-            MessageBox.Show("Position Added Successfully!");
-            this.Close();
+            else
+            {
+                ++noOfPositions;
+                MessageBox.Show("Position Added");
+                this.Close();
+            }
+               
         }
 
         public void SetPositionTitle(string title)

@@ -64,6 +64,7 @@
     <Compile Include="AdminDashboard.Designer.cs">
       <DependentUpon>AdminDashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="CandidatesInformation.cs" />
     <Compile Include="DashboardControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

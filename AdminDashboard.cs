@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -8,6 +9,7 @@ namespace Nursing_Election
     {
         private AddPostion position = new AddPostion();
         private AddCandidate candidate = new AddCandidate();
+        private ArrayList positionTitles = new ArrayList();
         public AdminDashboard()
         {
             InitializeComponent();
@@ -92,11 +94,19 @@ namespace Nursing_Election
             deleteButton.Font = new Font("Segoe UI", 8);
             deleteButton.Click += (s, e) =>
             {
+                string removed = titleLabel.Text;
+                positionTitles.Remove(removed);
+                candidate.SetPositionTitles(positionTitles);
+                foreach (var item in positionTitles)
+                    Console.WriteLine(item);
+
                 flowLayoutPanel1.Controls.Remove(positionPanel);
                 positionPanel.Dispose();
                 position.SetNoOfPositions(position.GetNoOfPositions() - 1);
                 int noOfPositions = position.GetNoOfPositions();
                 lb_no_of_positions.Text = noOfPositions.ToString();
+
+
             };
 
             buttonPanel.Controls.Add(viewButton);
@@ -119,11 +129,26 @@ namespace Nursing_Election
             {
                 string positionTitle = position1.GetPositionTitle();
                 string description = position1.GetDescription();
+                
+                foreach(string title in positionTitles)
+                {
+                    if (title.Equals(positionTitle))
+                    {
+                        MessageBox.Show("Position already exists.");
+                        return;
+                    }
+                }
+
                 if (!string.IsNullOrEmpty(positionTitle) && !string.IsNullOrEmpty(description))
                 {
-                    AddPosition(positionTitle, description);
-                    lb_no_of_positions.Text = position1.GetNoOfPositions().ToString();
+                        AddPosition(positionTitle, description);
+                        lb_no_of_positions.Text = position1.GetNoOfPositions().ToString();
+                        positionTitles.Add(positionTitle);
+                        candidate.SetPositionTitles(positionTitles);
+
                 }
+                
+                
             };
         }
 
@@ -249,6 +274,11 @@ namespace Nursing_Election
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if(position.GetNoOfPositions() == 0)
+            {
+                MessageBox.Show("Please add a position first.");
+                return;
+            }
             AddCandidate candidate1 = new AddCandidate();
             candidate1.Show();
             candidate1.FormClosing += (s, args) =>
@@ -261,6 +291,8 @@ namespace Nursing_Election
                 {
                     AddCandidate(name, motto, studentId, candidateImage);
                     lb_no_of_candidates.Text = candidate1.GetNoOfCandidates().ToString();
+
+
                 }
             };
         }
