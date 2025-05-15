@@ -16,11 +16,11 @@ namespace Nursing_Election
         private void AddPosition(string positionTitle, string description)
         {
             Panel positionPanel = new Panel();
-            positionPanel.Size = new Size(200, 160);
+            positionPanel.Size = new Size(190, 170); 
             positionPanel.BackColor = Color.White;
-            positionPanel.Margin = new Padding(10);
+            positionPanel.Margin = new Padding(3);
             positionPanel.BorderStyle = BorderStyle.FixedSingle;
-            positionPanel.Padding = new Padding(5);
+            positionPanel.Padding = new Padding(0);
 
             System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
             int radius = 10;
@@ -51,7 +51,7 @@ namespace Nursing_Election
 
             FlowLayoutPanel buttonPanel = new FlowLayoutPanel();
             buttonPanel.Dock = DockStyle.Bottom;
-            buttonPanel.Height = 35;
+            buttonPanel.Height = 25;
             buttonPanel.FlowDirection = FlowDirection.LeftToRight;
             buttonPanel.Padding = new Padding(3);
             buttonPanel.BackColor = Color.White;
@@ -69,31 +69,17 @@ namespace Nursing_Election
                 MessageBox.Show($"Position: {titleLabel.Text}\nDescription: {descriptionLabel.Tag}", "Position Details");
             };
 
-            Button updateButton = new Button();
-            updateButton.Text = "Edit";
-            updateButton.BackColor = Color.Orange;
-            updateButton.ForeColor = Color.White;
-            updateButton.FlatStyle = FlatStyle.Flat;
-            updateButton.FlatAppearance.BorderSize = 0;
-            updateButton.Width = 50;
-            updateButton.Font = new Font("Segoe UI", 8);
-            updateButton.Click += (s, e) =>
+            Button addCandidate = new Button();
+            addCandidate.Text = "Add";
+            addCandidate.BackColor = Color.Orange;
+            addCandidate.ForeColor = Color.White;
+            addCandidate.FlatStyle = FlatStyle.Flat;
+            addCandidate.FlatAppearance.BorderSize = 0;
+            addCandidate.Width = 50;
+            addCandidate.Font = new Font("Segoe UI", 8);
+            addCandidate.Click += (s, e) =>
             {
-                AddPostion updateForm = new AddPostion();
-                updateForm.SetPositionTitle(titleLabel.Text);
-                updateForm.SetDescription(descriptionLabel.Tag.ToString());
-                updateForm.Show();
-                updateForm.FormClosing += (sender2, args2) =>
-                {
-                    string updatedTitle = updateForm.GetPositionTitle();
-                    string updatedDescription = updateForm.GetDescription();
-                    if (!string.IsNullOrEmpty(updatedTitle) && !string.IsNullOrEmpty(updatedDescription))
-                    {
-                        titleLabel.Text = updatedTitle;
-                        descriptionLabel.Text = updatedDescription;
-                        descriptionLabel.Tag = updatedDescription;
-                    }
-                };
+                
             };
 
             Button deleteButton = new Button();
@@ -111,19 +97,19 @@ namespace Nursing_Election
                 position.SetNoOfPositions(position.GetNoOfPositions() - 1);
                 int noOfPositions = position.GetNoOfPositions();
                 lb_no_of_positions.Text = noOfPositions.ToString();
-
             };
 
             buttonPanel.Controls.Add(viewButton);
-            buttonPanel.Controls.Add(updateButton);
+            buttonPanel.Controls.Add(addCandidate);
             buttonPanel.Controls.Add(deleteButton);
 
-            positionPanel.Controls.Add(buttonPanel);
-            positionPanel.Controls.Add(descriptionLabel);
-            positionPanel.Controls.Add(titleLabel);
+            positionPanel.Controls.Add(buttonPanel);           
+            positionPanel.Controls.Add(descriptionLabel);      
+            positionPanel.Controls.Add(titleLabel);            
 
             flowLayoutPanel1.Controls.Add(positionPanel);
         }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
