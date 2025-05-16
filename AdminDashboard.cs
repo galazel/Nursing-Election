@@ -402,8 +402,6 @@ namespace Nursing_Election
                 this.Hide(); 
             }
         }
-
-
         private void btn_start_election_Click_1(object sender, EventArgs e)
         {
             if (position.GetNoOfPositions() == 0)
@@ -416,11 +414,15 @@ namespace Nursing_Election
                 MessageBox.Show("Please add a candidate first.");
                 return;
             }
-            else if(candidate.GetNoOfCandidates() < 15)
+            else if(candidate.GetNoOfCandidates() < 5)
             {
                 MessageBox.Show("Candidates should atleast 20.");
                 return;
             }
+
+            StartElectionClass start = new StartElectionClass();
+            start.SetElectionStarted(true);
+
             startTime = DateTime.Now;
             endTime = startTime.AddHours(24);
 

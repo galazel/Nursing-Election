@@ -49,8 +49,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Consolas", 15F);
-            this.label1.Location = new System.Drawing.Point(198, 143);
+            this.label1.Location = new System.Drawing.Point(136, 138);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(120, 23);
             this.label1.TabIndex = 0;
@@ -59,8 +60,9 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("Consolas", 15F);
-            this.label2.Location = new System.Drawing.Point(198, 194);
+            this.label2.Location = new System.Drawing.Point(136, 189);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 23);
             this.label2.TabIndex = 1;
@@ -69,8 +71,9 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.White;
             this.label3.Font = new System.Drawing.Font("Consolas", 15F);
-            this.label3.Location = new System.Drawing.Point(198, 379);
+            this.label3.Location = new System.Drawing.Point(136, 374);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 23);
             this.label3.TabIndex = 2;
@@ -79,8 +82,9 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.White;
             this.label4.Font = new System.Drawing.Font("Consolas", 15F);
-            this.label4.Location = new System.Drawing.Point(198, 251);
+            this.label4.Location = new System.Drawing.Point(136, 246);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(65, 23);
             this.label4.TabIndex = 3;
@@ -89,8 +93,9 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.White;
             this.label5.Font = new System.Drawing.Font("Consolas", 15F);
-            this.label5.Location = new System.Drawing.Point(198, 315);
+            this.label5.Location = new System.Drawing.Point(136, 310);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 23);
             this.label5.TabIndex = 4;
@@ -100,7 +105,7 @@
             // tb_student_id
             // 
             this.tb_student_id.Font = new System.Drawing.Font("Consolas", 15F);
-            this.tb_student_id.Location = new System.Drawing.Point(401, 142);
+            this.tb_student_id.Location = new System.Drawing.Point(339, 137);
             this.tb_student_id.Name = "tb_student_id";
             this.tb_student_id.Size = new System.Drawing.Size(231, 31);
             this.tb_student_id.TabIndex = 5;
@@ -109,7 +114,7 @@
             // tb_name
             // 
             this.tb_name.Font = new System.Drawing.Font("Consolas", 15F);
-            this.tb_name.Location = new System.Drawing.Point(401, 194);
+            this.tb_name.Location = new System.Drawing.Point(339, 189);
             this.tb_name.Name = "tb_name";
             this.tb_name.Size = new System.Drawing.Size(231, 31);
             this.tb_name.TabIndex = 6;
@@ -128,7 +133,7 @@
             "2",
             "3",
             "4"});
-            this.cb_level.Location = new System.Drawing.Point(401, 251);
+            this.cb_level.Location = new System.Drawing.Point(339, 246);
             this.cb_level.Name = "cb_level";
             this.cb_level.Size = new System.Drawing.Size(231, 31);
             this.cb_level.TabIndex = 7;
@@ -136,7 +141,7 @@
             // tb_block
             // 
             this.tb_block.Font = new System.Drawing.Font("Consolas", 15F);
-            this.tb_block.Location = new System.Drawing.Point(401, 315);
+            this.tb_block.Location = new System.Drawing.Point(339, 310);
             this.tb_block.Name = "tb_block";
             this.tb_block.Size = new System.Drawing.Size(231, 31);
             this.tb_block.TabIndex = 8;
@@ -144,7 +149,7 @@
             // tb_email
             // 
             this.tb_email.Font = new System.Drawing.Font("Consolas", 15F);
-            this.tb_email.Location = new System.Drawing.Point(401, 376);
+            this.tb_email.Location = new System.Drawing.Point(339, 371);
             this.tb_email.Name = "tb_email";
             this.tb_email.Size = new System.Drawing.Size(231, 31);
             this.tb_email.TabIndex = 9;
@@ -153,7 +158,7 @@
             // 
             this.btn_register.BackColor = System.Drawing.Color.Gold;
             this.btn_register.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_register.Location = new System.Drawing.Point(285, 482);
+            this.btn_register.Location = new System.Drawing.Point(221, 482);
             this.btn_register.Name = "btn_register";
             this.btn_register.Size = new System.Drawing.Size(233, 37);
             this.btn_register.TabIndex = 10;
@@ -164,8 +169,8 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.IndianRed;
-            this.label6.Location = new System.Drawing.Point(384, 522);
+            this.label6.BackColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(318, 522);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(31, 13);
             this.label6.TabIndex = 11;
@@ -175,8 +180,9 @@
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.White;
             this.label7.Font = new System.Drawing.Font("Consolas", 15F);
-            this.label7.Location = new System.Drawing.Point(198, 437);
+            this.label7.Location = new System.Drawing.Point(136, 432);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(87, 23);
             this.label7.TabIndex = 13;
@@ -184,12 +190,13 @@
             // 
             // btn_upload_photo
             // 
-            this.btn_upload_photo.Location = new System.Drawing.Point(401, 437);
+            this.btn_upload_photo.BackColor = System.Drawing.Color.White;
+            this.btn_upload_photo.Location = new System.Drawing.Point(339, 432);
             this.btn_upload_photo.Name = "btn_upload_photo";
             this.btn_upload_photo.Size = new System.Drawing.Size(75, 23);
             this.btn_upload_photo.TabIndex = 14;
             this.btn_upload_photo.Text = "Choose";
-            this.btn_upload_photo.UseVisualStyleBackColor = true;
+            this.btn_upload_photo.UseVisualStyleBackColor = false;
             this.btn_upload_photo.Click += new System.EventHandler(this.btn_upload_photo_Click);
             // 
             // lb_image
@@ -206,7 +213,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(839, 554);
+            this.ClientSize = new System.Drawing.Size(696, 561);
             this.Controls.Add(this.lb_image);
             this.Controls.Add(this.btn_upload_photo);
             this.Controls.Add(this.label7);
