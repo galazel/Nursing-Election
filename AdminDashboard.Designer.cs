@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label9 = new System.Windows.Forms.Label();
@@ -44,6 +45,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lb_no_of_positions = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.lb_end_timer = new System.Windows.Forms.Label();
+            this.lb_timer = new System.Windows.Forms.Label();
+            this.btn_start_election = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.btn_add_position = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -53,6 +57,8 @@
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.btn_end_election = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -215,12 +221,15 @@
             this.lb_no_of_positions.Size = new System.Drawing.Size(31, 33);
             this.lb_no_of_positions.TabIndex = 0;
             this.lb_no_of_positions.Text = "0";
-            this.lb_no_of_positions.Click += new System.EventHandler(this.label1_Click);
             // 
             // tabPage2
             // 
             this.tabPage2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tabPage2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPage2.Controls.Add(this.btn_end_election);
+            this.tabPage2.Controls.Add(this.lb_end_timer);
+            this.tabPage2.Controls.Add(this.lb_timer);
+            this.tabPage2.Controls.Add(this.btn_start_election);
             this.tabPage2.Controls.Add(this.label10);
             this.tabPage2.Controls.Add(this.btn_add_position);
             this.tabPage2.Controls.Add(this.flowLayoutPanel1);
@@ -232,10 +241,39 @@
             this.tabPage2.Text = "Positions";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // lb_end_timer
+            // 
+            this.lb_end_timer.AutoSize = true;
+            this.lb_end_timer.Font = new System.Drawing.Font("Consolas", 8F);
+            this.lb_end_timer.Location = new System.Drawing.Point(166, 516);
+            this.lb_end_timer.Name = "lb_end_timer";
+            this.lb_end_timer.Size = new System.Drawing.Size(0, 13);
+            this.lb_end_timer.TabIndex = 5;
+            // 
+            // lb_timer
+            // 
+            this.lb_timer.AutoSize = true;
+            this.lb_timer.Font = new System.Drawing.Font("Consolas", 8F);
+            this.lb_timer.Location = new System.Drawing.Point(15, 516);
+            this.lb_timer.Name = "lb_timer";
+            this.lb_timer.Size = new System.Drawing.Size(0, 13);
+            this.lb_timer.TabIndex = 4;
+            // 
+            // btn_start_election
+            // 
+            this.btn_start_election.Font = new System.Drawing.Font("Consolas", 9F);
+            this.btn_start_election.Location = new System.Drawing.Point(728, 31);
+            this.btn_start_election.Name = "btn_start_election";
+            this.btn_start_election.Size = new System.Drawing.Size(116, 24);
+            this.btn_start_election.TabIndex = 3;
+            this.btn_start_election.Text = "Start Election";
+            this.btn_start_election.UseVisualStyleBackColor = true;
+            this.btn_start_election.Click += new System.EventHandler(this.btn_start_election_Click_1);
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(36, 29);
+            this.label10.Location = new System.Drawing.Point(42, 30);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(207, 19);
             this.label10.TabIndex = 2;
@@ -244,7 +282,7 @@
             // btn_add_position
             // 
             this.btn_add_position.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_add_position.Location = new System.Drawing.Point(249, 29);
+            this.btn_add_position.Location = new System.Drawing.Point(255, 28);
             this.btn_add_position.Name = "btn_add_position";
             this.btn_add_position.Size = new System.Drawing.Size(28, 27);
             this.btn_add_position.TabIndex = 0;
@@ -326,6 +364,22 @@
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // btn_end_election
+            // 
+            this.btn_end_election.Font = new System.Drawing.Font("Consolas", 9F);
+            this.btn_end_election.Location = new System.Drawing.Point(850, 31);
+            this.btn_end_election.Name = "btn_end_election";
+            this.btn_end_election.Size = new System.Drawing.Size(40, 24);
+            this.btn_end_election.TabIndex = 6;
+            this.btn_end_election.Text = "End";
+            this.btn_end_election.UseVisualStyleBackColor = true;
+            // 
             // AdminDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -387,5 +441,10 @@
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lb_timer;
+        private System.Windows.Forms.Button btn_start_election;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label lb_end_timer;
+        private System.Windows.Forms.Button btn_end_election;
     }
 }
