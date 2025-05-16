@@ -25,7 +25,6 @@ namespace Nursing_Election
             tb_name_candidate.Text = name;
             this.name = name;
         }
-
         public void SetMotto(string motto)
         {
             tb_candidate_motto.Text = motto;
@@ -83,6 +82,12 @@ namespace Nursing_Election
             foreach (string title in titles)
                positions.Add(title);
 
+        }
+
+        public string GetPositionTitle()
+        {
+            return cb_positions.SelectedItem.ToString();
+            
         }
 
 

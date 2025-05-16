@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Drawing;
+using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace Nursing_Election
@@ -10,6 +12,13 @@ namespace Nursing_Election
         private AddPostion position = new AddPostion();
         private AddCandidate candidate = new AddCandidate();
         private ArrayList positionTitles = new ArrayList();
+        private ArrayList presidentCandidates = new ArrayList();
+        private ArrayList vicePresidentCandidates = new ArrayList();
+        private ArrayList secretaryCandidates = new ArrayList();
+        private ArrayList treasurerCandidates = new ArrayList();
+        private ArrayList auditorCandidates = new ArrayList();
+        private ArrayList publicRelationsCandidates = new ArrayList();
+        private ArrayList representativeCandidates = new ArrayList();
         public AdminDashboard()
         {
             InitializeComponent();
@@ -34,7 +43,7 @@ namespace Nursing_Election
             positionPanel.Region = new Region(path);
 
             Label titleLabel = new Label();
-            titleLabel.Text = positionTitle;
+            titleLabel.Text = positionTitle.ToUpper();
             titleLabel.Font = new Font("Segoe UI", 10, FontStyle.Bold);
             titleLabel.ForeColor = Color.Black;
             titleLabel.Dock = DockStyle.Top;
@@ -68,7 +77,60 @@ namespace Nursing_Election
             viewButton.Font = new Font("Segoe UI", 8);
             viewButton.Click += (s, e) =>
             {
-                MessageBox.Show($"Position: {titleLabel.Text}\nDescription: {descriptionLabel.Tag}", "Position Details");
+
+                if (titleLabel.Text.Equals("PRESIDENT"))
+                {
+                    StringBuilder sb = new StringBuilder();
+                    foreach (var item in presidentCandidates)
+                        sb.Append(item + "\n");
+
+                    MessageBox.Show("President Candidates: " + sb.ToString(), "Candidates for President");
+                }
+                else if (titleLabel.Text.Equals("VICE PRESIDENT") || titleLabel.Text.Equals("VICE-PRESIDENT"))
+                {
+                    StringBuilder sb = new StringBuilder();
+                    foreach (var item in vicePresidentCandidates)
+                        sb.Append(item + "\n");
+
+                    MessageBox.Show("Vice President Candidates: " + sb.ToString(), "Candidates for Vice President"); 
+                }
+                else if (titleLabel.Text.Equals("SECRETARY"))
+                {
+                    StringBuilder sb = new StringBuilder();
+                    foreach (var item in secretaryCandidates)
+                        sb.Append(item + "\n");
+                    MessageBox.Show("Secretary Candidates: " + sb.ToString(), "Candidates for Secretary"); 
+                
+                }
+                else if (titleLabel.Text.Equals("TREASURER"))
+                {
+                    StringBuilder sb = new StringBuilder();
+                    foreach (var item in treasurerCandidates)
+                        sb.Append(item + "\n");
+                    MessageBox.Show("Treasurer Candidates: " + sb.ToString(), "Candidates for Treasurer"); 
+                }
+                else if (titleLabel.Text.Equals("AUDITOR"))
+                {
+                    StringBuilder sb = new StringBuilder();
+                    foreach (var item in auditorCandidates)
+                        sb.Append(item + "\n");
+                    MessageBox.Show("Auditor Candidates: " + sb.ToString(), "Candidates for Auditor"); 
+                }
+                else if (titleLabel.Text.Equals("PUBLIC RELATIONS OFFICER") || titleLabel.Text.Equals("PRO"))
+                {
+                    StringBuilder sb = new StringBuilder();
+                    foreach (var item in publicRelationsCandidates)
+                        sb.Append(item + "\n");
+                    MessageBox.Show("Public Relations Officer Candidates: " + sb.ToString(), "Candidates for PRO");
+                }
+                else if (titleLabel.Text.EndsWith("REPRESENTATIVE"))
+                {
+                    StringBuilder sb = new StringBuilder();
+                    foreach (var item in representativeCandidates)
+                        sb.Append(item + "\n");
+                    MessageBox.Show("Representative Candidates: " + sb.ToString(), "Candidates for Representative"); 
+                }
+
             };
 
             Button addCandidate = new Button();
@@ -129,8 +191,8 @@ namespace Nursing_Election
             {
                 string positionTitle = position1.GetPositionTitle();
                 string description = position1.GetDescription();
-                
-                foreach(string title in positionTitles)
+
+                foreach (string title in positionTitles)
                 {
                     if (title.Equals(positionTitle))
                     {
@@ -138,6 +200,34 @@ namespace Nursing_Election
                         return;
                     }
                 }
+                String[] listOfPositoins =
+                {
+                    "PRESIDENT",
+                    "VICE PRESIDENT",
+                    "SECRETARY",
+                    "TREASURER",
+                    "AUDITOR",
+                    "PUBLIC RELATIONS OFFICER",
+                    "PRO",
+                    "REPRESENTATIVE"
+                };
+
+                bool isValidPosition = false;
+                for(int i = 0; i < listOfPositoins.Length; i++) {
+                    if (positionTitle.ToUpper().Equals(listOfPositoins[i]) || positionTitle.ToUpper().EndsWith(listOfPositoins[i]))
+                    {
+                        isValidPosition = true;
+                        break;
+                    }
+                }
+
+                if(!isValidPosition)
+                {
+                    MessageBox.Show("Invalid position title. Please enter a valid position.");
+                    position.SetNoOfPositions(position.GetNoOfPositions() - 1);
+                    return;
+                }
+
 
                 if (!string.IsNullOrEmpty(positionTitle) && !string.IsNullOrEmpty(description))
                 {
@@ -146,6 +236,7 @@ namespace Nursing_Election
                         positionTitles.Add(positionTitle);
                         candidate.SetPositionTitles(positionTitles);
 
+                    
                 }
                 
                 
@@ -291,7 +382,23 @@ namespace Nursing_Election
                 {
                     AddCandidate(name, motto, studentId, candidateImage);
                     lb_no_of_candidates.Text = candidate1.GetNoOfCandidates().ToString();
+                    
+                    string positionTitle = candidate1.GetPositionTitle();
 
+                    if (positionTitle.ToUpper().Equals("PRESIDENT"))
+                        presidentCandidates.Add(positionTitle);
+                    else if (positionTitle.ToUpper().Equals("VICE PRESIDENT") || positionTitle.Equals("VICE-PRESIDENT"))
+                        vicePresidentCandidates.Add(positionTitle);
+                    else if (positionTitle.ToUpper().Equals("SECRETARY"))
+                        secretaryCandidates.Add(positionTitle);
+                    else if (positionTitle.ToUpper().Equals("TREASURER"))
+                        treasurerCandidates.Add(positionTitle);
+                    else if (positionTitle.ToUpper().Equals("AUDITOR"))
+                        auditorCandidates.Add(positionTitle);
+                    else if (positionTitle.ToUpper().Equals("PUBLIC RELATIONS OFFICER") || positionTitle.Equals("PRO"))
+                        publicRelationsCandidates.Add(positionTitle);
+                    else if (positionTitle.ToUpper().EndsWith("REPRESENTATIVE"))
+                        representativeCandidates.Add(positionTitle);
 
                 }
             };
