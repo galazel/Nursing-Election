@@ -37,11 +37,12 @@ namespace Nursing_Election
             string filePathCandidates = "D:\\Glyzel's Files\\C#\\Nursing Election\\CandidateData.txt";
 
 
-            if(filePathPositions.Length > 0)
+            if (filePathPositions.Length > 0)
             {
                 LabelCount labelCount = new LabelCount();
                 lb_no_of_positions.Text = labelCount.GetPositionsCount().ToString();
                 lb_no_of_candidates.Text = labelCount.GetCandidatesCount().ToString();
+
                 try
                 {
                     FileInfo filePositions = new FileInfo(filePathPositions);
@@ -95,7 +96,7 @@ namespace Nursing_Election
                 }
             }
 
-            
+
         }
 
 
@@ -148,9 +149,9 @@ namespace Nursing_Election
                         sb.Append(item + "\n");
 
                     if (sb.Length == 0)
-                        { MessageBox.Show("The are no candidates in this position"); return; }
+                    { MessageBox.Show("The are no candidates in this position"); return; }
 
-                    Console.WriteLine("Presidents: \n"+sb.ToString());
+                    Console.WriteLine("Presidents: \n" + sb.ToString());
                     MessageBox.Show("President Candidates: \n" + sb.ToString(), "Candidates for President");
                 }
                 else if (titleLabel.Text.Equals("VICE PRESIDENT") || titleLabel.Text.Equals("VICE-PRESIDENT"))
@@ -161,7 +162,7 @@ namespace Nursing_Election
                     if (sb.Length == 0)
                     { MessageBox.Show("The are no candidates in this position"); return; }
 
-                    MessageBox.Show("Vice President Candidates: \n" + sb.ToString(), "Candidates for Vice President"); 
+                    MessageBox.Show("Vice President Candidates: \n" + sb.ToString(), "Candidates for Vice President");
                 }
                 else if (titleLabel.Text.Equals("SECRETARY"))
                 {
@@ -171,8 +172,8 @@ namespace Nursing_Election
 
                     if (sb.Length == 0)
                     { MessageBox.Show("The are no candidates in this position"); return; }
-                    MessageBox.Show("Secretary Candidates: \n" + sb.ToString(), "Candidates for Secretary"); 
-                
+                    MessageBox.Show("Secretary Candidates: \n" + sb.ToString(), "Candidates for Secretary");
+
                 }
                 else if (titleLabel.Text.Equals("TREASURER"))
                 {
@@ -182,7 +183,7 @@ namespace Nursing_Election
 
                     if (sb.Length == 0)
                     { MessageBox.Show("The are no candidates in this position"); return; }
-                    MessageBox.Show("Treasurer Candidates: \n" + sb.ToString(), "Candidates for Treasurer"); 
+                    MessageBox.Show("Treasurer Candidates: \n" + sb.ToString(), "Candidates for Treasurer");
                 }
                 else if (titleLabel.Text.Equals("AUDITOR"))
                 {
@@ -192,7 +193,7 @@ namespace Nursing_Election
 
                     if (sb.Length == 0)
                     { MessageBox.Show("The are no candidates in this position"); return; }
-                    MessageBox.Show("Auditor Candidates: \n" + sb.ToString(), "Candidates for Auditor"); 
+                    MessageBox.Show("Auditor Candidates: \n" + sb.ToString(), "Candidates for Auditor");
                 }
                 else if (titleLabel.Text.Equals("PUBLIC RELATIONS OFFICER") || titleLabel.Text.Equals("PRO"))
                 {
@@ -211,7 +212,7 @@ namespace Nursing_Election
                         sb.Append(item + "\n");
                     if (sb.Length == 0)
                     { MessageBox.Show("The are no candidates in this position"); return; }
-                    MessageBox.Show("Representative Candidates: \n" + sb.ToString(), "Candidates for Representative"); 
+                    MessageBox.Show("Representative Candidates: \n" + sb.ToString(), "Candidates for Representative");
                 }
 
             };
@@ -300,7 +301,8 @@ namespace Nursing_Election
                 };
 
                 bool isValidPosition = false;
-                for(int i = 0; i < listOfPositoins.Length; i++) {
+                for (int i = 0; i < listOfPositoins.Length; i++)
+                {
                     if (positionTitle.ToUpper().Equals(listOfPositoins[i]) || positionTitle.ToUpper().EndsWith(listOfPositoins[i]))
                     {
                         isValidPosition = true;
@@ -308,7 +310,7 @@ namespace Nursing_Election
                     }
                 }
 
-                if(!isValidPosition)
+                if (!isValidPosition)
                 {
                     MessageBox.Show("Invalid position title. Please enter a valid position.");
                     position.SetNoOfPositions(position.GetNoOfPositions() - 1);
@@ -517,7 +519,7 @@ namespace Nursing_Election
                             sw.WriteLine(studentId);
 
                             string imageFileName = $"{studentId}_{DateTime.Now.Ticks}.png";
-                            string imagePath = Path.Combine("D:\\Glyzel's Files\\C#\\Nursing Election\\CandidateData.txt", imageFileName);
+                            string imagePath = Path.Combine("D:\\Glyzel's Files\\C#\\Nursing Election\\CandidateImages", imageFileName);
                             candidateImage.Save(imagePath, System.Drawing.Imaging.ImageFormat.Png);
                             sw.WriteLine(imagePath);
 
@@ -528,7 +530,7 @@ namespace Nursing_Election
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Error writing to file: " + ex.Message);
+                        MessageBox.Show("Error writing to file: sdf" + ex.Message);
                     }
 
                 }
@@ -544,7 +546,7 @@ namespace Nursing_Election
                 labelCount.SetPositionsCount(position.GetNoOfPositions());
                 labelCount.SetCandidatesCount(candidate.GetNoOfCandidates());
                 new Login().Show();
-                this.Hide(); 
+                this.Hide();
             }
         }
         private void btn_start_election_Click_1(object sender, EventArgs e)
@@ -554,12 +556,12 @@ namespace Nursing_Election
                 MessageBox.Show("Please add a position first.");
                 return;
             }
-            else if(candidate.GetNoOfCandidates() == 0)
+            else if (candidate.GetNoOfCandidates() == 0)
             {
                 MessageBox.Show("Please add a candidate first.");
                 return;
             }
-            else if(candidate.GetNoOfCandidates() < 5)
+            else if (candidate.GetNoOfCandidates() < 5)
             {
                 MessageBox.Show("Candidates should atleast 20.");
                 return;
