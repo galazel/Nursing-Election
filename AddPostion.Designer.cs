@@ -102,6 +102,7 @@
             this.Name = "AddPostion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddPostion";
+            this.Load += new System.EventHandler(this.AddPostion_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

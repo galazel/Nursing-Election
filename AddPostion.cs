@@ -20,7 +20,6 @@ namespace Nursing_Election
             InitializeComponent();
            
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             positionTitle = tb_position.Text;
@@ -66,6 +65,12 @@ namespace Nursing_Election
         {
             noOfPositions = no;
         }
+
+        private void AddPostion_Load(object sender, EventArgs e)
+        {
+
+        }
+
         public int GetNoOfPositions()
         {
             return noOfPositions;

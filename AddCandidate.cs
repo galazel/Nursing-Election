@@ -160,6 +160,12 @@ namespace Nursing_Election
                 return;
             }
 
+            if(cb_positions.SelectedItem == null)
+            {
+                MessageBox.Show("Please select a position.");
+                return;
+            }
+
             MessageBox.Show("Candidate Added Successfully!");
             ++noOfCandidates;
             this.Close();

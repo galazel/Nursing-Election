@@ -226,6 +226,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CandidateData.txt" />
+    <Content Include="Count.txt" />
     <Content Include="PositionData.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
