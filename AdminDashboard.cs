@@ -417,44 +417,62 @@ namespace Nursing_Election
             {
                 flowLayoutPanel2.Controls.Remove(candidatePanel);
                 candidatePanel.Dispose();
+
                 candidate.SetNoOfCandidates(candidate.GetNoOfCandidates() - 1);
                 int noOfCandidates = candidate.GetNoOfCandidates();
                 lb_no_of_candidates.Text = noOfCandidates.ToString();
 
+                // Remove from position list
+                string title = positionTitle.Trim().ToUpper();
+                if (title == "PRESIDENT")
+                    presidentCandidates.Remove(name);
+                else if (title == "VICE PRESIDENT" || title == "VICE-PRESIDENT")
+                    vicePresidentCandidates.Remove(name);
+                else if (title == "SECRETARY")
+                    secretaryCandidates.Remove(name);
+                else if (title == "TREASURER")
+                    treasurerCandidates.Remove(name);
+                else if (title == "AUDITOR")
+                    auditorCandidates.Remove(name);
+                else if (title == "PUBLIC RELATIONS OFFICER" || title == "PRO")
+                    publicRelationsCandidates.Remove(name);
+                else if (title.EndsWith("REPRESENTATIVE"))
+                    representativeCandidates.Remove(name);
 
                 try
                 {
                     string filePath = "D:\\Glyzel's Files\\C#\\Nursing Election\\CandidateData.txt";
                     List<string> lines = File.ReadAllLines(filePath).ToList();
 
-
-
-                    for (int i = 0; i < lines.Count - 4; i++)
+                    for (int i = 0; i <= lines.Count - 5; i++)
                     {
-                        if (lines[i] == name && lines[i + 1] == motto && lines[i + 2] == studentId.ToString())
+                        if (lines[i].Trim() == name.Trim() &&
+                            lines[i + 1].Trim() == motto.Trim() &&
+                            lines[i + 2].Trim() == studentId.ToString().Trim())
                         {
-                            string imagePath = lines[i + 3];
+                            string imagePath = lines[i + 3].Trim();
 
                             if (File.Exists(imagePath))
-                            {
                                 File.Delete(imagePath);
-                            }
+
                             lines.RemoveRange(i, 5);
 
                             if (i < lines.Count && string.IsNullOrWhiteSpace(lines[i]))
                                 lines.RemoveAt(i);
 
-                            break;
+                            File.WriteAllLines(filePath, lines);
+                            return; // Exit once deleted
                         }
                     }
 
-                    File.WriteAllLines(filePath, lines);
+                    MessageBox.Show("Candidate not found in file.");
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error deleting candidate data or image: " + ex.Message);
                 }
             };
+
 
             buttonPanel.Controls.Add(viewButton);
             buttonPanel.Controls.Add(deleteButton);
