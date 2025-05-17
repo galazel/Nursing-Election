@@ -24,7 +24,6 @@ namespace Nursing_Election
 
         }
 
-
         private void label2_Click(object sender, EventArgs e)
         {
 
@@ -64,7 +63,7 @@ namespace Nursing_Election
 
             if(string.Equals(id, "11111111"))
             {
-                AdminDashboard admin = new AdminDashboard();
+                form_admin_dashboard admin = new form_admin_dashboard();
                 admin.Show();
                 this.Hide();
                 return;
@@ -130,6 +129,16 @@ namespace Nursing_Election
         {
             new Register().Show();
             this.Hide();
+        }
+
+        private void Login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+           
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

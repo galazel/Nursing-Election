@@ -1,6 +1,6 @@
 ﻿namespace Nursing_Election
 {
-    partial class AdminDashboard
+    partial class form_admin_dashboard
     {
         /// <summary>
         /// Required designer variable.
@@ -45,6 +45,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lb_no_of_positions = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btn_end_election = new System.Windows.Forms.Button();
             this.lb_end_timer = new System.Windows.Forms.Label();
             this.lb_timer = new System.Windows.Forms.Label();
             this.btn_start_election = new System.Windows.Forms.Button();
@@ -58,7 +59,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.btn_end_election = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -241,6 +241,16 @@
             this.tabPage2.Text = "Positions";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // btn_end_election
+            // 
+            this.btn_end_election.Font = new System.Drawing.Font("Consolas", 9F);
+            this.btn_end_election.Location = new System.Drawing.Point(850, 31);
+            this.btn_end_election.Name = "btn_end_election";
+            this.btn_end_election.Size = new System.Drawing.Size(40, 24);
+            this.btn_end_election.TabIndex = 6;
+            this.btn_end_election.Text = "End";
+            this.btn_end_election.UseVisualStyleBackColor = true;
+            // 
             // lb_end_timer
             // 
             this.lb_end_timer.AutoSize = true;
@@ -370,17 +380,7 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // btn_end_election
-            // 
-            this.btn_end_election.Font = new System.Drawing.Font("Consolas", 9F);
-            this.btn_end_election.Location = new System.Drawing.Point(850, 31);
-            this.btn_end_election.Name = "btn_end_election";
-            this.btn_end_election.Size = new System.Drawing.Size(40, 24);
-            this.btn_end_election.TabIndex = 6;
-            this.btn_end_election.Text = "End";
-            this.btn_end_election.UseVisualStyleBackColor = true;
-            // 
-            // AdminDashboard
+            // form_admin_dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -389,9 +389,10 @@
             this.Controls.Add(this.menuStrip1);
             this.DoubleBuffered = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "AdminDashboard";
+            this.Name = "form_admin_dashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdminDashboard";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.form_admin_dashboard_FormClosing);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();

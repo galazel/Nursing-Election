@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Nursing_Election
 {
-    public partial class AdminDashboard : Form
+    public partial class form_admin_dashboard : Form
     {
         private AddPostion position = new AddPostion();
         private AddCandidate candidate = new AddCandidate();
@@ -25,7 +25,7 @@ namespace Nursing_Election
         private DateTime startTime;
         private DateTime endTime;
 
-        public AdminDashboard()
+        public form_admin_dashboard()
         {
             InitializeComponent();
             lb_timer.Visible = false;
@@ -35,34 +35,37 @@ namespace Nursing_Election
 
             string filePathPositions = "D:\\Glyzel's Files\\C#\\Nursing Election\\PositionData.txt";
             string filePathCandidates = "D:\\Glyzel's Files\\C#\\Nursing Election\\CandidateData.txt";
+            string filePath = "D:\\Glyzel's Files\\C#\\Nursing Election\\Count.txt";
 
 
-            if (filePathPositions.Length > 0)
+            if (filePathPositions.Length > 0 || filePathCandidates.Length > 0 || filePath.Length > 0)
             {
                 LabelCount labelCount = new LabelCount();
 
                 try
                 {
-                    string filePath = "D:\\Glyzel's Files\\C#\\Nursing Election\\Count.txt";
-                    List<string> lines = File.ReadAllLines(filePath).ToList();
-                    for (int i = 0; i < lines.Count; i++)
+                    FileInfo countFile = new FileInfo(filePath);
+                    if (countFile.Exists && countFile.Length > 0)
                     {
-                        if (i == 0)
+                        string[] lines = File.ReadAllLines(filePath).Where(line => !string.IsNullOrWhiteSpace(line)).ToArray(); ;
+                        for (int i = 0; i < lines.Length; i++)
                         {
-                            lb_no_of_positions.Text = lines[i];
-                            labelCount.SetPositionsCount(int.Parse(lines[i]));
-                        }
-                        else if (i == 1)
-                        {
-                            lb_no_of_candidates.Text = lines[i];
-                            labelCount.SetCandidatesCount(int.Parse(lines[i]));
+                            if (i == 0)
+                            {
+                                lb_no_of_positions.Text = lines[i];
+                                labelCount.SetPositionsCount(int.Parse(lines[i]));
+                            }
+                            else if (i == 1)
+                            {
+                                lb_no_of_candidates.Text = lines[i];
+                                labelCount.SetCandidatesCount(int.Parse(lines[i]));
+                            }
                         }
                     }
-
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Error reading file: " + ex.Message);
+                    MessageBox.Show("Error reading file: where " + ex.Message);
                 }
 
                 position.SetNoOfPositions(labelCount.GetPositionsCount());
@@ -128,7 +131,6 @@ namespace Nursing_Election
                     MessageBox.Show("Error reading file ff: " + ex.Message);
                 }
             }
-
 
         }
 
@@ -266,30 +268,10 @@ namespace Nursing_Election
                 flowLayoutPanel1.Controls.Remove(positionPanel);
                 positionPanel.Dispose();
 
-                try
-                {
-                    string filePath = "D:\\Glyzel's Files\\C#\\Nursing Election\\Count.txt";
-                    List<string> lines = File.ReadAllLines(filePath).ToList();
+                position.SetNoOfPositions(position.GetNoOfPositions() - 1);
+                int noOfPositions = position.GetNoOfPositions();
+                lb_no_of_positions.Text = noOfPositions.ToString();
 
-
-                    for (int i = 0; i < lines.Count; i++)
-                    {
-                        if (lines[i].Equals(lb_no_of_positions.Text))
-                        {
-                            lines.RemoveAt(i);
-                            lines.Insert(i, (position.GetNoOfPositions() - 1).ToString());
-                            break;
-                        }
-                    }
-                    position.SetNoOfPositions(position.GetNoOfPositions() - 1);
-                    int noOfPositions = position.GetNoOfPositions();
-                    lb_no_of_positions.Text = noOfPositions.ToString();
-                    File.WriteAllLines(filePath, lines);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error reading or writing file: " + ex.Message);
-                }
 
                 try
                 {
@@ -376,19 +358,6 @@ namespace Nursing_Election
                 {
                     AddPosition(positionTitle, description);
                     lb_no_of_positions.Text = position1.GetNoOfPositions().ToString();
-                    
-                    try
-                    {
-                        using(System.IO.StreamWriter sw = new System.IO.StreamWriter("D:\\Glyzel's Files\\C#\\Nursing Election\\Count.txt", true))
-                        {
-                            sw.WriteLine(position1.GetNoOfPositions());
-                        }
-
-                    }
-                    catch(Exception ex)
-                    {
-                        MessageBox.Show("Error writing to file: " + ex.Message);
-                    }
                     positionTitles.Add(positionTitle.ToUpper());
                     candidate.SetPositionTitles(positionTitles);
 
@@ -483,26 +452,6 @@ namespace Nursing_Election
             {
                 flowLayoutPanel2.Controls.Remove(candidatePanel);
                 candidatePanel.Dispose();
-
-                try
-                {
-                    string filePath = "D:\\Glyzel's Files\\C#\\Nursing Election\\Count.txt";
-                    List<string> lines = File.ReadAllLines(filePath).ToList();
-                    for (int i = 0; i < lines.Count; i++)
-                    {
-                        if (lines[i].Equals(lb_no_of_candidates.Text))
-                        {
-                            lines.RemoveAt(i);
-                            lines.Insert(i, (candidate.GetNoOfCandidates() - 1).ToString());
-                            break;
-                        }
-                    }
-
-                }
-                catch(Exception ex)
-                {
-                    MessageBox.Show("Error reading or writing file: " + ex.Message);
-                }
                 candidate.SetNoOfCandidates(candidate.GetNoOfCandidates() - 1);
                 int noOfCandidates = candidate.GetNoOfCandidates();
                 lb_no_of_candidates.Text = noOfCandidates.ToString();
@@ -643,10 +592,7 @@ namespace Nursing_Election
                             sw.WriteLine(imagePath);
                             sw.WriteLine(candidate1.GetPositionTitle());
                         }
-                        using (System.IO.StreamWriter sw = new System.IO.StreamWriter("D:\\Glyzel's Files\\C#\\Nursing Election\\Count.txt", true))
-                        {
-                            sw.WriteLine(lb_no_of_candidates.Text);
-                        }
+
                     }
                     catch (Exception ex)
                     {
@@ -671,6 +617,61 @@ namespace Nursing_Election
                 labelCount.SetAuditorCandidates(auditorCandidates);
                 labelCount.SetPublicRelationsCandidates(publicRelationsCandidates);
 
+
+                //try
+                //{
+                //    using (System.IO.StreamWriter sw = new System.IO.StreamWriter("D:\\Glyzel's Files\\C#\\Nursing Election\\Count.txt", true))
+                //    {
+                //        sw.WriteLine(lb_no_of_positions.Text);
+                //        sw.WriteLine(lb_no_of_candidates.Text);
+                //    }
+                //}
+                //catch (Exception ex)
+                //{
+                //    MessageBox.Show("Error writing to file: " + ex.Message);
+                //}
+
+
+                try
+                {
+                    string filePath = "D:\\Glyzel's Files\\C#\\Nursing Election\\Count.txt";
+                    FileInfo countFile = new FileInfo(filePath);
+                    if (countFile.Exists && countFile.Length == 0)
+                    {
+                        using (System.IO.StreamWriter sw = new System.IO.StreamWriter(filePath, true))
+                        {
+                            sw.WriteLine(lb_no_of_positions.Text);
+                            sw.WriteLine(lb_no_of_candidates.Text);
+                        }
+
+                    }
+                    else if (countFile.Exists && countFile.Length > 0)
+                    {
+                        File.WriteAllText(filePath, string.Empty);
+                        for (int i = 0; i < 2; i++)
+                        {
+                            if (i == 0)
+                            {
+                                using (System.IO.StreamWriter sw = new System.IO.StreamWriter(filePath, true))
+                                {
+                                    sw.WriteLine(lb_no_of_positions.Text);
+                                }
+                            }
+                            else if (i == 1)
+                            {
+                                using (System.IO.StreamWriter sw = new System.IO.StreamWriter(filePath, true))
+                                {
+                                    sw.WriteLine(lb_no_of_candidates.Text);
+                                }
+                            }
+                        }
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error reading file: where " + ex.Message);
+                }
 
 
                 new Login().Show();
@@ -726,6 +727,64 @@ namespace Nursing_Election
             else
             {
                 lb_timer.Text = "Time Left: " + remainingTime.ToString(@"hh\:mm\:ss");
+            }
+        }
+        private void form_admin_dashboard_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                LabelCount labelCount = new LabelCount();
+                labelCount.SetPositionTitles(positionTitles);
+                labelCount.SetPresidentCandidates(presidentCandidates);
+                labelCount.SetVicePresidentCandidates(vicePresidentCandidates);
+                labelCount.SetSecretaryCandidates(secretaryCandidates);
+                labelCount.SetTreasurerCandidates(treasurerCandidates);
+                labelCount.SetAuditorCandidates(auditorCandidates);
+                labelCount.SetPublicRelationsCandidates(publicRelationsCandidates);
+
+                try
+                {
+                    string filePath = "D:\\Glyzel's Files\\C#\\Nursing Election\\Count.txt";
+                    FileInfo countFile = new FileInfo(filePath);
+                    if (countFile.Exists && countFile.Length == 0)
+                    {
+                        using (System.IO.StreamWriter sw = new System.IO.StreamWriter(filePath, true))
+                        {
+                            sw.WriteLine(lb_no_of_positions.Text);
+                            sw.WriteLine(lb_no_of_candidates.Text);
+                        }
+
+                    }else if (countFile.Exists && countFile.Length > 0)
+                    {
+                        File.WriteAllText(filePath,string.Empty);
+                        for (int i = 0; i < 2; i++)
+                        {
+                            if (i == 0)
+                            {
+                                using (System.IO.StreamWriter sw = new System.IO.StreamWriter(filePath, true))
+                                {
+                                    sw.WriteLine(lb_no_of_positions.Text);
+                                }
+                            }
+                            else if (i == 1)
+                            {
+                                using (System.IO.StreamWriter sw = new System.IO.StreamWriter(filePath, true))
+                                {
+                                    sw.WriteLine(lb_no_of_candidates.Text);
+                                }
+                            }
+                        }
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error reading file: where " + ex.Message);
+                }
+
+                this.Hide();
+                new Login().Show();
             }
         }
     }
