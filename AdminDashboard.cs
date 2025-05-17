@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
 
@@ -29,7 +32,72 @@ namespace Nursing_Election
             lb_end_timer.Visible = false;
             timer1.Enabled = false;
             btn_end_election.Enabled = false;
+
+            string filePathPositions = "D:\\Glyzel's Files\\C#\\Nursing Election\\PositionData.txt";
+            string filePathCandidates = "D:\\Glyzel's Files\\C#\\Nursing Election\\CandidateData.txt";
+
+
+            if(filePathPositions.Length > 0)
+            {
+                LabelCount labelCount = new LabelCount();
+                lb_no_of_positions.Text = labelCount.GetPositionsCount().ToString();
+                lb_no_of_candidates.Text = labelCount.GetCandidatesCount().ToString();
+                try
+                {
+                    FileInfo filePositions = new FileInfo(filePathPositions);
+                    if (filePositions.Exists && filePositions.Length > 0)
+                    {
+                        string[] lines1 = File.ReadAllLines(filePathPositions);
+                        for (int i = 0; i < lines1.Length; i += 2)
+                        {
+                            if (i + 1 < lines1.Length)
+                            {
+                                string title = lines1[i].Trim();
+                                string description = lines1[i + 1].Trim();
+                                Console.WriteLine("Title: " + title);
+
+                                positionTitles.Add(title);
+                                AddPosition(title, description);
+                            }
+                        }
+                    }
+
+                    FileInfo fileCandidates = new FileInfo(filePathCandidates);
+                    if (fileCandidates.Exists && fileCandidates.Length > 0)
+                    {
+                        string[] lines2 = File.ReadAllLines(filePathCandidates);
+                        for (int i = 0; i < lines2.Length; i += 5)
+                        {
+                            if (i + 4 < lines2.Length)
+                            {
+                                string name = lines2[i].Trim();
+                                string motto = lines2[i + 1].Trim();
+                                int studentId = int.Parse(lines2[i + 2].Trim());
+                                string imagePath = lines2[i + 3].Trim();
+                                string positionTitle = lines2[i + 4].Trim();
+
+                                if (File.Exists(imagePath))
+                                {
+                                    Image candidateImage = Image.FromFile(imagePath);
+                                    AddCandidate(name, motto, studentId, candidateImage, positionTitle);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Image file not found: " + imagePath);
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error reading file ff: " + ex.Message);
+                }
+            }
+
+            
         }
+
 
         private void AddPosition(string positionTitle, string description)
         {
@@ -158,17 +226,29 @@ namespace Nursing_Election
             deleteButton.Click += (s, e) =>
             {
                 string removed = titleLabel.Text;
+                string desc = description;
                 positionTitles.Remove(removed);
                 candidate.SetPositionTitles(positionTitles);
-                Console.WriteLine("DELETE");
-                foreach (var item in positionTitles)
-                    Console.WriteLine(item);
-
                 flowLayoutPanel1.Controls.Remove(positionPanel);
                 positionPanel.Dispose();
                 position.SetNoOfPositions(position.GetNoOfPositions() - 1);
                 int noOfPositions = position.GetNoOfPositions();
                 lb_no_of_positions.Text = noOfPositions.ToString();
+
+
+                try
+                {
+                    string filePath = "D:\\Glyzel's Files\\C#\\Nursing Election\\PositionData.txt";
+                    List<string> lines = File.ReadAllLines(filePath).ToList();
+
+                    lines.RemoveAll(line => line.Equals(removed) || line.Equals(desc));
+                    File.WriteAllLines(filePath, lines);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error reading or writing file: " + ex.Message);
+                }
+
 
 
             };
@@ -188,8 +268,6 @@ namespace Nursing_Election
         {
             AddPostion position1 = new AddPostion();
             position1.Show();
-
-
 
 
             position1.FormClosing += (s, args) =>
@@ -240,15 +318,25 @@ namespace Nursing_Election
 
                 if (!string.IsNullOrEmpty(positionTitle) && !string.IsNullOrEmpty(description))
                 {
-                        AddPosition(positionTitle, description);
-                        lb_no_of_positions.Text = position1.GetNoOfPositions().ToString();
-                        positionTitles.Add(positionTitle.ToUpper());
-                        candidate.SetPositionTitles(positionTitles);
+                    AddPosition(positionTitle, description);
+                    lb_no_of_positions.Text = position1.GetNoOfPositions().ToString();
+                    positionTitles.Add(positionTitle.ToUpper());
+                    candidate.SetPositionTitles(positionTitles);
 
-                    
+                    try
+                    {
+
+                        using (System.IO.StreamWriter sw = new System.IO.StreamWriter("D:\\Glyzel's Files\\C#\\Nursing Election\\PositionData.txt", true))
+                        {
+                            sw.WriteLine(positionTitle.ToUpper());
+                            sw.WriteLine(description);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error writing to file: " + ex.Message);
+                    }
                 }
-                
-                
             };
         }
 
@@ -330,6 +418,40 @@ namespace Nursing_Election
                 candidate.SetNoOfCandidates(candidate.GetNoOfCandidates() - 1);
                 int noOfCandidates = candidate.GetNoOfCandidates();
                 lb_no_of_candidates.Text = noOfCandidates.ToString();
+
+
+                try
+                {
+                    string filePath = "D:\\Glyzel's Files\\C#\\Nursing Election\\CandidateData.txt";
+                    List<string> lines = File.ReadAllLines(filePath).ToList();
+
+
+
+                    for (int i = 0; i < lines.Count - 4; i++)
+                    {
+                        if (lines[i] == name && lines[i + 1] == motto && lines[i + 2] == studentId.ToString())
+                        {
+                            string imagePath = lines[i + 3];
+
+                            if (File.Exists(imagePath))
+                            {
+                                File.Delete(imagePath);
+                            }
+                            lines.RemoveRange(i, 5);
+
+                            if (i < lines.Count && string.IsNullOrWhiteSpace(lines[i]))
+                                lines.RemoveAt(i);
+
+                            break;
+                        }
+                    }
+
+                    File.WriteAllLines(filePath, lines);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error deleting candidate data or image: " + ex.Message);
+                }
             };
 
             buttonPanel.Controls.Add(viewButton);
@@ -345,9 +467,10 @@ namespace Nursing_Election
 
 
 
+
         private void button2_Click(object sender, EventArgs e)
         {
-            if(position.GetNoOfPositions() == 0)
+            if (position.GetNoOfPositions() == 0)
             {
                 MessageBox.Show("Please add a position first.");
                 return;
@@ -361,17 +484,13 @@ namespace Nursing_Election
                 int studentId = candidate1.GetStudentId();
                 Image candidateImage = candidate1.GetCandidateImage();
 
-                if(string.IsNullOrEmpty(name) && string.IsNullOrEmpty(motto) && studentId == 0)
+                if (string.IsNullOrEmpty(name) && string.IsNullOrEmpty(motto) && studentId == 0)
                     return;
-
-
-
-
                 if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(motto) && studentId > 0)
                 {
-                    AddCandidate(name, motto, studentId, candidateImage , candidate1.GetPositionTitle());
+                    AddCandidate(name, motto, studentId, candidateImage, candidate1.GetPositionTitle());
                     lb_no_of_candidates.Text = candidate1.GetNoOfCandidates().ToString();
-                    
+
                     string positionTitle = candidate1.GetPositionTitle();
 
                     if (positionTitle.ToUpper().Equals("PRESIDENT"))
@@ -389,6 +508,29 @@ namespace Nursing_Election
                     else if (positionTitle.ToUpper().EndsWith("REPRESENTATIVE"))
                         representativeCandidates.Add(name);
 
+                    try
+                    {
+                        using (System.IO.StreamWriter sw = new System.IO.StreamWriter("D:\\Glyzel's Files\\C#\\Nursing Election\\CandidateData.txt", true))
+                        {
+                            sw.WriteLine(name);
+                            sw.WriteLine(motto);
+                            sw.WriteLine(studentId);
+
+                            string imageFileName = $"{studentId}_{DateTime.Now.Ticks}.png";
+                            string imagePath = Path.Combine("D:\\Glyzel's Files\\C#\\Nursing Election\\CandidateData.txt", imageFileName);
+                            candidateImage.Save(imagePath, System.Drawing.Imaging.ImageFormat.Png);
+                            sw.WriteLine(imagePath);
+
+
+                            sw.WriteLine(candidate1.GetPositionTitle());
+                            sw.WriteLine();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error writing to file: " + ex.Message);
+                    }
+
                 }
             };
         }
@@ -398,6 +540,9 @@ namespace Nursing_Election
             DialogResult result = MessageBox.Show("Are you sure you want to logout?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
+                LabelCount labelCount = new LabelCount();
+                labelCount.SetPositionsCount(position.GetNoOfPositions());
+                labelCount.SetCandidatesCount(candidate.GetNoOfCandidates());
                 new Login().Show();
                 this.Hide(); 
             }
