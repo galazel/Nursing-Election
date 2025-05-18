@@ -24,6 +24,12 @@ namespace Nursing_Election
                 btn_vote_now.Text = "VOTING IN PROGRESS";
                 btn_vote_now.Enabled = true;
             }
+            else if (start.IsElectionFinished())
+            {
+                btn_vote_now.BackColor = Color.Gray;
+                btn_vote_now.Text = "ELECTION FINISHED";
+                btn_vote_now.Enabled = false;
+            }
             else
             {
                 btn_vote_now.BackColor = Color.Red;
