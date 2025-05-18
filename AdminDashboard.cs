@@ -21,7 +21,12 @@ namespace Nursing_Election
         private ArrayList treasurerCandidates = new ArrayList();
         private ArrayList auditorCandidates = new ArrayList();
         private ArrayList publicRelationsCandidates = new ArrayList();
-        private ArrayList representativeCandidates = new ArrayList();
+        private ArrayList firstYearRepCandidates = new ArrayList();
+        private ArrayList secondYearRepCandidates = new ArrayList();
+        private ArrayList thirdYearRepCandidates = new ArrayList();
+        private ArrayList fourthYearRepCandidates = new ArrayList(); 
+        private ArrayList caresRepCandidates = new ArrayList();
+        private ArrayList academicrepresentativeCandidates = new ArrayList();
         private DateTime startTime;
         private DateTime endTime;
 
@@ -54,11 +59,13 @@ namespace Nursing_Election
                             {
                                 lb_no_of_positions.Text = lines[i];
                                 labelCount.SetPositionsCount(int.Parse(lines[i]));
-                            }
+                                position.SetNoOfPositions(int.Parse(lines[i]));
+                    }
                             else if (i == 1)
                             {
                                 lb_no_of_candidates.Text = lines[i];
                                 labelCount.SetCandidatesCount(int.Parse(lines[i]));
+                                candidate.SetNoOfCandidates(int.Parse(lines[i]));
                             }
                         }
                     }
@@ -68,8 +75,7 @@ namespace Nursing_Election
                     MessageBox.Show("Error reading file: where " + ex.Message);
                 }
 
-                position.SetNoOfPositions(labelCount.GetPositionsCount());
-                candidate.SetNoOfCandidates(labelCount.GetCandidatesCount());
+                
                 positionTitles = labelCount.GetPositionTitles();
                 presidentCandidates = labelCount.GetPresidentCandidates();
                 vicePresidentCandidates = labelCount.GetVicePresidentCandidates();
@@ -77,7 +83,14 @@ namespace Nursing_Election
                 treasurerCandidates = labelCount.GetTreasurerCandidates();
                 auditorCandidates = labelCount.GetAuditorCandidates();
                 publicRelationsCandidates = labelCount.GetPublicRelationsCandidates();
-                representativeCandidates = labelCount.GetRepresentativeCandidates();
+                firstYearRepCandidates = labelCount.GetFirstYearRepresentativeCandidates();
+                secondYearRepCandidates = labelCount.GetSecondYearRepresentativeCandidates();
+                thirdYearRepCandidates = labelCount.GetThirdYearRepresentativeCandidates();
+                fourthYearRepCandidates = labelCount.GetFourthYearRepresentativeCandidates();
+                caresRepCandidates = labelCount.GetCaresRepresentativeCandidates();
+                academicrepresentativeCandidates = labelCount.GetAcademicRepresentativeCandidates();
+
+
 
                 try
                 {
@@ -240,17 +253,65 @@ namespace Nursing_Election
                     { MessageBox.Show("The are no candidates in this position"); return; }
                     MessageBox.Show("Public Relations Officer Candidates: \n" + sb.ToString(), "Candidates for PRO");
                 }
-                else if (titleLabel.Text.EndsWith("REPRESENTATIVE"))
+                else if (titleLabel.Text.Equals("FIRST YEAR REPRESENTATIVE"))
                 {
                     StringBuilder sb = new StringBuilder();
-                    foreach (var item in representativeCandidates)
+                    foreach (var item in firstYearRepCandidates)
                         sb.Append(item + "\n");
                     if (sb.Length == 0)
                     { MessageBox.Show("The are no candidates in this position"); return; }
-                    MessageBox.Show("Representative Candidates: \n" + sb.ToString(), "Candidates for Representative");
+                    MessageBox.Show("1st Representative Candidates: \n" + sb.ToString(), "Candidates for Representative");
                 }
+                else if (titleLabel.Text.Equals("SECOND YEAR REPRESENTATIVE"))
+                {
+                    StringBuilder sb = new StringBuilder();
+                    foreach (var item in secondYearRepCandidates)
+                        sb.Append(item + "\n");
+                    if (sb.Length == 0)
+                    { MessageBox.Show("The are no candidates in this position"); return; }
+                    MessageBox.Show("2nd Representative Candidates: \n" + sb.ToString(), "Candidates for Representative");
 
+                }
+                else if (titleLabel.Text.Equals("THIRD YEAR REPRESENTATIVE"))
+                {
+                    StringBuilder sb = new StringBuilder();
+                    foreach (var item in thirdYearRepCandidates)
+                        sb.Append(item + "\n");
+                    if (sb.Length == 0)
+                    { MessageBox.Show("The are no candidates in this position"); return; }
+                    MessageBox.Show("3rd Representative Candidates: \n" + sb.ToString(), "Candidates for Representative");
+                    ;
+                }
+                else if (titleLabel.Text.Equals("FOURTH YEAR REPRESENTATIVE"))
+                {
+                    StringBuilder sb = new StringBuilder();
+                    foreach (var item in fourthYearRepCandidates)
+                        sb.Append(item + "\n");
+                    if (sb.Length == 0)
+                    { MessageBox.Show("The are no candidates in this position"); return; }
+                    MessageBox.Show("4th Representative Candidates: \n" + sb.ToString(), "Candidates for Representative");
+                }
+                else if (titleLabel.Text.Equals("CARES REPRESENTATIVE"))
+                {
+                    StringBuilder sb = new StringBuilder();
+                    foreach (var item in caresRepCandidates)
+                        sb.Append(item + "\n");
+                    if (sb.Length == 0)
+                    { MessageBox.Show("The are no candidates in this position"); return; }
+                    MessageBox.Show("Cares Representative Candidates: \n" + sb.ToString(), "Candidates for Representative");
+                }
+                else if (titleLabel.Text.Equals("ACADEMIC REPRESENTATIVE"))
+                {
+                    StringBuilder sb = new StringBuilder();
+                    foreach (var item in academicrepresentativeCandidates)
+                        sb.Append(item + "\n");
+
+                    if (sb.Length == 0)
+                    { MessageBox.Show("The are no candidates in this position"); return; }
+                    MessageBox.Show("Academic Representative Candidates: \n" + sb.ToString(), "Candidates for Representative");
+                }
             };
+
             Button deleteButton = new Button();
             deleteButton.Text = "Delete";
             deleteButton.BackColor = Color.FromArgb(220, 53, 69);
@@ -333,7 +394,12 @@ namespace Nursing_Election
                     "AUDITOR",
                     "PUBLIC RELATIONS OFFICER",
                     "PRO",
-                    "REPRESENTATIVE"
+                    "FIRST YEAR REPRESENTATIVE",
+                    "SECOND YEAR REPRESENTATIVE",
+                    "THIRD YEAR REPRESENTATIVE",
+                    "FOURTH YEAR REPRESENTATIVE",
+                    "CARES REPRESENTATIVE",
+                    "ACADEMIC REPRESENTATIVE",
                 };
 
                 bool isValidPosition = false;
@@ -352,6 +418,16 @@ namespace Nursing_Election
                     position.SetNoOfPositions(position.GetNoOfPositions() - 1);
                     return;
                 }
+                foreach(string title in positionTitles)
+                {
+                    if (title.Equals(positionTitle.ToUpper()))
+                    {
+                        position.SetNoOfPositions(position.GetNoOfPositions() - 1);
+                        MessageBox.Show("Position already exists.");
+                        return;
+                    }
+                }
+
 
 
                 if (!string.IsNullOrEmpty(positionTitle) && !string.IsNullOrEmpty(description))
@@ -469,8 +545,19 @@ namespace Nursing_Election
                     auditorCandidates.Remove(name);
                 else if (title == "PUBLIC RELATIONS OFFICER" || title == "PRO")
                     publicRelationsCandidates.Remove(name);
-                else if (title.EndsWith("REPRESENTATIVE"))
-                    representativeCandidates.Remove(name);
+                else if (title.Equals("FIRST YEAR REPRESENTATIVE"))
+                    firstYearRepCandidates.Remove(name);
+                else if (title.Equals("SECOND YEAR REPRESENTATIVE"))
+                    secondYearRepCandidates.Remove(name);
+                else if (title.Equals("THIRD YEAR REPRESENTATIVE"))
+                    thirdYearRepCandidates.Remove(name);
+                else if (title.Equals("FOURTH YEAR REPRESENTATIVE"))
+                    fourthYearRepCandidates.Remove(name);
+                else if (title.Equals("CARES REPRESENTATIVE"))
+                    caresRepCandidates.Remove(name);
+                else if (title.Equals("ACADEMIC REPRESENTATIVE"))
+                    academicrepresentativeCandidates.Remove(name);
+
 
                 try
                 {
@@ -575,8 +662,19 @@ namespace Nursing_Election
                         auditorCandidates.Add(name);
                     else if (positionTitle.ToUpper().Equals("PUBLIC RELATIONS OFFICER") || name.Equals("PRO"))
                         publicRelationsCandidates.Add(name);
-                    else if (positionTitle.ToUpper().EndsWith("REPRESENTATIVE"))
-                        representativeCandidates.Add(name);
+                    else if (positionTitle.ToUpper().Equals("FIRST YEAR REPRESENTATIVE"))
+                        firstYearRepCandidates.Add(name);
+                    else if (positionTitle.ToUpper().Equals("SECOND YEAR REPRESENTATIVE"))
+                        secondYearRepCandidates.Add(name);
+                    else if (positionTitle.ToUpper().Equals("THIRD YEAR REPRESENTATIVE"))
+                        thirdYearRepCandidates.Add(name);
+                    else if (positionTitle.ToUpper().Equals("FOURTH YEAR REPRESENTATIVE"))
+                        fourthYearRepCandidates.Add(name);
+                    else if (positionTitle.ToUpper().Equals("CARES REPRESENTATIVE"))
+                        caresRepCandidates.Add(name);
+                    else if (positionTitle.ToUpper().Equals("ACADEMIC REPRESENTATIVE"))
+                        academicrepresentativeCandidates.Add(name);
+
 
                     try
                     {
@@ -616,6 +714,12 @@ namespace Nursing_Election
                 labelCount.SetTreasurerCandidates(treasurerCandidates);
                 labelCount.SetAuditorCandidates(auditorCandidates);
                 labelCount.SetPublicRelationsCandidates(publicRelationsCandidates);
+                labelCount.SetFirstYearRepresentativeCandidates(firstYearRepCandidates);
+                labelCount.SetSecondYearRepresentativeCandidates(secondYearRepCandidates);
+                labelCount.SetThirdYearRepresentativeCandidates(thirdYearRepCandidates);
+                labelCount.SetFourthYearRepresentativeCandidates(fourthYearRepCandidates);
+                labelCount.SetCaresRepresentativeCandidates(caresRepCandidates);
+                labelCount.SetAcademicRepresentativeCandidates(academicrepresentativeCandidates);
 
 
                 //try
@@ -742,6 +846,13 @@ namespace Nursing_Election
                 labelCount.SetTreasurerCandidates(treasurerCandidates);
                 labelCount.SetAuditorCandidates(auditorCandidates);
                 labelCount.SetPublicRelationsCandidates(publicRelationsCandidates);
+                labelCount.SetFirstYearRepresentativeCandidates(firstYearRepCandidates);
+                labelCount.SetSecondYearRepresentativeCandidates(secondYearRepCandidates);
+                labelCount.SetThirdYearRepresentativeCandidates(thirdYearRepCandidates);
+                labelCount.SetFourthYearRepresentativeCandidates(fourthYearRepCandidates);
+                labelCount.SetCaresRepresentativeCandidates(caresRepCandidates);
+                labelCount.SetAcademicRepresentativeCandidates(academicrepresentativeCandidates);
+
 
                 try
                 {
@@ -786,6 +897,11 @@ namespace Nursing_Election
                 this.Hide();
                 new Login().Show();
             }
+        }
+
+        private void form_admin_dashboard_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

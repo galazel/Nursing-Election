@@ -18,7 +18,13 @@ namespace Nursing_Election
         private static ArrayList treasurerCandidates = new ArrayList();
         private static ArrayList auditorCandidates = new ArrayList();
         private static ArrayList publicRelationsCandidates = new ArrayList();
+        private static ArrayList firstYearRepresentativeCandidates = new ArrayList();
+        private static ArrayList secondYearRepresentativeCandidates = new ArrayList();
+        private static ArrayList thirdYearRepresentativeCandidates = new ArrayList();
+        private static ArrayList fourthYearRepresentativeCandidates = new ArrayList();
         private static ArrayList representativeCandidates = new ArrayList();
+        private static ArrayList academicRepresentativeCandidates = new ArrayList();
+        private static ArrayList caresRepresentativeCandidates = new ArrayList();
 
         public void SetPositionsCount(int count)
         {
@@ -95,6 +101,56 @@ namespace Nursing_Election
         {
             return representativeCandidates;
         }
+        public void SetFirstYearRepresentativeCandidates(ArrayList candidates)
+        {
+            firstYearRepresentativeCandidates = candidates;
+        }
+        public ArrayList GetFirstYearRepresentativeCandidates()
+        {
+            return firstYearRepresentativeCandidates;
+        }
+        public void SetSecondYearRepresentativeCandidates(ArrayList candidates)
+        {
+            secondYearRepresentativeCandidates = candidates;
+        }
+        public ArrayList GetSecondYearRepresentativeCandidates()
+        {
+            return secondYearRepresentativeCandidates;
+        }
+        public void SetThirdYearRepresentativeCandidates(ArrayList candidates)
+        {
+            thirdYearRepresentativeCandidates = candidates;
+        }
+        public ArrayList GetThirdYearRepresentativeCandidates()
+        {
+            return thirdYearRepresentativeCandidates;
+        }
+        public void SetFourthYearRepresentativeCandidates(ArrayList candidates)
+        {
+            fourthYearRepresentativeCandidates = candidates;
+        }
+        public ArrayList GetFourthYearRepresentativeCandidates()
+        {
+            return fourthYearRepresentativeCandidates;
+        }
+        public void SetCaresRepresentativeCandidates(ArrayList candidates)
+        {
+            caresRepresentativeCandidates = candidates;
+        }
+        public ArrayList GetCaresRepresentativeCandidates()
+        {
+            return caresRepresentativeCandidates;
+        }
+        public void SetAcademicRepresentativeCandidates(ArrayList candidates)
+        {
+            academicRepresentativeCandidates = candidates;
+        }
+        public ArrayList GetAcademicRepresentativeCandidates()
+        {
+            return academicRepresentativeCandidates;
+        }
+
+
         public void ClearAll()
         {
             positionsCount = 0;

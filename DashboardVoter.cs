@@ -17,10 +17,10 @@ namespace Nursing_Election
         public DashboardVoter()
         {
             InitializeComponent();
-            StartElectionClass startElectionClass = new StartElectionClass();
-            if(startElectionClass.IsElectionStarted())
+            StartElectionClass start = new StartElectionClass();
+            if (start.IsElectionStarted())
             {
-                btn_vote_now.Text = "VOTE NOW";
+                btn_vote_now.Text = "VOTING IN PROGRESS";
                 btn_vote_now.Enabled = true;
             }
             else
@@ -28,6 +28,7 @@ namespace Nursing_Election
                 btn_vote_now.Text = "ELECTION NOT STARTED";
                 btn_vote_now.Enabled = false;
             }
+
         }
 
         public void SetVoter(VotersInformation votersInformation)
@@ -37,7 +38,7 @@ namespace Nursing_Election
         private void btn_vote_now_Click(object sender, EventArgs e)
         {
             new VoteNow().Show();
-        }
+        }   
         private void btn_show_status_Click(object sender, EventArgs e)
         {
             VoterStatus status = new VoterStatus(currentVoter);

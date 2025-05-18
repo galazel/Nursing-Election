@@ -393,6 +393,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdminDashboard";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.form_admin_dashboard_FormClosing);
+            this.Load += new System.EventHandler(this.form_admin_dashboard_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();

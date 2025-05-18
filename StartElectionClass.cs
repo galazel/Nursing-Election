@@ -16,7 +16,7 @@ namespace Nursing_Election
         }
         public bool IsElectionStarted()
         {
-            return true;
+            return isElectionStarted;
         }
     }
 }
