@@ -19,7 +19,7 @@ namespace Nursing_Election
         int nLeftRect, int nTopRect,
         int nRightRect, int nBottomRect,
         int nWidthEllipse, int nHeightEllipse);
-        private string choosenCandidate;
+        private List <string> choosenCandidate = new List<string>();
 
         public VoteNow()
         {
@@ -116,6 +116,8 @@ namespace Nursing_Election
                     if (form.ShowDialog() == DialogResult.OK)
                     {
                         lblChosen.Text = "Chosen: " + form.SelectedCandidate;
+                        StartElectionClass start = new StartElectionClass();
+                        choosenCandidate.Add(form.SelectedCandidate);
                     }
                 }
             };
@@ -126,12 +128,9 @@ namespace Nursing_Election
 
             fp_vote.Controls.Add(panel);
         }
-
-
-
-
         private void fp_vote_Paint(object sender, PaintEventArgs e)
         {
+
         }
 
         private void VoteNow_Load(object sender, EventArgs e)
@@ -144,6 +143,26 @@ namespace Nursing_Election
             MessageBox.Show("You have successfully voted.");
             StartElectionClass start = new StartElectionClass();
             start.SetNoOfVotersVoted(start.GetNoOfVotersVoted() + 1);
+
+            try
+            {
+                string filePath = "D:\\Glyzel's Files\\C#\\Nursing Election\\Voters.txt";
+                using (StreamWriter writer = new StreamWriter(filePath, true))
+                {
+                    foreach (var candidate in choosenCandidate)
+                    {
+                        writer.WriteLine(candidate);
+                    }
+                    writer.WriteLine();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+
+            this.Close();
         }
     }
 }

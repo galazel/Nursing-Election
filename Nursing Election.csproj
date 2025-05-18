@@ -238,6 +238,7 @@
     <Content Include="Count.txt" />
     <Content Include="PositionAndCandidates.txt" />
     <Content Include="PositionData.txt" />
+    <Content Include="Votes.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

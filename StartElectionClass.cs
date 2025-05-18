@@ -14,6 +14,7 @@ namespace Nursing_Election
         public static bool isElectionFinished = false;
         public static int noOfVotersVoted = 0;
         public static int noOfVoters = 0;
+        public static string choosenCandidate;
 
         public void SetElectionStarted(bool started)
         {
@@ -55,6 +56,14 @@ namespace Nursing_Election
         public int GetNoOfVoters()
         {
             return noOfVoters;
+        }
+        public void SetChoosenCandidate(string candidate)
+        {
+            choosenCandidate = candidate;
+        }
+        public string GetChoosenCandidate()
+        {
+            return choosenCandidate;
         }
 
 

@@ -15,19 +15,19 @@ namespace Nursing_Election
     {
         private AddPostion position = new AddPostion();
         private AddCandidate candidate = new AddCandidate();
-        private ArrayList positionTitles = new ArrayList();
-        private ArrayList presidentCandidates = new ArrayList();
-        private ArrayList vicePresidentCandidates = new ArrayList();
-        private ArrayList secretaryCandidates = new ArrayList();
-        private ArrayList treasurerCandidates = new ArrayList();
-        private ArrayList auditorCandidates = new ArrayList();
-        private ArrayList publicRelationsCandidates = new ArrayList();
-        private ArrayList firstYearRepCandidates = new ArrayList();
-        private ArrayList secondYearRepCandidates = new ArrayList();
-        private ArrayList thirdYearRepCandidates = new ArrayList();
-        private ArrayList fourthYearRepCandidates = new ArrayList(); 
-        private ArrayList caresRepCandidates = new ArrayList();
-        private ArrayList academicrepresentativeCandidates = new ArrayList();
+        private static ArrayList positionTitles = new ArrayList();
+        private static ArrayList presidentCandidates = new ArrayList();
+        private static ArrayList vicePresidentCandidates = new ArrayList();
+        private static ArrayList secretaryCandidates = new ArrayList();
+        private static ArrayList treasurerCandidates = new ArrayList();
+        private static ArrayList auditorCandidates = new ArrayList();
+        private static ArrayList publicRelationsCandidates = new ArrayList();
+        private static ArrayList firstYearRepCandidates = new ArrayList();
+        private static ArrayList secondYearRepCandidates = new ArrayList();
+        private static ArrayList thirdYearRepCandidates = new ArrayList();
+        private static ArrayList fourthYearRepCandidates = new ArrayList(); 
+        private static ArrayList caresRepCandidates = new ArrayList();
+        private static ArrayList academicrepresentativeCandidates = new ArrayList();
 
         public form_admin_dashboard()
         {
@@ -37,6 +37,20 @@ namespace Nursing_Election
             string filePathPositions = "D:\\Glyzel's Files\\C#\\Nursing Election\\PositionData.txt";
             string filePathCandidates = "D:\\Glyzel's Files\\C#\\Nursing Election\\CandidateData.txt";
             string filePath = "D:\\Glyzel's Files\\C#\\Nursing Election\\Count.txt";
+
+
+            AddPanelOfVotes("PRESIDENT", presidentCandidates);
+            AddPanelOfVotes("VICE PRESIDENT", vicePresidentCandidates);
+            AddPanelOfVotes("SECRETARY", secretaryCandidates);
+            AddPanelOfVotes("TREASURER", treasurerCandidates);
+            AddPanelOfVotes("AUDITOR", auditorCandidates);
+            AddPanelOfVotes("PUBLIC RELATIONS OFFICER", publicRelationsCandidates);
+            AddPanelOfVotes("FIRST YEAR REPRESENTATIVE", firstYearRepCandidates);
+            AddPanelOfVotes("SECOND YEAR REPRESENTATIVE", secondYearRepCandidates);
+            AddPanelOfVotes("THIRD YEAR REPRESENTATIVE", thirdYearRepCandidates);
+            AddPanelOfVotes("FOURTH YEAR REPRESENTATIVE", fourthYearRepCandidates);
+            AddPanelOfVotes("CARES REPRESENTATIVE", caresRepCandidates);
+            AddPanelOfVotes("ACADEMIC REPRESENTATIVE", academicrepresentativeCandidates);
 
 
             StartElectionClass startElec = new StartElectionClass();
@@ -253,7 +267,7 @@ namespace Nursing_Election
                     { MessageBox.Show("The are no candidates in this position"); return; }
                     MessageBox.Show("Auditor Candidates: \n" + sb.ToString(), "Candidates for Auditor");
                 }
-                else if (titleLabel.Text.Equals("PUBLIC RELATIONS OFFICER") || titleLabel.Text.Equals("PRO"))
+                else if (titleLabel.Text.Equals("PUBLIC RELATIONS OFFICER"))
                 {
                     StringBuilder sb = new StringBuilder();
                     foreach (var item in publicRelationsCandidates)
@@ -403,7 +417,6 @@ namespace Nursing_Election
                     "TREASURER",
                     "AUDITOR",
                     "PUBLIC RELATIONS OFFICER",
-                    "PRO",
                     "FIRST YEAR REPRESENTATIVE",
                     "SECOND YEAR REPRESENTATIVE",
                     "THIRD YEAR REPRESENTATIVE",
@@ -553,7 +566,7 @@ namespace Nursing_Election
                     treasurerCandidates.Remove(name);
                 else if (title == "AUDITOR")
                     auditorCandidates.Remove(name);
-                else if (title == "PUBLIC RELATIONS OFFICER" || title == "PRO")
+                else if (title == "PUBLIC RELATIONS OFFICER")
                     publicRelationsCandidates.Remove(name);
                 else if (title.Equals("FIRST YEAR REPRESENTATIVE"))
                     firstYearRepCandidates.Remove(name);
@@ -670,7 +683,7 @@ namespace Nursing_Election
                         treasurerCandidates.Add(name);
                     else if (positionTitle.ToUpper().Equals("AUDITOR"))
                         auditorCandidates.Add(name);
-                    else if (positionTitle.ToUpper().Equals("PUBLIC RELATIONS OFFICER") || name.Equals("PRO"))
+                    else if (positionTitle.ToUpper().Equals("PUBLIC RELATIONS OFFICER"))
                         publicRelationsCandidates.Add(name);
                     else if (positionTitle.ToUpper().Equals("FIRST YEAR REPRESENTATIVE"))
                         firstYearRepCandidates.Add(name);
@@ -811,7 +824,11 @@ namespace Nursing_Election
                 return;
             }
 
-                foreach (var item in positionTitles)
+            if (position.GetNoOfPositions() < 12)
+
+            { MessageBox.Show("The number of positions must exactly 12"); return; }
+
+            foreach (var item in positionTitles)
                 {
                     if (item.Equals("PRESIDENT"))
                     {
@@ -853,7 +870,7 @@ namespace Nursing_Election
                             return;
                         }
                     }
-                    else if (item.Equals("PUBLIC RELATIONS OFFICER") || item.Equals("PRO"))
+                    else if (item.Equals("PUBLIC RELATIONS OFFICER"))
                     {
                         if (publicRelationsCandidates.Count == 0)
                         {
@@ -958,7 +975,7 @@ namespace Nursing_Election
                             foreach (var item in auditorCandidates)
                                 sw.WriteLine(item);
                         }
-                        if (positionTitles.Contains("PUBLIC RELATIONS OFFICER") || positionTitles.Contains("PRO"))
+                        if (positionTitles.Contains("PUBLIC RELATIONS OFFICER"))
                         {
                             sw.WriteLine("PUBLIC RELATIONS OFFICER");
                             foreach (var item in publicRelationsCandidates)
@@ -1001,6 +1018,8 @@ namespace Nursing_Election
                                 sw.WriteLine(item);
                         }
 
+                        
+
                     }
                 }
                 catch (Exception ex)
@@ -1008,7 +1027,20 @@ namespace Nursing_Election
                     MessageBox.Show("Error writing to file: " + ex.Message);
                 }
             }
-            
+
+            AddPanelOfVotes("PRESIDENT", presidentCandidates);
+            AddPanelOfVotes("VICE PRESIDENT", vicePresidentCandidates);
+            AddPanelOfVotes("SECRETARY", secretaryCandidates);
+            AddPanelOfVotes("TREASURER", treasurerCandidates);
+            AddPanelOfVotes("AUDITOR", auditorCandidates);
+            AddPanelOfVotes("PUBLIC RELATIONS OFFICER", publicRelationsCandidates);
+            AddPanelOfVotes("FIRST YEAR REPRESENTATIVE", firstYearRepCandidates);
+            AddPanelOfVotes("SECOND YEAR REPRESENTATIVE", secondYearRepCandidates);
+            AddPanelOfVotes("THIRD YEAR REPRESENTATIVE", thirdYearRepCandidates);
+            AddPanelOfVotes("FOURTH YEAR REPRESENTATIVE", fourthYearRepCandidates);
+            AddPanelOfVotes("CARES REPRESENTATIVE", caresRepCandidates);
+            AddPanelOfVotes("ACADEMIC REPRESENTATIVE", academicrepresentativeCandidates);
+
         }
 
         private void form_admin_dashboard_FormClosing(object sender, FormClosingEventArgs e)
@@ -1030,8 +1062,6 @@ namespace Nursing_Election
                 labelCount.SetFourthYearRepresentativeCandidates(fourthYearRepCandidates);
                 labelCount.SetCaresRepresentativeCandidates(caresRepCandidates);
                 labelCount.SetAcademicRepresentativeCandidates(academicrepresentativeCandidates);
-
-
                 try
                 {
                     string filePath = "D:\\Glyzel's Files\\C#\\Nursing Election\\Count.txt";
@@ -1090,15 +1120,91 @@ namespace Nursing_Election
             startElectionClass.SetElectionStarted(false);
             startElectionClass.SetStartButtonClicked(false);
             startElectionClass.SetElectionFinished(true);
-
         }
 
+        private void AddPanelOfVotes(string positionTitle, ArrayList candidates)
+        {
+            Panel positionPanel = new Panel();
+            positionPanel.Size = new Size(850, 60 + candidates.Count * 60);
+            positionPanel.BackColor = Color.WhiteSmoke;
+            positionPanel.BorderStyle = BorderStyle.Fixed3D;
+            positionPanel.Margin = new Padding(8);
+            positionPanel.Padding = new Padding(10);
 
-        public void AddCandidatesAndVotes()
+            Label titleLabel = new Label();
+            titleLabel.Text = positionTitle.ToUpper();
+            titleLabel.Font = new Font("Segoe UI", 15, FontStyle.Bold);
+            titleLabel.ForeColor = Color.Black;
+            titleLabel.AutoSize = true;
+            titleLabel.Location = new Point(10, 10);
+            positionPanel.Controls.Add(titleLabel);
+
+            int startY = 50;
+
+            foreach (var candidate in candidates)
+            {
+                Panel candidatePanel = new Panel();
+                candidatePanel.Size = new Size(800, 40);
+                candidatePanel.Location = new Point(10, startY);
+                candidatePanel.BackColor = Color.White;
+
+              
+                Label nameLabel = new Label();
+                nameLabel.Text = candidate.ToString();
+                nameLabel.Font = new Font("Segoe UI", 10, FontStyle.Regular);
+                nameLabel.AutoSize = true;
+                nameLabel.Location = new Point(10, 10);
+                candidatePanel.Controls.Add(nameLabel);
+
+                
+                Label voteLabel = new Label();
+                voteLabel.Text = $"0 votes";
+                voteLabel.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+                voteLabel.AutoSize = true;
+
+
+                voteLabel.Location = new Point(candidatePanel.Width - voteLabel.PreferredWidth - 10, 10);
+                voteLabel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+
+                candidatePanel.Controls.Add(voteLabel);
+                positionPanel.Controls.Add(candidatePanel);
+
+                startY += 50;
+            }
+
+            string pos = positionTitle.ToUpper();
+            if (pos == "PRESIDENT")
+                fp_pres.Controls.Add(positionPanel);
+            else if (pos == "VICE PRESIDENT" || pos == "VICE-PRESIDENT")
+                fp_vice.Controls.Add(positionPanel);
+            else if (pos == "SECRETARY")
+                fp_sec.Controls.Add(positionPanel);
+            else if (pos == "TREASURER")
+                fp_treas.Controls.Add(positionPanel);
+            else if (pos == "AUDITOR")
+                fp_auditor.Controls.Add(positionPanel);
+            else if (pos == "PUBLIC RELATIONS OFFICER")
+                fp_pio.Controls.Add(positionPanel);
+            else if (pos == "FIRST YEAR REPRESENTATIVE")
+                fp_first.Controls.Add(positionPanel);
+            else if (pos == "SECOND YEAR REPRESENTATIVE")
+                fp_second.Controls.Add(positionPanel);
+            else if (pos == "THIRD YEAR REPRESENTATIVE")
+                fp_third.Controls.Add(positionPanel);
+            else if (pos == "FOURTH YEAR REPRESENTATIVE")
+                fp_fourth.Controls.Add(positionPanel);
+            else if (pos == "CARES REPRESENTATIVE")
+                fp_cares.Controls.Add(positionPanel);
+            else if (pos == "ACADEMIC REPRESENTATIVE")
+                fp_acad.Controls.Add(positionPanel);
+        }
+
+        private void flowLayoutPanel3_Paint(object sender, PaintEventArgs e)
         {
 
         }
-        private void flowLayoutPanel3_Paint(object sender, PaintEventArgs e)
+
+        private void fp_pres_Paint(object sender, PaintEventArgs e)
         {
 
         }
