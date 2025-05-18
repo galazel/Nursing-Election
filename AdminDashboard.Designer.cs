@@ -46,8 +46,6 @@
             this.lb_no_of_positions = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.btn_end_election = new System.Windows.Forms.Button();
-            this.lb_end_timer = new System.Windows.Forms.Label();
-            this.lb_timer = new System.Windows.Forms.Label();
             this.btn_start_election = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.btn_add_position = new System.Windows.Forms.Button();
@@ -227,8 +225,6 @@
             this.tabPage2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tabPage2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tabPage2.Controls.Add(this.btn_end_election);
-            this.tabPage2.Controls.Add(this.lb_end_timer);
-            this.tabPage2.Controls.Add(this.lb_timer);
             this.tabPage2.Controls.Add(this.btn_start_election);
             this.tabPage2.Controls.Add(this.label10);
             this.tabPage2.Controls.Add(this.btn_add_position);
@@ -243,41 +239,28 @@
             // 
             // btn_end_election
             // 
+            this.btn_end_election.BackColor = System.Drawing.Color.Red;
+            this.btn_end_election.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_end_election.Font = new System.Drawing.Font("Consolas", 9F);
             this.btn_end_election.Location = new System.Drawing.Point(850, 31);
             this.btn_end_election.Name = "btn_end_election";
             this.btn_end_election.Size = new System.Drawing.Size(40, 24);
             this.btn_end_election.TabIndex = 6;
             this.btn_end_election.Text = "End";
-            this.btn_end_election.UseVisualStyleBackColor = true;
-            // 
-            // lb_end_timer
-            // 
-            this.lb_end_timer.AutoSize = true;
-            this.lb_end_timer.Font = new System.Drawing.Font("Consolas", 8F);
-            this.lb_end_timer.Location = new System.Drawing.Point(166, 516);
-            this.lb_end_timer.Name = "lb_end_timer";
-            this.lb_end_timer.Size = new System.Drawing.Size(0, 13);
-            this.lb_end_timer.TabIndex = 5;
-            // 
-            // lb_timer
-            // 
-            this.lb_timer.AutoSize = true;
-            this.lb_timer.Font = new System.Drawing.Font("Consolas", 8F);
-            this.lb_timer.Location = new System.Drawing.Point(15, 516);
-            this.lb_timer.Name = "lb_timer";
-            this.lb_timer.Size = new System.Drawing.Size(0, 13);
-            this.lb_timer.TabIndex = 4;
+            this.btn_end_election.UseVisualStyleBackColor = false;
+            this.btn_end_election.Click += new System.EventHandler(this.btn_end_election_Click);
             // 
             // btn_start_election
             // 
+            this.btn_start_election.BackColor = System.Drawing.Color.ForestGreen;
+            this.btn_start_election.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_start_election.Font = new System.Drawing.Font("Consolas", 9F);
             this.btn_start_election.Location = new System.Drawing.Point(728, 31);
             this.btn_start_election.Name = "btn_start_election";
             this.btn_start_election.Size = new System.Drawing.Size(116, 24);
             this.btn_start_election.TabIndex = 3;
             this.btn_start_election.Text = "Start Election";
-            this.btn_start_election.UseVisualStyleBackColor = true;
+            this.btn_start_election.UseVisualStyleBackColor = false;
             this.btn_start_election.Click += new System.EventHandler(this.btn_start_election_Click_1);
             // 
             // label10
@@ -378,7 +361,6 @@
             // 
             this.timer1.Enabled = true;
             this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // form_admin_dashboard
             // 
@@ -443,10 +425,8 @@
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label lb_timer;
         private System.Windows.Forms.Button btn_start_election;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Label lb_end_timer;
         private System.Windows.Forms.Button btn_end_election;
     }
 }

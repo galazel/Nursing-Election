@@ -1,0 +1,25 @@
+a
+agsdfg
+11111111
+D:\Glyzel's Files\C#\Nursing Election\CandidateImages\11111111_638831613934116983.png
+PRESIDENT
+b
+gdfyhrdy
+22222222
+D:\Glyzel's Files\C#\Nursing Election\CandidateImages\22222222_638831614045703790.png
+VICE PRESIDENT
+c
+sadfgasdfgs
+33333333
+D:\Glyzel's Files\C#\Nursing Election\CandidateImages\33333333_638831614176010331.png
+PRESIDENT
+d
+fsdaf
+44444444
+D:\Glyzel's Files\C#\Nursing Election\CandidateImages\44444444_638831614278411531.png
+PRESIDENT
+e
+fgjfgj
+55555555
+D:\Glyzel's Files\C#\Nursing Election\CandidateImages\55555555_638831614397053989.png
+VICE PRESIDENT

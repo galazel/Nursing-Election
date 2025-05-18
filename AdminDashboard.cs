@@ -27,14 +27,10 @@ namespace Nursing_Election
         private ArrayList fourthYearRepCandidates = new ArrayList(); 
         private ArrayList caresRepCandidates = new ArrayList();
         private ArrayList academicrepresentativeCandidates = new ArrayList();
-        private DateTime startTime;
-        private DateTime endTime;
 
         public form_admin_dashboard()
         {
             InitializeComponent();
-            lb_timer.Visible = false;
-            lb_end_timer.Visible = false;
             timer1.Enabled = false;
             btn_end_election.Enabled = false;
 
@@ -784,6 +780,7 @@ namespace Nursing_Election
         }
         private void btn_start_election_Click_1(object sender, EventArgs e)
         {
+            
             if (position.GetNoOfPositions() == 0)
             {
                 MessageBox.Show("Please add a position first.");
@@ -796,43 +793,18 @@ namespace Nursing_Election
             }
             else if (candidate.GetNoOfCandidates() < 5)
             {
-                MessageBox.Show("Candidates should atleast 20.");
+                MessageBox.Show("Candidates should atleast 10.");
                 return;
             }
 
+            btn_start_election.BackColor = Color.Gray;
             StartElectionClass start = new StartElectionClass();
             start.SetElectionStarted(true);
-
-            startTime = DateTime.Now;
-            endTime = startTime.AddHours(24);
-
-            lb_timer.Visible = true;
-            lb_end_timer.Visible = true;
-
-            lb_timer.Text = "Time Left: 24:00:00";
-            lb_end_timer.Text = "End Time: " + endTime.ToString("hh:mm:ss tt");
-
-            timer1.Start();
             btn_start_election.Enabled = false;
-
+            btn_end_election.Enabled = true;
 
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            TimeSpan remainingTime = endTime - DateTime.Now;
-
-            if (remainingTime.TotalSeconds <= 0)
-            {
-                timer1.Stop();
-                lb_timer.Text = "Election ended.";
-                lb_end_timer.Text = "Ended at: " + DateTime.Now.ToString("hh:mm:ss tt");
-            }
-            else
-            {
-                lb_timer.Text = "Time Left: " + remainingTime.ToString(@"hh\:mm\:ss");
-            }
-        }
         private void form_admin_dashboard_FormClosing(object sender, FormClosingEventArgs e)
         {
             DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -902,6 +874,14 @@ namespace Nursing_Election
         private void form_admin_dashboard_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_end_election_Click(object sender, EventArgs e)
+        {
+            btn_end_election.BackColor = Color.HotPink;
+            btn_end_election.Enabled = false;
+            StartElectionClass startElectionClass = new StartElectionClass();
+            startElectionClass.SetElectionStarted(false);
         }
     }
 }

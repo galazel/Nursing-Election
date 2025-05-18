@@ -20,11 +20,13 @@ namespace Nursing_Election
             StartElectionClass start = new StartElectionClass();
             if (start.IsElectionStarted())
             {
+                btn_vote_now.BackColor = Color.Green;
                 btn_vote_now.Text = "VOTING IN PROGRESS";
                 btn_vote_now.Enabled = true;
             }
             else
             {
+                btn_vote_now.BackColor = Color.Red;
                 btn_vote_now.Text = "ELECTION NOT STARTED";
                 btn_vote_now.Enabled = false;
             }
