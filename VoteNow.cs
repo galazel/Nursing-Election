@@ -108,37 +108,59 @@ namespace Nursing_Election
 
                 ChooseCandidate chooseCandidate = new ChooseCandidate();
                 chooseCandidate.Show();
+
+                LabelCount labelCount = new LabelCount();
+                if (positionName.Equals("PRESIDENT"))
+                    chooseCandidate.SetChoices(labelCount.GetPresidentCandidates());
+                else if (positionName.Equals("VICE PRESIDENT"))
+                    chooseCandidate.SetChoices(labelCount.GetVicePresidentCandidates());
+                else if (positionName.Equals("SECRETARY"))
+                    chooseCandidate.SetChoices(labelCount.GetSecretaryCandidates());
+                else if (positionName.Equals("TREASURER"))
+                    chooseCandidate.SetChoices(labelCount.GetTreasurerCandidates());
+                else if (positionName.Equals("AUDITOR"))
+                    chooseCandidate.SetChoices(labelCount.GetAuditorCandidates());
+                else if (positionName.Equals("FIRST YEAR REPRESENTATIVE"))
+                    chooseCandidate.SetChoices(labelCount.GetFirstYearRepresentativeCandidates());
+                else if (positionName.Equals("SECOND YEAR REPRESENTATIVE"))
+                    chooseCandidate.SetChoices(labelCount.GetSecondYearRepresentativeCandidates());
+                else if (positionName.Equals("THIRD YEAR REPRESENTATIVE"))
+                    chooseCandidate.SetChoices(labelCount.GetThirdYearRepresentativeCandidates());
+                else if (positionName.Equals("FOURTH YEAR REPRESENTATIVE"))
+                    chooseCandidate.SetChoices(labelCount.GetFourthYearRepresentativeCandidates());
+                else if (positionName.Equals("ACADEMIC REPRESENTATIVE"))
+                    chooseCandidate.SetChoices(labelCount.GetAcademicRepresentativeCandidates());
+                else if (positionName.Equals("CARES REPRESENTATIVE"))
+                    chooseCandidate.SetChoices(labelCount.GetCaresRepresentativeCandidates());
+                else if (positionName.Equals("PUBLIC RELATIONS OFFICER"))
+                    chooseCandidate.SetChoices(labelCount.GetPublicRelationsCandidates());
+
                 selected = chooseCandidate.GetSelectedCandidate();
-                if (selected == null)
-                {
-                    MessageBox.Show("Please select a candidate.");
-                    return;
-                }
                 lblChosen.Text = "Chosen: " + selected;
 
-                if (positionName.Equals("PRESIDENT", StringComparison.OrdinalIgnoreCase))
+                if (positionName.Equals("PRESIDENT"))
                     pressCandidate = selected;
-                else if (positionName.Equals("VICE PRESIDENT", StringComparison.OrdinalIgnoreCase))
+                else if (positionName.Equals("VICE PRESIDENT"))
                     viceCandidate = selected;
-                else if (positionName.Equals("SECRETARY", StringComparison.OrdinalIgnoreCase))
+                else if (positionName.Equals("SECRETARY"))
                     secCandidate = selected;
-                else if (positionName.Equals("TREASURER", StringComparison.OrdinalIgnoreCase))
+                else if (positionName.Equals("TREASURER"))
                     treasurerCandidate = selected;
-                else if (positionName.Equals("AUDITOR", StringComparison.OrdinalIgnoreCase))
+                else if (positionName.Equals("AUDITOR"))
                     auditorCandidate = selected;
-                else if (positionName.Equals("FIRST YEAR REPRESENTATIVE", StringComparison.OrdinalIgnoreCase))
+                else if (positionName.Equals("FIRST YEAR REPRESENTATIVE"))
                     firstRep = selected;
-                else if (positionName.Equals("SECOND YEAR REPRESENTATIVE", StringComparison.OrdinalIgnoreCase))
+                else if (positionName.Equals("SECOND YEAR REPRESENTATIVE"))
                     secondRep = selected;
-                else if (positionName.Equals("THIRD YEAR REPRESENTATIVE", StringComparison.OrdinalIgnoreCase))
+                else if (positionName.Equals("THIRD YEAR REPRESENTATIVE"))
                     thirdRep = selected;
-                else if (positionName.Equals("FOURTH YEAR REPRESENTATIVE", StringComparison.OrdinalIgnoreCase))
+                else if (positionName.Equals("FOURTH YEAR REPRESENTATIVE"))
                     fourthRep = selected;
-                else if (positionName.Equals("ACADEMIC REPRESENTATIVE", StringComparison.OrdinalIgnoreCase))
+                else if (positionName.Equals("ACADEMIC REPRESENTATIVE"))
                     acadRep = selected;
-                else if (positionName.Equals("CARES REPRESENTATIVE", StringComparison.OrdinalIgnoreCase))
+                else if (positionName.Equals("CARES REPRESENTATIVE"))
                     caresRep = selected;
-                else if (positionName.Equals("PIO", StringComparison.OrdinalIgnoreCase))
+                else if (positionName.Equals("PIO"))
                     pioCandidate = selected;
             
             };

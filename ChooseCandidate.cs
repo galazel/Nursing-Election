@@ -8,33 +8,29 @@ namespace Nursing_Election
 {
     public partial class ChooseCandidate : Form
     {
-
-        private static ArrayList presidentCandidates = new ArrayList();
-        private static ArrayList vicePresidentCandidates = new ArrayList();
-        private static ArrayList secretaryCandidates = new ArrayList();
-        private static ArrayList treasurerCandidates = new ArrayList();
-        private static ArrayList auditorCandidates = new ArrayList();
-        private static ArrayList publicRelationsCandidates = new ArrayList();
-        private static ArrayList firstYearRepresentativeCandidates = new ArrayList();
-        private static ArrayList secondYearRepresentativeCandidates = new ArrayList();
-        private static ArrayList thirdYearRepresentativeCandidates = new ArrayList();
-        private static ArrayList fourthYearRepresentativeCandidates = new ArrayList();
-        private static ArrayList representativeCandidates = new ArrayList();
-        private static ArrayList academicRepresentativeCandidates = new ArrayList();
-        private static ArrayList caresRepresentativeCandidates = new ArrayList();
-
+        private ArrayList choices = new ArrayList();
+        private string selectedCandidate;
         public ChooseCandidate()
         {
             InitializeComponent();
             LabelCount labelCount = new LabelCount();   
 
         }
-        
+        public void SetChoices(ArrayList choices)
+        {
+            this.choices = choices;
+            cb_choose_candidate.Items.Clear();
+            foreach (string choice in choices)
+            {
+                cb_choose_candidate.Items.Add(choice);
+            }
+
+        }
         public string GetSelectedCandidate()
         {
             if (cb_choose_candidate.SelectedItem != null)
             {
-                return cb_choose_candidate.SelectedItem.ToString();
+                return selectedCandidate;
             }
             else
             {
@@ -42,7 +38,17 @@ namespace Nursing_Election
             }
         }
 
-
-
+        private void btn_confirm_Click(object sender, EventArgs e)
+        {
+            if(GetSelectedCandidate() != null)
+            {
+                selectedCandidate = cb_choose_candidate.SelectedItem.ToString();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Please select a candidate.");
+            }
+        }
     }
 }

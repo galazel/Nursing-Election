@@ -50,6 +50,7 @@
             this.btn_confirm.TabIndex = 2;
             this.btn_confirm.Text = "Confirm";
             this.btn_confirm.UseVisualStyleBackColor = true;
+            this.btn_confirm.Click += new System.EventHandler(this.btn_confirm_Click);
             // 
             // cb_choose_candidate
             // 
