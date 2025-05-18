@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VoteNow));
             this.btn_vote_now = new System.Windows.Forms.Button();
             this.fp_vote = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -53,7 +52,6 @@
             this.fp_vote.Name = "fp_vote";
             this.fp_vote.Size = new System.Drawing.Size(639, 347);
             this.fp_vote.TabIndex = 28;
-            this.fp_vote.Paint += new System.Windows.Forms.PaintEventHandler(this.fp_vote_Paint);
             // 
             // label1
             // 
@@ -69,7 +67,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(663, 455);
             this.Controls.Add(this.label1);
@@ -79,7 +76,6 @@
             this.Name = "VoteNow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VoteNow";
-            this.Load += new System.EventHandler(this.VoteNow_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

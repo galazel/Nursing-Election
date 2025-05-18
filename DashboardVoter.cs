@@ -45,7 +45,7 @@ namespace Nursing_Election
         }
         private void btn_vote_now_Click(object sender, EventArgs e)
         {
-            new VoteNow().Show();
+            new VoteNow(currentVoter.StudentId).Show();
         }   
         private void btn_show_status_Click(object sender, EventArgs e)
         {

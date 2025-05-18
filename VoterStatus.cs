@@ -68,7 +68,10 @@ namespace Nursing_Election
         {
 
         }
-
+        public int GetStudetnId()
+        {
+            return info.StudentId;
+        }
         private void lb_student_id_Click(object sender, EventArgs e)
         {
         }

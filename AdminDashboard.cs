@@ -38,6 +38,18 @@ namespace Nursing_Election
             string filePathCandidates = "D:\\Glyzel's Files\\C#\\Nursing Election\\CandidateData.txt";
             string filePath = "D:\\Glyzel's Files\\C#\\Nursing Election\\Count.txt";
 
+            fp_pres.Controls.Clear();
+            fp_vice.Controls.Clear();
+            fp_sec.Controls.Clear();
+            fp_treas.Controls.Clear();
+            fp_auditor.Controls.Clear();
+            fp_pio.Controls.Clear();
+            fp_first.Controls.Clear();
+            fp_second.Controls.Clear();
+            fp_third.Controls.Clear();
+            fp_fourth.Controls.Clear();
+            fp_cares.Controls.Clear();
+            fp_acad.Controls.Clear();
 
             AddPanelOfVotes("PRESIDENT", presidentCandidates);
             AddPanelOfVotes("VICE PRESIDENT", vicePresidentCandidates);
@@ -64,6 +76,9 @@ namespace Nursing_Election
                 btn_end_election.Enabled = false;
             }
 
+            StartElectionClass startElectionClass = new StartElectionClass();
+            lb_no_voters_voted.Text = startElectionClass.GetNoOfVotersVoted().ToString();
+            lb_no_of_voters.Text = startElectionClass.GetNoOfVoters().ToString();
 
             if (filePathPositions.Length > 0 || filePathCandidates.Length > 0 || filePath.Length > 0)
             {
@@ -164,9 +179,7 @@ namespace Nursing_Election
                     MessageBox.Show("Error reading file ff: " + ex.Message);
                 }
             }
-            StartElectionClass startElectionClass = new StartElectionClass();
-            if (startElectionClass.GetNoOfVotersVoted() > 0)
-                lb_no_voters_voted.Text = startElectionClass.GetNoOfVotersVoted().ToString();
+            
         }
 
 
@@ -388,6 +401,17 @@ namespace Nursing_Election
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if(positionTitles.Count == 12)
+            {
+                MessageBox.Show("You have reached the maximum number of positions.");
+                return;
+            }
+            if(btn_add_candidate.Enabled == false)
+            {
+                MessageBox.Show("Please end the election first.");
+                return;
+            }
+
             AddPostion position1 = new AddPostion();
             position1.Show();
 
@@ -807,6 +831,7 @@ namespace Nursing_Election
         }
         private void btn_start_election_Click_1(object sender, EventArgs e)
         {
+            btn_add_candidate.Enabled = false;
 
             if (position.GetNoOfPositions() == 0)
             {
@@ -827,6 +852,15 @@ namespace Nursing_Election
             if (position.GetNoOfPositions() < 12)
 
             { MessageBox.Show("The number of positions must exactly 12"); return; }
+
+            if(presidentCandidates.Count  < 2 || vicePresidentCandidates.Count < 2  || secretaryCandidates.Count < 2 || treasurerCandidates.Count < 2 || auditorCandidates.Count < 2 || publicRelationsCandidates.Count < 2 || firstYearRepCandidates.Count < 2 || secondYearRepCandidates.Count < 2 || thirdYearRepCandidates.Count < 2 || fourthYearRepCandidates.Count < 2 || caresRepCandidates.Count < 2 || academicrepresentativeCandidates.Count < 2)
+            {
+                MessageBox.Show("Candidates should atleast 2");
+                return;
+            }
+
+
+
 
             foreach (var item in positionTitles)
                 {

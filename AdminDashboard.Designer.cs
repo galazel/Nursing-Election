@@ -31,6 +31,31 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tb_results = new System.Windows.Forms.TabControl();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.fp_pres = new System.Windows.Forms.FlowLayoutPanel();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.fp_vice = new System.Windows.Forms.FlowLayoutPanel();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.fp_sec = new System.Windows.Forms.FlowLayoutPanel();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.fp_treas = new System.Windows.Forms.FlowLayoutPanel();
+            this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.fp_auditor = new System.Windows.Forms.FlowLayoutPanel();
+            this.tabPage15 = new System.Windows.Forms.TabPage();
+            this.fp_pio = new System.Windows.Forms.FlowLayoutPanel();
+            this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.fp_first = new System.Windows.Forms.FlowLayoutPanel();
+            this.tabPage10 = new System.Windows.Forms.TabPage();
+            this.fp_second = new System.Windows.Forms.FlowLayoutPanel();
+            this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.fp_third = new System.Windows.Forms.FlowLayoutPanel();
+            this.tabPage12 = new System.Windows.Forms.TabPage();
+            this.fp_fourth = new System.Windows.Forms.FlowLayoutPanel();
+            this.tabPage13 = new System.Windows.Forms.TabPage();
+            this.fp_acad = new System.Windows.Forms.FlowLayoutPanel();
+            this.tabPage14 = new System.Windows.Forms.TabPage();
+            this.fp_cares = new System.Windows.Forms.FlowLayoutPanel();
             this.label9 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
@@ -57,33 +82,21 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.tb_results = new System.Windows.Forms.TabControl();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.tabPage8 = new System.Windows.Forms.TabPage();
-            this.tabPage9 = new System.Windows.Forms.TabPage();
-            this.tabPage10 = new System.Windows.Forms.TabPage();
-            this.tabPage11 = new System.Windows.Forms.TabPage();
-            this.tabPage12 = new System.Windows.Forms.TabPage();
-            this.tabPage13 = new System.Windows.Forms.TabPage();
-            this.tabPage14 = new System.Windows.Forms.TabPage();
-            this.fp_pres = new System.Windows.Forms.FlowLayoutPanel();
-            this.fp_vice = new System.Windows.Forms.FlowLayoutPanel();
-            this.fp_sec = new System.Windows.Forms.FlowLayoutPanel();
-            this.fp_treas = new System.Windows.Forms.FlowLayoutPanel();
-            this.fp_auditor = new System.Windows.Forms.FlowLayoutPanel();
-            this.fp_first = new System.Windows.Forms.FlowLayoutPanel();
-            this.fp_second = new System.Windows.Forms.FlowLayoutPanel();
-            this.fp_third = new System.Windows.Forms.FlowLayoutPanel();
-            this.fp_fourth = new System.Windows.Forms.FlowLayoutPanel();
-            this.fp_acad = new System.Windows.Forms.FlowLayoutPanel();
-            this.fp_cares = new System.Windows.Forms.FlowLayoutPanel();
-            this.tabPage15 = new System.Windows.Forms.TabPage();
-            this.fp_pio = new System.Windows.Forms.FlowLayoutPanel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tb_results.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            this.tabPage5.SuspendLayout();
+            this.tabPage6.SuspendLayout();
+            this.tabPage7.SuspendLayout();
+            this.tabPage8.SuspendLayout();
+            this.tabPage15.SuspendLayout();
+            this.tabPage9.SuspendLayout();
+            this.tabPage10.SuspendLayout();
+            this.tabPage11.SuspendLayout();
+            this.tabPage12.SuspendLayout();
+            this.tabPage13.SuspendLayout();
+            this.tabPage14.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -91,19 +104,6 @@
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            this.tb_results.SuspendLayout();
-            this.tabPage4.SuspendLayout();
-            this.tabPage5.SuspendLayout();
-            this.tabPage6.SuspendLayout();
-            this.tabPage7.SuspendLayout();
-            this.tabPage8.SuspendLayout();
-            this.tabPage9.SuspendLayout();
-            this.tabPage10.SuspendLayout();
-            this.tabPage11.SuspendLayout();
-            this.tabPage12.SuspendLayout();
-            this.tabPage13.SuspendLayout();
-            this.tabPage14.SuspendLayout();
-            this.tabPage15.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -133,6 +133,234 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Dashboard";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tb_results
+            // 
+            this.tb_results.Controls.Add(this.tabPage4);
+            this.tb_results.Controls.Add(this.tabPage5);
+            this.tb_results.Controls.Add(this.tabPage6);
+            this.tb_results.Controls.Add(this.tabPage7);
+            this.tb_results.Controls.Add(this.tabPage8);
+            this.tb_results.Controls.Add(this.tabPage15);
+            this.tb_results.Controls.Add(this.tabPage9);
+            this.tb_results.Controls.Add(this.tabPage10);
+            this.tb_results.Controls.Add(this.tabPage11);
+            this.tb_results.Controls.Add(this.tabPage12);
+            this.tb_results.Controls.Add(this.tabPage13);
+            this.tb_results.Controls.Add(this.tabPage14);
+            this.tb_results.Font = new System.Drawing.Font("Consolas", 8F);
+            this.tb_results.Location = new System.Drawing.Point(55, 195);
+            this.tb_results.Name = "tb_results";
+            this.tb_results.SelectedIndex = 0;
+            this.tb_results.Size = new System.Drawing.Size(889, 458);
+            this.tb_results.TabIndex = 3;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.fp_pres);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(881, 432);
+            this.tabPage4.TabIndex = 0;
+            this.tabPage4.Text = "President";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // fp_pres
+            // 
+            this.fp_pres.Location = new System.Drawing.Point(20, 6);
+            this.fp_pres.Name = "fp_pres";
+            this.fp_pres.Size = new System.Drawing.Size(853, 420);
+            this.fp_pres.TabIndex = 0;
+            this.fp_pres.Paint += new System.Windows.Forms.PaintEventHandler(this.fp_pres_Paint);
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.fp_vice);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(888, 432);
+            this.tabPage5.TabIndex = 1;
+            this.tabPage5.Text = "Vice President";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // fp_vice
+            // 
+            this.fp_vice.Location = new System.Drawing.Point(22, 6);
+            this.fp_vice.Name = "fp_vice";
+            this.fp_vice.Size = new System.Drawing.Size(851, 420);
+            this.fp_vice.TabIndex = 1;
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.fp_sec);
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Size = new System.Drawing.Size(888, 432);
+            this.tabPage6.TabIndex = 2;
+            this.tabPage6.Text = "Secretary";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // fp_sec
+            // 
+            this.fp_sec.Location = new System.Drawing.Point(21, 9);
+            this.fp_sec.Name = "fp_sec";
+            this.fp_sec.Size = new System.Drawing.Size(852, 420);
+            this.fp_sec.TabIndex = 1;
+            // 
+            // tabPage7
+            // 
+            this.tabPage7.Controls.Add(this.fp_treas);
+            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Size = new System.Drawing.Size(888, 432);
+            this.tabPage7.TabIndex = 3;
+            this.tabPage7.Text = "Treasurer";
+            this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // fp_treas
+            // 
+            this.fp_treas.Location = new System.Drawing.Point(20, 9);
+            this.fp_treas.Name = "fp_treas";
+            this.fp_treas.Size = new System.Drawing.Size(853, 420);
+            this.fp_treas.TabIndex = 1;
+            // 
+            // tabPage8
+            // 
+            this.tabPage8.Controls.Add(this.fp_auditor);
+            this.tabPage8.Location = new System.Drawing.Point(4, 22);
+            this.tabPage8.Name = "tabPage8";
+            this.tabPage8.Size = new System.Drawing.Size(888, 432);
+            this.tabPage8.TabIndex = 4;
+            this.tabPage8.Text = "Auditor";
+            this.tabPage8.UseVisualStyleBackColor = true;
+            // 
+            // fp_auditor
+            // 
+            this.fp_auditor.Location = new System.Drawing.Point(22, 9);
+            this.fp_auditor.Name = "fp_auditor";
+            this.fp_auditor.Size = new System.Drawing.Size(851, 420);
+            this.fp_auditor.TabIndex = 1;
+            // 
+            // tabPage15
+            // 
+            this.tabPage15.Controls.Add(this.fp_pio);
+            this.tabPage15.Location = new System.Drawing.Point(4, 22);
+            this.tabPage15.Name = "tabPage15";
+            this.tabPage15.Size = new System.Drawing.Size(888, 432);
+            this.tabPage15.TabIndex = 11;
+            this.tabPage15.Text = "PIO";
+            this.tabPage15.UseVisualStyleBackColor = true;
+            // 
+            // fp_pio
+            // 
+            this.fp_pio.Location = new System.Drawing.Point(21, 9);
+            this.fp_pio.Name = "fp_pio";
+            this.fp_pio.Size = new System.Drawing.Size(852, 420);
+            this.fp_pio.TabIndex = 2;
+            // 
+            // tabPage9
+            // 
+            this.tabPage9.Controls.Add(this.fp_first);
+            this.tabPage9.Location = new System.Drawing.Point(4, 22);
+            this.tabPage9.Name = "tabPage9";
+            this.tabPage9.Size = new System.Drawing.Size(888, 432);
+            this.tabPage9.TabIndex = 5;
+            this.tabPage9.Text = "1st Year Rep";
+            this.tabPage9.UseVisualStyleBackColor = true;
+            // 
+            // fp_first
+            // 
+            this.fp_first.Location = new System.Drawing.Point(19, 9);
+            this.fp_first.Name = "fp_first";
+            this.fp_first.Size = new System.Drawing.Size(854, 420);
+            this.fp_first.TabIndex = 1;
+            // 
+            // tabPage10
+            // 
+            this.tabPage10.Controls.Add(this.fp_second);
+            this.tabPage10.Location = new System.Drawing.Point(4, 22);
+            this.tabPage10.Name = "tabPage10";
+            this.tabPage10.Size = new System.Drawing.Size(888, 432);
+            this.tabPage10.TabIndex = 6;
+            this.tabPage10.Text = "2nd Year Rep";
+            this.tabPage10.UseVisualStyleBackColor = true;
+            // 
+            // fp_second
+            // 
+            this.fp_second.Location = new System.Drawing.Point(17, 9);
+            this.fp_second.Name = "fp_second";
+            this.fp_second.Size = new System.Drawing.Size(856, 420);
+            this.fp_second.TabIndex = 1;
+            // 
+            // tabPage11
+            // 
+            this.tabPage11.Controls.Add(this.fp_third);
+            this.tabPage11.Location = new System.Drawing.Point(4, 22);
+            this.tabPage11.Name = "tabPage11";
+            this.tabPage11.Size = new System.Drawing.Size(888, 432);
+            this.tabPage11.TabIndex = 7;
+            this.tabPage11.Text = "3rd Year Rep";
+            this.tabPage11.UseVisualStyleBackColor = true;
+            // 
+            // fp_third
+            // 
+            this.fp_third.Location = new System.Drawing.Point(22, 9);
+            this.fp_third.Name = "fp_third";
+            this.fp_third.Size = new System.Drawing.Size(851, 420);
+            this.fp_third.TabIndex = 1;
+            // 
+            // tabPage12
+            // 
+            this.tabPage12.Controls.Add(this.fp_fourth);
+            this.tabPage12.Location = new System.Drawing.Point(4, 22);
+            this.tabPage12.Name = "tabPage12";
+            this.tabPage12.Size = new System.Drawing.Size(888, 432);
+            this.tabPage12.TabIndex = 8;
+            this.tabPage12.Text = "4th Year Rep";
+            this.tabPage12.UseVisualStyleBackColor = true;
+            // 
+            // fp_fourth
+            // 
+            this.fp_fourth.Location = new System.Drawing.Point(19, 9);
+            this.fp_fourth.Name = "fp_fourth";
+            this.fp_fourth.Size = new System.Drawing.Size(854, 420);
+            this.fp_fourth.TabIndex = 1;
+            // 
+            // tabPage13
+            // 
+            this.tabPage13.Controls.Add(this.fp_acad);
+            this.tabPage13.Location = new System.Drawing.Point(4, 22);
+            this.tabPage13.Name = "tabPage13";
+            this.tabPage13.Size = new System.Drawing.Size(888, 432);
+            this.tabPage13.TabIndex = 9;
+            this.tabPage13.Text = "Academic Rep";
+            this.tabPage13.UseVisualStyleBackColor = true;
+            // 
+            // fp_acad
+            // 
+            this.fp_acad.Location = new System.Drawing.Point(21, 9);
+            this.fp_acad.Name = "fp_acad";
+            this.fp_acad.Size = new System.Drawing.Size(852, 420);
+            this.fp_acad.TabIndex = 1;
+            // 
+            // tabPage14
+            // 
+            this.tabPage14.Controls.Add(this.fp_cares);
+            this.tabPage14.Location = new System.Drawing.Point(4, 22);
+            this.tabPage14.Name = "tabPage14";
+            this.tabPage14.Size = new System.Drawing.Size(888, 432);
+            this.tabPage14.TabIndex = 10;
+            this.tabPage14.Text = "CARES Rep";
+            this.tabPage14.UseVisualStyleBackColor = true;
+            // 
+            // fp_cares
+            // 
+            this.fp_cares.Location = new System.Drawing.Point(21, 9);
+            this.fp_cares.Name = "fp_cares";
+            this.fp_cares.Size = new System.Drawing.Size(852, 420);
+            this.fp_cares.TabIndex = 1;
             // 
             // label9
             // 
@@ -401,234 +629,6 @@
             this.timer1.Enabled = true;
             this.timer1.Interval = 1000;
             // 
-            // tb_results
-            // 
-            this.tb_results.Controls.Add(this.tabPage4);
-            this.tb_results.Controls.Add(this.tabPage5);
-            this.tb_results.Controls.Add(this.tabPage6);
-            this.tb_results.Controls.Add(this.tabPage7);
-            this.tb_results.Controls.Add(this.tabPage8);
-            this.tb_results.Controls.Add(this.tabPage15);
-            this.tb_results.Controls.Add(this.tabPage9);
-            this.tb_results.Controls.Add(this.tabPage10);
-            this.tb_results.Controls.Add(this.tabPage11);
-            this.tb_results.Controls.Add(this.tabPage12);
-            this.tb_results.Controls.Add(this.tabPage13);
-            this.tb_results.Controls.Add(this.tabPage14);
-            this.tb_results.Font = new System.Drawing.Font("Consolas", 8F);
-            this.tb_results.Location = new System.Drawing.Point(55, 195);
-            this.tb_results.Name = "tb_results";
-            this.tb_results.SelectedIndex = 0;
-            this.tb_results.Size = new System.Drawing.Size(896, 458);
-            this.tb_results.TabIndex = 3;
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.Controls.Add(this.fp_pres);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(888, 432);
-            this.tabPage4.TabIndex = 0;
-            this.tabPage4.Text = "President";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // tabPage5
-            // 
-            this.tabPage5.Controls.Add(this.fp_vice);
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(888, 432);
-            this.tabPage5.TabIndex = 1;
-            this.tabPage5.Text = "Vice President";
-            this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // tabPage6
-            // 
-            this.tabPage6.Controls.Add(this.fp_sec);
-            this.tabPage6.Location = new System.Drawing.Point(4, 22);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(888, 432);
-            this.tabPage6.TabIndex = 2;
-            this.tabPage6.Text = "Secretary";
-            this.tabPage6.UseVisualStyleBackColor = true;
-            // 
-            // tabPage7
-            // 
-            this.tabPage7.Controls.Add(this.fp_treas);
-            this.tabPage7.Location = new System.Drawing.Point(4, 22);
-            this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Size = new System.Drawing.Size(888, 432);
-            this.tabPage7.TabIndex = 3;
-            this.tabPage7.Text = "Treasurer";
-            this.tabPage7.UseVisualStyleBackColor = true;
-            // 
-            // tabPage8
-            // 
-            this.tabPage8.Controls.Add(this.fp_auditor);
-            this.tabPage8.Location = new System.Drawing.Point(4, 22);
-            this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Size = new System.Drawing.Size(888, 432);
-            this.tabPage8.TabIndex = 4;
-            this.tabPage8.Text = "Auditor";
-            this.tabPage8.UseVisualStyleBackColor = true;
-            // 
-            // tabPage9
-            // 
-            this.tabPage9.Controls.Add(this.fp_first);
-            this.tabPage9.Location = new System.Drawing.Point(4, 22);
-            this.tabPage9.Name = "tabPage9";
-            this.tabPage9.Size = new System.Drawing.Size(888, 432);
-            this.tabPage9.TabIndex = 5;
-            this.tabPage9.Text = "1st Year Rep";
-            this.tabPage9.UseVisualStyleBackColor = true;
-            // 
-            // tabPage10
-            // 
-            this.tabPage10.Controls.Add(this.fp_second);
-            this.tabPage10.Location = new System.Drawing.Point(4, 22);
-            this.tabPage10.Name = "tabPage10";
-            this.tabPage10.Size = new System.Drawing.Size(888, 432);
-            this.tabPage10.TabIndex = 6;
-            this.tabPage10.Text = "2nd Year Rep";
-            this.tabPage10.UseVisualStyleBackColor = true;
-            // 
-            // tabPage11
-            // 
-            this.tabPage11.Controls.Add(this.fp_third);
-            this.tabPage11.Location = new System.Drawing.Point(4, 22);
-            this.tabPage11.Name = "tabPage11";
-            this.tabPage11.Size = new System.Drawing.Size(888, 432);
-            this.tabPage11.TabIndex = 7;
-            this.tabPage11.Text = "3rd Year Rep";
-            this.tabPage11.UseVisualStyleBackColor = true;
-            // 
-            // tabPage12
-            // 
-            this.tabPage12.Controls.Add(this.fp_fourth);
-            this.tabPage12.Location = new System.Drawing.Point(4, 22);
-            this.tabPage12.Name = "tabPage12";
-            this.tabPage12.Size = new System.Drawing.Size(888, 432);
-            this.tabPage12.TabIndex = 8;
-            this.tabPage12.Text = "4th Year Rep";
-            this.tabPage12.UseVisualStyleBackColor = true;
-            // 
-            // tabPage13
-            // 
-            this.tabPage13.Controls.Add(this.fp_acad);
-            this.tabPage13.Location = new System.Drawing.Point(4, 22);
-            this.tabPage13.Name = "tabPage13";
-            this.tabPage13.Size = new System.Drawing.Size(888, 432);
-            this.tabPage13.TabIndex = 9;
-            this.tabPage13.Text = "Academic Rep";
-            this.tabPage13.UseVisualStyleBackColor = true;
-            // 
-            // tabPage14
-            // 
-            this.tabPage14.Controls.Add(this.fp_cares);
-            this.tabPage14.Location = new System.Drawing.Point(4, 22);
-            this.tabPage14.Name = "tabPage14";
-            this.tabPage14.Size = new System.Drawing.Size(888, 432);
-            this.tabPage14.TabIndex = 10;
-            this.tabPage14.Text = "CARES Rep";
-            this.tabPage14.UseVisualStyleBackColor = true;
-            // 
-            // fp_pres
-            // 
-            this.fp_pres.Location = new System.Drawing.Point(20, 6);
-            this.fp_pres.Name = "fp_pres";
-            this.fp_pres.Size = new System.Drawing.Size(853, 420);
-            this.fp_pres.TabIndex = 0;
-            this.fp_pres.Paint += new System.Windows.Forms.PaintEventHandler(this.fp_pres_Paint);
-            // 
-            // fp_vice
-            // 
-            this.fp_vice.Location = new System.Drawing.Point(22, 6);
-            this.fp_vice.Name = "fp_vice";
-            this.fp_vice.Size = new System.Drawing.Size(851, 420);
-            this.fp_vice.TabIndex = 1;
-            // 
-            // fp_sec
-            // 
-            this.fp_sec.Location = new System.Drawing.Point(21, 9);
-            this.fp_sec.Name = "fp_sec";
-            this.fp_sec.Size = new System.Drawing.Size(852, 420);
-            this.fp_sec.TabIndex = 1;
-            // 
-            // fp_treas
-            // 
-            this.fp_treas.Location = new System.Drawing.Point(20, 9);
-            this.fp_treas.Name = "fp_treas";
-            this.fp_treas.Size = new System.Drawing.Size(853, 420);
-            this.fp_treas.TabIndex = 1;
-            // 
-            // fp_auditor
-            // 
-            this.fp_auditor.Location = new System.Drawing.Point(22, 9);
-            this.fp_auditor.Name = "fp_auditor";
-            this.fp_auditor.Size = new System.Drawing.Size(851, 420);
-            this.fp_auditor.TabIndex = 1;
-            // 
-            // fp_first
-            // 
-            this.fp_first.Location = new System.Drawing.Point(19, 9);
-            this.fp_first.Name = "fp_first";
-            this.fp_first.Size = new System.Drawing.Size(854, 420);
-            this.fp_first.TabIndex = 1;
-            // 
-            // fp_second
-            // 
-            this.fp_second.Location = new System.Drawing.Point(17, 9);
-            this.fp_second.Name = "fp_second";
-            this.fp_second.Size = new System.Drawing.Size(856, 420);
-            this.fp_second.TabIndex = 1;
-            // 
-            // fp_third
-            // 
-            this.fp_third.Location = new System.Drawing.Point(22, 9);
-            this.fp_third.Name = "fp_third";
-            this.fp_third.Size = new System.Drawing.Size(851, 420);
-            this.fp_third.TabIndex = 1;
-            // 
-            // fp_fourth
-            // 
-            this.fp_fourth.Location = new System.Drawing.Point(19, 9);
-            this.fp_fourth.Name = "fp_fourth";
-            this.fp_fourth.Size = new System.Drawing.Size(854, 420);
-            this.fp_fourth.TabIndex = 1;
-            // 
-            // fp_acad
-            // 
-            this.fp_acad.Location = new System.Drawing.Point(21, 9);
-            this.fp_acad.Name = "fp_acad";
-            this.fp_acad.Size = new System.Drawing.Size(852, 420);
-            this.fp_acad.TabIndex = 1;
-            // 
-            // fp_cares
-            // 
-            this.fp_cares.Location = new System.Drawing.Point(21, 9);
-            this.fp_cares.Name = "fp_cares";
-            this.fp_cares.Size = new System.Drawing.Size(852, 420);
-            this.fp_cares.TabIndex = 1;
-            // 
-            // tabPage15
-            // 
-            this.tabPage15.Controls.Add(this.fp_pio);
-            this.tabPage15.Location = new System.Drawing.Point(4, 22);
-            this.tabPage15.Name = "tabPage15";
-            this.tabPage15.Size = new System.Drawing.Size(888, 432);
-            this.tabPage15.TabIndex = 11;
-            this.tabPage15.Text = "PIO";
-            this.tabPage15.UseVisualStyleBackColor = true;
-            // 
-            // fp_pio
-            // 
-            this.fp_pio.Location = new System.Drawing.Point(21, 9);
-            this.fp_pio.Name = "fp_pio";
-            this.fp_pio.Size = new System.Drawing.Size(852, 420);
-            this.fp_pio.TabIndex = 2;
-            // 
             // form_admin_dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -646,6 +646,19 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.tb_results.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage6.ResumeLayout(false);
+            this.tabPage7.ResumeLayout(false);
+            this.tabPage8.ResumeLayout(false);
+            this.tabPage15.ResumeLayout(false);
+            this.tabPage9.ResumeLayout(false);
+            this.tabPage10.ResumeLayout(false);
+            this.tabPage11.ResumeLayout(false);
+            this.tabPage12.ResumeLayout(false);
+            this.tabPage13.ResumeLayout(false);
+            this.tabPage14.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
@@ -660,19 +673,6 @@
             this.tabPage3.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.tb_results.ResumeLayout(false);
-            this.tabPage4.ResumeLayout(false);
-            this.tabPage5.ResumeLayout(false);
-            this.tabPage6.ResumeLayout(false);
-            this.tabPage7.ResumeLayout(false);
-            this.tabPage8.ResumeLayout(false);
-            this.tabPage9.ResumeLayout(false);
-            this.tabPage10.ResumeLayout(false);
-            this.tabPage11.ResumeLayout(false);
-            this.tabPage12.ResumeLayout(false);
-            this.tabPage13.ResumeLayout(false);
-            this.tabPage14.ResumeLayout(false);
-            this.tabPage15.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

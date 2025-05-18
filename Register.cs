@@ -102,18 +102,19 @@ namespace Nursing_Election
                     insertCommand.ExecuteNonQuery();
 
 
-                    StartElectionClass startElectionClass = new StartElectionClass();
-                    startElectionClass.SetNoOfVoters(startElectionClass.GetNoOfVoters() + 1);
-                    MessageBox.Show("Registration successful!");
-                    new Login().Show();
-                    this.Close();
+                    
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error: " + ex.Message);
                 }
             }
-           
+
+            StartElectionClass startElectionClass = new StartElectionClass();
+            startElectionClass.SetNoOfVoters(startElectionClass.GetNoOfVoters() + 1);
+            MessageBox.Show("Registration successful!");
+            new Login().Show();
+            this.Close();
         }
 
         private void ClearFormFields()
@@ -148,6 +149,11 @@ namespace Nursing_Election
 
         private void label5_Click(object sender, EventArgs e)
         {
+        }
+
+        private void Register_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

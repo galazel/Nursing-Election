@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Nursing_Election
@@ -14,14 +11,12 @@ namespace Nursing_Election
     public partial class VoteNow : Form
     {
         Dictionary<string, List<string>> candidatesPerPosition = new Dictionary<string, List<string>>();
-        [System.Runtime.InteropServices.DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn(
-        int nLeftRect, int nTopRect,
-        int nRightRect, int nBottomRect,
-        int nWidthEllipse, int nHeightEllipse);
-        private List <string> choosenCandidate = new List<string>();
 
-        public VoteNow()
+        private string pressCandidate, viceCandidate, secCandidate, treasurerCandidate, auditorCandidate;
+        private string firstRep, secondRep, thirdRep, fourthRep, acadRep, caresRep, pioCandidate;
+        private int student_id;
+
+        public VoteNow(int student_id)
         {
             InitializeComponent();
             this.MinimizeBox = false;
@@ -58,7 +53,6 @@ namespace Nursing_Election
 
                             if (!candidatesPerPosition.ContainsKey(position))
                                 candidatesPerPosition[position] = new List<string>();
-
                             candidatesPerPosition[position].Add(candidateName);
                         }
                     }
@@ -74,6 +68,8 @@ namespace Nursing_Election
                     MessageBox.Show("Error: " + ex.Message);
                 }
             }
+
+            this.student_id = student_id;
         }
 
         private void AddPositionPanel(string positionName, List<string> candidates)
@@ -100,24 +96,47 @@ namespace Nursing_Election
             btnChoose.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnChoose.Location = new Point(panel.Width - btnChoose.Width - 20, 10);
 
-
             Label lblChosen = new Label();
             lblChosen.Text = "Chosen: None";
             lblChosen.Font = new Font("Segoe UI", 9, FontStyle.Regular);
             lblChosen.AutoSize = true;
             lblChosen.Location = new Point(10, 50);
 
+            string selected = null;
             btnChoose.Click += (s, e) =>
             {
                 using (var form = new CandidateSelectionForm(candidates))
                 {
                     form.StartPosition = FormStartPosition.CenterParent;
-                    form.Name = "CandidateSelectionForm";
                     if (form.ShowDialog() == DialogResult.OK)
                     {
                         lblChosen.Text = "Chosen: " + form.SelectedCandidate;
-                        StartElectionClass start = new StartElectionClass();
-                        choosenCandidate.Add(form.SelectedCandidate);
+                        selected = form.SelectedCandidate;
+
+                        if (positionName.Equals("PRESIDENT"))
+                            pressCandidate = selected;
+                        else if (positionName.Equals("VICE PRESIDENT"))
+                            viceCandidate = selected;
+                        else if (positionName.Equals("SECRETARY"))
+                            secCandidate = selected;
+                        else if (positionName.Equals("TREASURER"))
+                            treasurerCandidate = selected;
+                        else if (positionName.Equals("AUDITOR"))
+                            auditorCandidate = selected;
+                        else if (positionName.Equals("FIRST YEAR REPRESENTATIVE"))
+                            firstRep = selected;
+                        else if (positionName.Equals("SECOND YEAR REPRESENTATIVE"))
+                            secondRep = selected;
+                        else if (positionName.Equals("THIRD YEAR REPRESENTATIVE"))
+                            thirdRep = selected;
+                        else if (positionName.Equals("FOURTH YEAR REPRESENTATIVE"))
+                            fourthRep = selected;
+                        else if (positionName.Equals("ACADEMIC REPRESENTATIVE"))
+                            acadRep = selected;
+                        else if (positionName.Equals("CARES REPRESENTATIVE"))
+                            caresRep = selected;
+                        else if (positionName.Equals("PIO"))
+                            pioCandidate = selected;
                     }
                 }
             };
@@ -125,44 +144,64 @@ namespace Nursing_Election
             panel.Controls.Add(lblPosition);
             panel.Controls.Add(btnChoose);
             panel.Controls.Add(lblChosen);
-
             fp_vote.Controls.Add(panel);
-        }
-        private void fp_vote_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void VoteNow_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void btn_vote_now_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("You have successfully voted.");
+            if (string.IsNullOrEmpty(pressCandidate) || string.IsNullOrEmpty(viceCandidate) || string.IsNullOrEmpty(secCandidate))
+            {
+                MessageBox.Show("Please make sure all positions are selected before voting.");
+                return;
+            }
+
+            string connectionString = "Data Source=localhost;Initial Catalog=election2025;Integrated Security=True;TrustServerCertificate=True";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    string insertQuery = @"INSERT INTO [Table] 
+(president, vice, secretary, treasurer, auditor, first_rep, second_rep, third_rep, fourth_rep, acad_rep, cares_rep, pio, student_id)
+VALUES 
+(@president, @vice, @secretary, @treasurer, @auditor, @firstRep, @secondRep, @thirdRep, @fourthRep, @acadRep, @caresRep, @pio, @student_id)";
+
+
+                    SqlCommand cmd = new SqlCommand(insertQuery, connection);
+                    cmd.Parameters.AddWithValue("@president", pressCandidate);
+                    cmd.Parameters.AddWithValue("@vice", viceCandidate);
+                    cmd.Parameters.AddWithValue("@secretary", secCandidate);
+                    cmd.Parameters.AddWithValue("@treasurer", treasurerCandidate);
+                    cmd.Parameters.AddWithValue("@auditor", auditorCandidate);
+                    cmd.Parameters.AddWithValue("@firstRep", firstRep);
+                    cmd.Parameters.AddWithValue("@secondRep", secondRep);
+                    cmd.Parameters.AddWithValue("@thirdRep", thirdRep);
+                    cmd.Parameters.AddWithValue("@fourthRep", fourthRep);
+                    cmd.Parameters.AddWithValue("@acadRep", acadRep);
+                    cmd.Parameters.AddWithValue("@caresRep", caresRep);
+                    cmd.Parameters.AddWithValue("@pio", pioCandidate);
+                    cmd.Parameters.AddWithValue("@student_id", student_id);
+
+                    cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("You have successfully voted.");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
+
             StartElectionClass start = new StartElectionClass();
             start.SetNoOfVotersVoted(start.GetNoOfVotersVoted() + 1);
 
-            try
-            {
-                string filePath = "D:\\Glyzel's Files\\C#\\Nursing Election\\Voters.txt";
-                using (StreamWriter writer = new StreamWriter(filePath, true))
-                {
-                    foreach (var candidate in choosenCandidate)
-                    {
-                        writer.WriteLine(candidate);
-                    }
-                    writer.WriteLine();
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-
             this.Close();
         }
+
+        private void VoteNow_Load(object sender, EventArgs e) { }
+
+        private void fp_vote_Paint(object sender, PaintEventArgs e) { }
     }
 }
