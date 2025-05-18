@@ -44,13 +44,14 @@
             this.btn_vote_now.TabIndex = 27;
             this.btn_vote_now.Text = "SUBMIT";
             this.btn_vote_now.UseVisualStyleBackColor = false;
+            this.btn_vote_now.Click += new System.EventHandler(this.btn_vote_now_Click);
             // 
             // fp_vote
             // 
             this.fp_vote.AutoScroll = true;
-            this.fp_vote.Location = new System.Drawing.Point(27, 60);
+            this.fp_vote.Location = new System.Drawing.Point(12, 56);
             this.fp_vote.Name = "fp_vote";
-            this.fp_vote.Size = new System.Drawing.Size(598, 343);
+            this.fp_vote.Size = new System.Drawing.Size(639, 347);
             this.fp_vote.TabIndex = 28;
             this.fp_vote.Paint += new System.Windows.Forms.PaintEventHandler(this.fp_vote_Paint);
             // 
@@ -58,7 +59,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label1.Location = new System.Drawing.Point(217, 25);
+            this.label1.Location = new System.Drawing.Point(217, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(232, 20);
             this.label1.TabIndex = 29;

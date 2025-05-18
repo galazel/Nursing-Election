@@ -150,7 +150,9 @@ namespace Nursing_Election
                     MessageBox.Show("Error reading file ff: " + ex.Message);
                 }
             }
-
+            StartElectionClass startElectionClass = new StartElectionClass();
+            if (startElectionClass.GetNoOfVotersVoted() > 0)
+                lb_no_voters_voted.Text = startElectionClass.GetNoOfVotersVoted().ToString();
         }
 
 
@@ -1006,7 +1008,7 @@ namespace Nursing_Election
                     MessageBox.Show("Error writing to file: " + ex.Message);
                 }
             }
-
+            
         }
 
         private void form_admin_dashboard_FormClosing(object sender, FormClosingEventArgs e)
@@ -1088,6 +1090,16 @@ namespace Nursing_Election
             startElectionClass.SetElectionStarted(false);
             startElectionClass.SetStartButtonClicked(false);
             startElectionClass.SetElectionFinished(true);
+
+        }
+
+
+        public void AddCandidatesAndVotes()
+        {
+
+        }
+        private void flowLayoutPanel3_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }

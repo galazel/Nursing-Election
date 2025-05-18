@@ -19,6 +19,7 @@ namespace Nursing_Election
         int nLeftRect, int nTopRect,
         int nRightRect, int nBottomRect,
         int nWidthEllipse, int nHeightEllipse);
+        private string choosenCandidate;
 
         public VoteNow()
         {
@@ -97,7 +98,7 @@ namespace Nursing_Election
             btnChoose.BackColor = Color.LightBlue;
             btnChoose.FlatStyle = FlatStyle.Flat;
             btnChoose.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnChoose.Location = new Point(panel.Width - btnChoose.Width - 20, 10); // Right side, aligned with lblPosition
+            btnChoose.Location = new Point(panel.Width - btnChoose.Width - 20, 10);
 
 
             Label lblChosen = new Label();
@@ -110,7 +111,8 @@ namespace Nursing_Election
             {
                 using (var form = new CandidateSelectionForm(candidates))
                 {
-                    form.StartPosition = FormStartPosition.CenterParent; // Center the form on parent
+                    form.StartPosition = FormStartPosition.CenterParent;
+                    form.Name = "CandidateSelectionForm";
                     if (form.ShowDialog() == DialogResult.OK)
                     {
                         lblChosen.Text = "Chosen: " + form.SelectedCandidate;
@@ -135,6 +137,13 @@ namespace Nursing_Election
         private void VoteNow_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_vote_now_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("You have successfully voted.");
+            StartElectionClass start = new StartElectionClass();
+            start.SetNoOfVotersVoted(start.GetNoOfVotersVoted() + 1);
         }
     }
 }
