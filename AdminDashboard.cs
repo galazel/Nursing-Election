@@ -359,6 +359,12 @@ namespace Nursing_Election
             deleteButton.Font = new Font("Segoe UI", 8);
             deleteButton.Click += (s, e) =>
             {
+
+                if (btn_start_election.Enabled == false)
+                {
+                    MessageBox.Show("Please end the election first.");
+                    return;
+                }
                 string removed = titleLabel.Text;
                 string desc = description;
                 positionTitles.Remove(removed);
@@ -406,11 +412,7 @@ namespace Nursing_Election
                 MessageBox.Show("You have reached the maximum number of positions.");
                 return;
             }
-            if(btn_add_candidate.Enabled == false)
-            {
-                MessageBox.Show("Please end the election first.");
-                return;
-            }
+           
 
             AddPostion position1 = new AddPostion();
             position1.Show();
@@ -475,7 +477,11 @@ namespace Nursing_Election
                     }
                 }
 
-
+                if (btn_start_election.Enabled == false)
+                {
+                    MessageBox.Show("Please end the election first.");
+                    return;
+                }
 
                 if (!string.IsNullOrEmpty(positionTitle) && !string.IsNullOrEmpty(description))
                 {
@@ -573,6 +579,13 @@ namespace Nursing_Election
             deleteButton.Font = new Font("Segoe UI", 8, FontStyle.Regular);
             deleteButton.Click += (s, e) =>
             {
+                if(btn_start_election.Enabled == false)
+                {
+                    MessageBox.Show("Please end the election first.");
+                    return;
+                }
+
+
                 flowLayoutPanel2.Controls.Remove(candidatePanel);
                 candidatePanel.Dispose();
                 candidate.SetNoOfCandidates(candidate.GetNoOfCandidates() - 1);
@@ -673,6 +686,12 @@ namespace Nursing_Election
             if (position.GetNoOfPositions() == 0)
             {
                 MessageBox.Show("Please add a position first.");
+                return;
+            }
+
+            if (btn_start_election.Enabled == false)
+            {
+                MessageBox.Show("Please end the election first.");
                 return;
             }
 
@@ -831,7 +850,7 @@ namespace Nursing_Election
         }
         private void btn_start_election_Click_1(object sender, EventArgs e)
         {
-            btn_add_candidate.Enabled = false;
+            
 
             if (position.GetNoOfPositions() == 0)
             {
@@ -848,7 +867,7 @@ namespace Nursing_Election
                 MessageBox.Show("Candidates should atleast 10.");
                 return;
             }
-
+            
             if (position.GetNoOfPositions() < 12)
 
             { MessageBox.Show("The number of positions must exactly 12"); return; }
@@ -858,7 +877,6 @@ namespace Nursing_Election
                 MessageBox.Show("Candidates should atleast 2");
                 return;
             }
-
 
 
 
@@ -968,6 +986,7 @@ namespace Nursing_Election
             start.SetStartButtonClicked(true);
             btn_start_election.Enabled = false;
             btn_end_election.Enabled = true;
+            btn_add_candidate.Enabled = false;
 
 
             string filePath = "D:\\Glyzel's Files\\C#\\Nursing Election\\PositionAndCandidates.txt";

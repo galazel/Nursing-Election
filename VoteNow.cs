@@ -105,42 +105,43 @@ namespace Nursing_Election
             string selected = null;
             btnChoose.Click += (s, e) =>
             {
-                using (var form = new CandidateSelectionForm(candidates))
+
+                ChooseCandidate chooseCandidate = new ChooseCandidate();
+                chooseCandidate.Show();
+                selected = chooseCandidate.GetSelectedCandidate();
+                if (selected == null)
                 {
-                    form.StartPosition = FormStartPosition.CenterParent;
-                    if (form.ShowDialog() == DialogResult.OK)
-                    {
-                        lblChosen.Text = "Chosen: " + form.SelectedCandidate;
-                        selected = form.SelectedCandidate;
-
-                        if (positionName.Equals("PRESIDENT"))
-                            pressCandidate = selected;
-                        else if (positionName.Equals("VICE PRESIDENT"))
-                            viceCandidate = selected;
-                        else if (positionName.Equals("SECRETARY"))
-                            secCandidate = selected;
-                        else if (positionName.Equals("TREASURER"))
-                            treasurerCandidate = selected;
-                        else if (positionName.Equals("AUDITOR"))
-                            auditorCandidate = selected;
-                        else if (positionName.Equals("FIRST YEAR REPRESENTATIVE"))
-                            firstRep = selected;
-                        else if (positionName.Equals("SECOND YEAR REPRESENTATIVE"))
-                            secondRep = selected;
-                        else if (positionName.Equals("THIRD YEAR REPRESENTATIVE"))
-                            thirdRep = selected;
-                        else if (positionName.Equals("FOURTH YEAR REPRESENTATIVE"))
-                            fourthRep = selected;
-                        else if (positionName.Equals("ACADEMIC REPRESENTATIVE"))
-                            acadRep = selected;
-                        else if (positionName.Equals("CARES REPRESENTATIVE"))
-                            caresRep = selected;
-                        else if (positionName.Equals("PIO"))
-                            pioCandidate = selected;
-                    }
+                    MessageBox.Show("Please select a candidate.");
+                    return;
                 }
-            };
+                lblChosen.Text = "Chosen: " + selected;
 
+                if (positionName.Equals("PRESIDENT", StringComparison.OrdinalIgnoreCase))
+                    pressCandidate = selected;
+                else if (positionName.Equals("VICE PRESIDENT", StringComparison.OrdinalIgnoreCase))
+                    viceCandidate = selected;
+                else if (positionName.Equals("SECRETARY", StringComparison.OrdinalIgnoreCase))
+                    secCandidate = selected;
+                else if (positionName.Equals("TREASURER", StringComparison.OrdinalIgnoreCase))
+                    treasurerCandidate = selected;
+                else if (positionName.Equals("AUDITOR", StringComparison.OrdinalIgnoreCase))
+                    auditorCandidate = selected;
+                else if (positionName.Equals("FIRST YEAR REPRESENTATIVE", StringComparison.OrdinalIgnoreCase))
+                    firstRep = selected;
+                else if (positionName.Equals("SECOND YEAR REPRESENTATIVE", StringComparison.OrdinalIgnoreCase))
+                    secondRep = selected;
+                else if (positionName.Equals("THIRD YEAR REPRESENTATIVE", StringComparison.OrdinalIgnoreCase))
+                    thirdRep = selected;
+                else if (positionName.Equals("FOURTH YEAR REPRESENTATIVE", StringComparison.OrdinalIgnoreCase))
+                    fourthRep = selected;
+                else if (positionName.Equals("ACADEMIC REPRESENTATIVE", StringComparison.OrdinalIgnoreCase))
+                    acadRep = selected;
+                else if (positionName.Equals("CARES REPRESENTATIVE", StringComparison.OrdinalIgnoreCase))
+                    caresRep = selected;
+                else if (positionName.Equals("PIO", StringComparison.OrdinalIgnoreCase))
+                    pioCandidate = selected;
+            
+            };
             panel.Controls.Add(lblPosition);
             panel.Controls.Add(btnChoose);
             panel.Controls.Add(lblChosen);
@@ -149,7 +150,19 @@ namespace Nursing_Election
 
         private void btn_vote_now_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(pressCandidate) || string.IsNullOrEmpty(viceCandidate) || string.IsNullOrEmpty(secCandidate))
+
+            if (string.IsNullOrEmpty(pressCandidate) ||
+                string.IsNullOrEmpty(viceCandidate) ||
+                string.IsNullOrEmpty(secCandidate) ||
+                string.IsNullOrEmpty(treasurerCandidate) ||
+                string.IsNullOrEmpty(auditorCandidate) ||
+                string.IsNullOrEmpty(firstRep) ||
+                string.IsNullOrEmpty(secondRep) ||
+                string.IsNullOrEmpty(thirdRep) ||
+                string.IsNullOrEmpty(fourthRep) ||
+                string.IsNullOrEmpty(acadRep) ||
+                string.IsNullOrEmpty(caresRep) ||
+                string.IsNullOrEmpty(pioCandidate))
             {
                 MessageBox.Show("Please make sure all positions are selected before voting.");
                 return;
@@ -163,11 +176,10 @@ namespace Nursing_Election
                 {
                     connection.Open();
 
-                    string insertQuery = @"INSERT INTO [Table] 
+                    string insertQuery = @"INSERT INTO CandidatesChoice 
 (president, vice, secretary, treasurer, auditor, first_rep, second_rep, third_rep, fourth_rep, acad_rep, cares_rep, pio, student_id)
 VALUES 
 (@president, @vice, @secretary, @treasurer, @auditor, @firstRep, @secondRep, @thirdRep, @fourthRep, @acadRep, @caresRep, @pio, @student_id)";
-
 
                     SqlCommand cmd = new SqlCommand(insertQuery, connection);
                     cmd.Parameters.AddWithValue("@president", pressCandidate);
