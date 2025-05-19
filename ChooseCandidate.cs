@@ -46,7 +46,6 @@ namespace Nursing_Election
             else
             {
                 selectedCandidate = cb_choose_candidate.SelectedItem.ToString();
-                DialogResult = DialogResult.OK;
                 Close();
             }
         }

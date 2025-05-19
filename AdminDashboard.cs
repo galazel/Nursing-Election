@@ -112,7 +112,6 @@ namespace Nursing_Election
                     MessageBox.Show("Error reading file: where " + ex.Message);
                 }
 
-
                 positionTitles = labelCount.GetPositionTitles();
                 presidentCandidates = labelCount.GetPresidentCandidates();
                 vicePresidentCandidates = labelCount.GetVicePresidentCandidates();

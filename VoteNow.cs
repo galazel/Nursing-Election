@@ -135,36 +135,38 @@ namespace Nursing_Election
                 else if (positionName.Equals("PUBLIC RELATIONS OFFICER"))
                     chooseCandidate.SetChoices(labelCount.GetPublicRelationsCandidates());
 
-                if (chooseCandidate.ShowDialog() == DialogResult.OK)
-                {
-                    selected = chooseCandidate.GetSelectedCandidate();
-                    lblChosen.Text = "Chosen: " + selected;
 
-                    if (positionName.Equals("PRESIDENT"))
-                        pressCandidate = selected;
-                    else if (positionName.Equals("VICE PRESIDENT"))
-                        viceCandidate = selected;
-                    else if (positionName.Equals("SECRETARY"))
-                        secCandidate = selected;
-                    else if (positionName.Equals("TREASURER"))
-                        treasurerCandidate = selected;
-                    else if (positionName.Equals("AUDITOR"))
-                        auditorCandidate = selected;
-                    else if (positionName.Equals("FIRST YEAR REPRESENTATIVE"))
-                        firstRep = selected;
-                    else if (positionName.Equals("SECOND YEAR REPRESENTATIVE"))
-                        secondRep = selected;
-                    else if (positionName.Equals("THIRD YEAR REPRESENTATIVE"))
-                        thirdRep = selected;
-                    else if (positionName.Equals("FOURTH YEAR REPRESENTATIVE"))
-                        fourthRep = selected;
-                    else if (positionName.Equals("ACADEMIC REPRESENTATIVE"))
-                        acadRep = selected;
-                    else if (positionName.Equals("CARES REPRESENTATIVE"))
-                        caresRep = selected;
-                    else if (positionName.Equals("PIO"))
-                        pioCandidate = selected;
-                }
+                chooseCandidate.FormClosing += (a, args) =>
+                {
+                        selected = chooseCandidate.GetSelectedCandidate();
+                        lblChosen.Text = "Chosen: " + selected;
+
+                        if (positionName.Equals("PRESIDENT"))
+                            pressCandidate = selected;
+                        else if (positionName.Equals("VICE PRESIDENT"))
+                            viceCandidate = selected;
+                        else if (positionName.Equals("SECRETARY"))
+                            secCandidate = selected;
+                        else if (positionName.Equals("TREASURER"))
+                            treasurerCandidate = selected;
+                        else if (positionName.Equals("AUDITOR"))
+                            auditorCandidate = selected;
+                        else if (positionName.Equals("FIRST YEAR REPRESENTATIVE"))
+                            firstRep = selected;
+                        else if (positionName.Equals("SECOND YEAR REPRESENTATIVE"))
+                            secondRep = selected;
+                        else if (positionName.Equals("THIRD YEAR REPRESENTATIVE"))
+                            thirdRep = selected;
+                        else if (positionName.Equals("FOURTH YEAR REPRESENTATIVE"))
+                            fourthRep = selected;
+                        else if (positionName.Equals("ACADEMIC REPRESENTATIVE"))
+                            acadRep = selected;
+                        else if (positionName.Equals("CARES REPRESENTATIVE"))
+                            caresRep = selected;
+                        else if (positionName.Equals("PUBLIC RELATIONS OFFICER"))
+                            pioCandidate = selected;
+
+                };       
             
             };
             panel.Controls.Add(lblPosition);
@@ -175,23 +177,19 @@ namespace Nursing_Election
 
         private void btn_vote_now_Click(object sender, EventArgs e)
         {
-
-            if (string.IsNullOrEmpty(pressCandidate) ||
-                string.IsNullOrEmpty(viceCandidate) ||
-                string.IsNullOrEmpty(secCandidate) ||
-                string.IsNullOrEmpty(treasurerCandidate) ||
-                string.IsNullOrEmpty(auditorCandidate) ||
-                string.IsNullOrEmpty(firstRep) ||
-                string.IsNullOrEmpty(secondRep) ||
-                string.IsNullOrEmpty(thirdRep) ||
-                string.IsNullOrEmpty(fourthRep) ||
-                string.IsNullOrEmpty(acadRep) ||
-                string.IsNullOrEmpty(caresRep) ||
-                string.IsNullOrEmpty(pioCandidate))
-            {
-                MessageBox.Show("Please make sure all positions are selected before voting.");
-                return;
-            }
+            Console.WriteLine(pressCandidate);
+            Console.WriteLine(viceCandidate);
+            Console.WriteLine(secCandidate);
+            Console.WriteLine(treasurerCandidate);
+            Console.WriteLine(auditorCandidate);
+            Console.WriteLine(firstRep);
+            Console.WriteLine(secondRep);
+            Console.WriteLine(thirdRep);
+            Console.WriteLine(fourthRep);
+            Console.WriteLine(acadRep);
+            Console.WriteLine(caresRep);
+            Console.WriteLine(pioCandidate);
+            Console.WriteLine(student_id);
 
             string connectionString = "Data Source=localhost;Initial Catalog=election2025;Integrated Security=True;TrustServerCertificate=True";
 
