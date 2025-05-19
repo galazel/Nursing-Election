@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Security.Cryptography;
 using System.Text;
+using System.Web.Razor.Parser.SyntaxTree;
 using System.Windows.Forms;
+using System.Xml.Linq;
+using Label = System.Windows.Forms.Label;
 
 namespace Nursing_Election
 {
@@ -34,6 +39,24 @@ namespace Nursing_Election
             InitializeComponent();
             btn_end_election.Enabled = false;
 
+            string connectionString = "Data Source=localhost;Initial Catalog=election2025;Integrated Security=True;TrustServerCertificate=True";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string checkQuery = "SELECT COUNT(*) FROM Voters";
+                    SqlCommand checkCommand = new SqlCommand(checkQuery, connection);
+                    lb_no_of_voters.Text = Convert.ToString(checkCommand.ExecuteScalar());
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
+
             string filePathPositions = "D:\\Glyzel's Files\\C#\\Nursing Election\\PositionData.txt";
             string filePathCandidates = "D:\\Glyzel's Files\\C#\\Nursing Election\\CandidateData.txt";
             string filePath = "D:\\Glyzel's Files\\C#\\Nursing Election\\Count.txt";
@@ -51,34 +74,122 @@ namespace Nursing_Election
             fp_cares.Controls.Clear();
             fp_acad.Controls.Clear();
 
-            AddPanelOfVotes("PRESIDENT", presidentCandidates);
-            AddPanelOfVotes("VICE PRESIDENT", vicePresidentCandidates);
-            AddPanelOfVotes("SECRETARY", secretaryCandidates);
-            AddPanelOfVotes("TREASURER", treasurerCandidates);
-            AddPanelOfVotes("AUDITOR", auditorCandidates);
-            AddPanelOfVotes("PUBLIC RELATIONS OFFICER", publicRelationsCandidates);
-            AddPanelOfVotes("FIRST YEAR REPRESENTATIVE", firstYearRepCandidates);
-            AddPanelOfVotes("SECOND YEAR REPRESENTATIVE", secondYearRepCandidates);
-            AddPanelOfVotes("THIRD YEAR REPRESENTATIVE", thirdYearRepCandidates);
-            AddPanelOfVotes("FOURTH YEAR REPRESENTATIVE", fourthYearRepCandidates);
-            AddPanelOfVotes("CARES REPRESENTATIVE", caresRepCandidates);
-            AddPanelOfVotes("ACADEMIC REPRESENTATIVE", academicrepresentativeCandidates);
+            StartElectionClass startElectionClass1 = new StartElectionClass();
 
-
-            StartElectionClass startElec = new StartElectionClass();
-            if (startElec.IsStartButtonClicked())
+            if (!startElectionClass1.IsElectionStarted())
             {
+                Label presidentResult = new Label();
+                presidentResult.Text = "No President Yet.";
+                presidentResult.Font = new Font("Segoe UI", 10, FontStyle.Italic);
+                presidentResult.ForeColor = Color.DimGray;
+                presidentResult.AutoSize = true;
+                presidentResult.Location = new Point(20, 20);
+                fp_pres.Controls.Add(presidentResult);
+                Label viceResult = new Label();
+                viceResult.Text = "No Vice President Yet.";
+                viceResult.Font = new Font("Segoe UI", 10, FontStyle.Italic);
+                viceResult.ForeColor = Color.DimGray;
+                viceResult.AutoSize = true;
+                viceResult.Location = new Point(20, 20);
+                fp_vice.Controls.Add(viceResult);
+                Label secretaryResult = new Label();
+                secretaryResult.Text = "No Secretary Yet.";
+                secretaryResult.Font = new Font("Segoe UI", 10, FontStyle.Italic);
+                secretaryResult.ForeColor = Color.DimGray;
+                secretaryResult.AutoSize = true;
+                secretaryResult.Location = new Point(20, 20);
+                fp_sec.Controls.Add(secretaryResult);
+                Label treasurerResult = new Label();
+                treasurerResult.Text = "No Treasurer Yet.";
+                treasurerResult.Font = new Font("Segoe UI", 10, FontStyle.Italic);
+                treasurerResult.ForeColor = Color.DimGray;
+                treasurerResult.AutoSize = true;
+                treasurerResult.Location = new Point(20, 20);
+                fp_treas.Controls.Add(treasurerResult);
+                Label auditorResult = new Label();
+                auditorResult.Text = "No Auditor Yet.";
+                auditorResult.Font = new Font("Segoe UI", 10, FontStyle.Italic);
+                auditorResult.ForeColor = Color.DimGray;
+                auditorResult.AutoSize = true;
+                auditorResult.Location = new Point(20, 20);
+                fp_auditor.Controls.Add(auditorResult);
+                Label pioResult = new Label();
+                pioResult.Text = "No Public Relations Officer Yet.";
+                pioResult.Font = new Font("Segoe UI", 10, FontStyle.Italic);
+                pioResult.ForeColor = Color.DimGray;
+                pioResult.AutoSize = true;
+                pioResult.Location = new Point(20, 20);
+                fp_pio.Controls.Add(pioResult);
+                Label firstResult = new Label();
+                firstResult.Text = "No First Year Representative Yet.";
+                firstResult.Font = new Font("Segoe UI", 10, FontStyle.Italic);
+                firstResult.ForeColor = Color.DimGray;
+                firstResult.AutoSize = true;
+                firstResult.Location = new Point(20, 20);
+                fp_first.Controls.Add(firstResult);
+                Label secondResult = new Label();
+                secondResult.Text = "No Second Year Representative Yet.";
+                secondResult.Font = new Font("Segoe UI", 10, FontStyle.Italic);
+                secondResult.ForeColor = Color.DimGray;
+                secondResult.AutoSize = true;
+                secondResult.Location = new Point(20, 20);
+                fp_second.Controls.Add(secondResult);
+                Label thirdResult = new Label();
+                thirdResult.Text = "No Third Year Representative Yet.";
+                thirdResult.Font = new Font("Segoe UI", 10, FontStyle.Italic);
+                thirdResult.ForeColor = Color.DimGray;
+                thirdResult.AutoSize = true;
+                thirdResult.Location = new Point(20, 20);
+                fp_third.Controls.Add(thirdResult);
+                Label fourthResult = new Label();
+                fourthResult.Text = "No Fourth Year Representative Yet.";
+                fourthResult.Font = new Font("Segoe UI", 10, FontStyle.Italic);
+                fourthResult.ForeColor = Color.DimGray;
+                fourthResult.AutoSize = true;
+                fourthResult.Location = new Point(20, 20);
+                fp_fourth.Controls.Add(fourthResult);
+                Label caresResult = new Label();
+                caresResult.Text = "No Cares Representative Yet.";
+                caresResult.Font = new Font("Segoe UI", 10, FontStyle.Italic);
+                caresResult.ForeColor = Color.DimGray;
+                caresResult.AutoSize = true;
+                caresResult.Location = new Point(20, 20);
+                fp_cares.Controls.Add(caresResult);
+                Label acadResult = new Label();
+                acadResult.Text = "No Academic Representative Yet.";
+                acadResult.Font = new Font("Segoe UI", 10, FontStyle.Italic);
+                acadResult.ForeColor = Color.DimGray;
+                acadResult.AutoSize = true;
+                acadResult.Location = new Point(20, 20);
+                fp_acad.Controls.Add(acadResult);
+            }
+          
+
+            if(startElectionClass1.IsStartButtonClicked())
+            {
+                AddPanelOfVotes("PRESIDENT", presidentCandidates);
+                AddPanelOfVotes("VICE PRESIDENT", vicePresidentCandidates);
+                AddPanelOfVotes("SECRETARY", secretaryCandidates);
+                AddPanelOfVotes("TREASURER", treasurerCandidates);
+                AddPanelOfVotes("AUDITOR", auditorCandidates);
+                AddPanelOfVotes("PUBLIC RELATIONS OFFICER", publicRelationsCandidates);
+                AddPanelOfVotes("FIRST YEAR REPRESENTATIVE", firstYearRepCandidates);
+                AddPanelOfVotes("SECOND YEAR REPRESENTATIVE", secondYearRepCandidates);
+                AddPanelOfVotes("THIRD YEAR REPRESENTATIVE", thirdYearRepCandidates);
+                AddPanelOfVotes("FOURTH YEAR REPRESENTATIVE", fourthYearRepCandidates);
+                AddPanelOfVotes("CARES REPRESENTATIVE", caresRepCandidates);
+                AddPanelOfVotes("ACADEMIC REPRESENTATIVE", academicrepresentativeCandidates);
                 btn_start_election.Enabled = false;
                 btn_end_election.Enabled = true;
-            }else if(startElec.IsElectionFinished())
+            }
+
+            if(startElectionClass1.IsElectionFinished())
             {
                 btn_start_election.Enabled = false;
                 btn_end_election.Enabled = false;
             }
-
-            StartElectionClass startElectionClass = new StartElectionClass();
-            lb_no_voters_voted.Text = startElectionClass.GetNoOfVotersVoted().ToString();
-            lb_no_of_voters.Text = startElectionClass.GetNoOfVoters().ToString();
+            lb_no_voters_voted.Text = startElectionClass1.GetNoOfVotersVoted().ToString();
+            lb_no_of_voters.Text = startElectionClass1.GetNoOfVoters().ToString();
 
             if (filePathPositions.Length > 0 || filePathCandidates.Length > 0 || filePath.Length > 0)
             {
@@ -676,10 +787,6 @@ namespace Nursing_Election
 
             flowLayoutPanel2.Controls.Add(candidatePanel);
         }
-
-
-
-
         private void button2_Click(object sender, EventArgs e)
         {
             if (position.GetNoOfPositions() == 0)
