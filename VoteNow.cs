@@ -135,33 +135,36 @@ namespace Nursing_Election
                 else if (positionName.Equals("PUBLIC RELATIONS OFFICER"))
                     chooseCandidate.SetChoices(labelCount.GetPublicRelationsCandidates());
 
-                selected = chooseCandidate.GetSelectedCandidate();
-                lblChosen.Text = "Chosen: " + selected;
+                if (chooseCandidate.ShowDialog() == DialogResult.OK)
+                {
+                    selected = chooseCandidate.GetSelectedCandidate();
+                    lblChosen.Text = "Chosen: " + selected;
 
-                if (positionName.Equals("PRESIDENT"))
-                    pressCandidate = selected;
-                else if (positionName.Equals("VICE PRESIDENT"))
-                    viceCandidate = selected;
-                else if (positionName.Equals("SECRETARY"))
-                    secCandidate = selected;
-                else if (positionName.Equals("TREASURER"))
-                    treasurerCandidate = selected;
-                else if (positionName.Equals("AUDITOR"))
-                    auditorCandidate = selected;
-                else if (positionName.Equals("FIRST YEAR REPRESENTATIVE"))
-                    firstRep = selected;
-                else if (positionName.Equals("SECOND YEAR REPRESENTATIVE"))
-                    secondRep = selected;
-                else if (positionName.Equals("THIRD YEAR REPRESENTATIVE"))
-                    thirdRep = selected;
-                else if (positionName.Equals("FOURTH YEAR REPRESENTATIVE"))
-                    fourthRep = selected;
-                else if (positionName.Equals("ACADEMIC REPRESENTATIVE"))
-                    acadRep = selected;
-                else if (positionName.Equals("CARES REPRESENTATIVE"))
-                    caresRep = selected;
-                else if (positionName.Equals("PIO"))
-                    pioCandidate = selected;
+                    if (positionName.Equals("PRESIDENT"))
+                        pressCandidate = selected;
+                    else if (positionName.Equals("VICE PRESIDENT"))
+                        viceCandidate = selected;
+                    else if (positionName.Equals("SECRETARY"))
+                        secCandidate = selected;
+                    else if (positionName.Equals("TREASURER"))
+                        treasurerCandidate = selected;
+                    else if (positionName.Equals("AUDITOR"))
+                        auditorCandidate = selected;
+                    else if (positionName.Equals("FIRST YEAR REPRESENTATIVE"))
+                        firstRep = selected;
+                    else if (positionName.Equals("SECOND YEAR REPRESENTATIVE"))
+                        secondRep = selected;
+                    else if (positionName.Equals("THIRD YEAR REPRESENTATIVE"))
+                        thirdRep = selected;
+                    else if (positionName.Equals("FOURTH YEAR REPRESENTATIVE"))
+                        fourthRep = selected;
+                    else if (positionName.Equals("ACADEMIC REPRESENTATIVE"))
+                        acadRep = selected;
+                    else if (positionName.Equals("CARES REPRESENTATIVE"))
+                        caresRep = selected;
+                    else if (positionName.Equals("PIO"))
+                        pioCandidate = selected;
+                }
             
             };
             panel.Controls.Add(lblPosition);

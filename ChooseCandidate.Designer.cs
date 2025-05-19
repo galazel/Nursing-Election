@@ -59,6 +59,7 @@
             this.cb_choose_candidate.Name = "cb_choose_candidate";
             this.cb_choose_candidate.Size = new System.Drawing.Size(255, 21);
             this.cb_choose_candidate.TabIndex = 3;
+            this.cb_choose_candidate.SelectedIndexChanged += new System.EventHandler(this.cb_choose_candidate_SelectedIndexChanged);
             // 
             // ChooseCandidate
             // 

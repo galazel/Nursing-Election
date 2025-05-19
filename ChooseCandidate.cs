@@ -37,18 +37,24 @@ namespace Nursing_Election
                 return null;
             }
         }
-
         private void btn_confirm_Click(object sender, EventArgs e)
         {
-            if(GetSelectedCandidate() != null)
-            {
-                selectedCandidate = cb_choose_candidate.SelectedItem.ToString();
-                this.Close();
-            }
-            else
+            if (cb_choose_candidate.SelectedItem == null)
             {
                 MessageBox.Show("Please select a candidate.");
             }
+            else
+            {
+                selectedCandidate = cb_choose_candidate.SelectedItem.ToString();
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+        }
+
+
+        private void cb_choose_candidate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectedCandidate = cb_choose_candidate.SelectedItem.ToString();
         }
     }
 }
