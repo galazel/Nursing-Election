@@ -44,7 +44,7 @@
             // 
             // btn_confirm
             // 
-            this.btn_confirm.Location = new System.Drawing.Point(132, 93);
+            this.btn_confirm.Location = new System.Drawing.Point(135, 98);
             this.btn_confirm.Name = "btn_confirm";
             this.btn_confirm.Size = new System.Drawing.Size(75, 23);
             this.btn_confirm.TabIndex = 2;
@@ -65,11 +65,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(343, 151);
+            this.ClientSize = new System.Drawing.Size(328, 142);
             this.Controls.Add(this.cb_choose_candidate);
             this.Controls.Add(this.btn_confirm);
             this.Controls.Add(this.lb_choose_candidate);
             this.Name = "ChooseCandidate";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ChooseCandidate";
             this.ResumeLayout(false);
             this.PerformLayout();

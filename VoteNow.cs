@@ -15,6 +15,7 @@ namespace Nursing_Election
         private string pressCandidate, viceCandidate, secCandidate, treasurerCandidate, auditorCandidate;
         private string firstRep, secondRep, thirdRep, fourthRep, acadRep, caresRep, pioCandidate;
         private int student_id;
+        private bool isDoneVoted = false;
 
         public VoteNow(int student_id)
         {
@@ -70,6 +71,15 @@ namespace Nursing_Election
             }
 
             this.student_id = student_id;
+        }
+        public void SetDoneVoted(bool isDoneVoted)
+        {
+            this.isDoneVoted = isDoneVoted;
+        }
+
+        public bool GetDoneVoted()
+        {
+            return isDoneVoted;
         }
 
         private void AddPositionPanel(string positionName, List<string> candidates)
@@ -177,6 +187,20 @@ namespace Nursing_Election
 
         private void btn_vote_now_Click(object sender, EventArgs e)
         {
+            LabelCount labelCount = new LabelCount();
+            labelCount.SetSelectedPresident(pressCandidate);
+            labelCount.SetSelectedVicePresident(viceCandidate);
+            labelCount.SetSelectedSecretary(secCandidate);
+            labelCount.SetSelectedTreasurer(treasurerCandidate);
+            labelCount.SetSelectedAuditor(auditorCandidate);
+            labelCount.SetSelectedFirstYearRepresentative(firstRep);
+            labelCount.SetSelectedSecondYearRepresentative(secondRep);
+            labelCount.SetSelectedThirdYearRepresentative(thirdRep);
+            labelCount.SetSelectedFourthYearRepresentative(fourthRep);
+            labelCount.SetSelectedAcademicRepresentative(acadRep);
+            labelCount.SetSelectedCaresRepresentative(caresRep);
+            labelCount.SetSelectedPublicRelations(pioCandidate);
+
             Console.WriteLine(pressCandidate);
             Console.WriteLine(viceCandidate);
             Console.WriteLine(secCandidate);
@@ -222,6 +246,7 @@ VALUES
                     cmd.ExecuteNonQuery();
 
                     MessageBox.Show("You have successfully voted.");
+
                 }
                 catch (Exception ex)
                 {
@@ -229,6 +254,7 @@ VALUES
                 }
             }
 
+            SetDoneVoted(true);
             StartElectionClass start = new StartElectionClass();
             start.SetNoOfVotersVoted(start.GetNoOfVotersVoted() + 1);
 
@@ -239,4 +265,6 @@ VALUES
 
         private void fp_vote_Paint(object sender, PaintEventArgs e) { }
     }
+
+
 }

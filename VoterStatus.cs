@@ -42,7 +42,7 @@ namespace Nursing_Election
 
         private void btn_ballot_preview_Click(object sender, EventArgs e)
         {
-            new ViewPreview().Show();   
+            new ViewPreview(info.StudentId);   
         }
 
         private void lb_logout_Click(object sender, EventArgs e)
@@ -64,25 +64,24 @@ namespace Nursing_Election
         public bool GetLogout()
             { return logout; }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
         public int GetStudetnId()
         {
             return info.StudentId;
         }
-        private void lb_student_id_Click(object sender, EventArgs e)
-        {
-        }
 
-        private void lb_name_Click(object sender, EventArgs e)
-        {
-        }
 
-        private void lb_block_section_Click(object sender, EventArgs e)
+        private void btn_result_Click(object sender, EventArgs e)
         {
+            StartElectionClass start = new StartElectionClass();
+            if (start.IsElectionFinished())
+            {
+                MessageBox.Show("Election is finished.");
+                new ViewResultClass();
+            }
+            else
+            {
+                MessageBox.Show("Election is not finished yet.");
+            }
         }
-
     }
 }

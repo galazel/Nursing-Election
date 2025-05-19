@@ -100,9 +100,14 @@ namespace Nursing_Election
                     insertCommand.Parameters.AddWithValue("@profile", imageData);
 
                     insertCommand.ExecuteNonQuery();
+                    string countQuery = "SELECT COUNT(*) FROM Voters";
+                    SqlCommand countCommand = new SqlCommand(countQuery, connection);
+                    int totalVoters = (int)countCommand.ExecuteScalar();
+
+                    StartElectionClass startElectionClass = new StartElectionClass();
+                    startElectionClass.SetNoOfVoters(totalVoters);
 
 
-                    
                 }
                 catch (Exception ex)
                 {
@@ -110,8 +115,7 @@ namespace Nursing_Election
                 }
             }
 
-            StartElectionClass startElectionClass = new StartElectionClass();
-            startElectionClass.SetNoOfVoters(startElectionClass.GetNoOfVoters() + 1);
+
             MessageBox.Show("Registration successful!");
             new Login().Show();
             this.Close();

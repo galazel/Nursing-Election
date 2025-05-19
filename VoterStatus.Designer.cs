@@ -36,10 +36,6 @@
             this.lb_student_id = new System.Windows.Forms.Label();
             this.lb_name = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -47,12 +43,15 @@
             this.btn_ballot_preview = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.lb_logout = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.btn_result = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_profile)).BeginInit();
             this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -77,7 +76,6 @@
             this.pb_profile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pb_profile.TabIndex = 0;
             this.pb_profile.TabStop = false;
-            this.pb_profile.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // panel3
             // 
@@ -98,7 +96,6 @@
             this.lb_block_section.Size = new System.Drawing.Size(40, 12);
             this.lb_block_section.TabIndex = 3;
             this.lb_block_section.Text = "BSIT-2A";
-            this.lb_block_section.Click += new System.EventHandler(this.lb_block_section_Click);
             // 
             // lb_student_id
             // 
@@ -109,7 +106,7 @@
             this.lb_student_id.Size = new System.Drawing.Size(45, 12);
             this.lb_student_id.TabIndex = 2;
             this.lb_student_id.Text = "24225435";
-            this.lb_student_id.Click += new System.EventHandler(this.lb_student_id_Click);
+
             // 
             // lb_name
             // 
@@ -120,7 +117,7 @@
             this.lb_name.Size = new System.Drawing.Size(135, 19);
             this.lb_name.TabIndex = 1;
             this.lb_name.Text = "GLYZEL GALAGAR";
-            this.lb_name.Click += new System.EventHandler(this.lb_name_Click);
+
             // 
             // panel2
             // 
@@ -130,52 +127,14 @@
             this.panel2.Size = new System.Drawing.Size(99, 74);
             this.panel2.TabIndex = 0;
             // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Controls.Add(this.label6);
-            this.panel4.Controls.Add(this.label5);
-            this.panel4.Controls.Add(this.progressBar1);
-            this.panel4.Location = new System.Drawing.Point(75, 282);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(280, 99);
-            this.panel4.TabIndex = 2;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Consolas", 7F);
-            this.label6.Location = new System.Drawing.Point(12, 63);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(70, 12);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "100% Complete";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(10, 15);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(135, 19);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Voting Process";
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(13, 37);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(253, 23);
-            this.progressBar1.TabIndex = 0;
-            // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.White;
             this.panel5.Controls.Add(this.label7);
             this.panel5.Controls.Add(this.label8);
-            this.panel5.Location = new System.Drawing.Point(374, 160);
+            this.panel5.Location = new System.Drawing.Point(75, 282);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(266, 99);
+            this.panel5.Size = new System.Drawing.Size(280, 99);
             this.panel5.TabIndex = 3;
             // 
             // label7
@@ -203,7 +162,7 @@
             this.panel6.BackColor = System.Drawing.Color.White;
             this.panel6.Controls.Add(this.btn_ballot_preview);
             this.panel6.Controls.Add(this.label10);
-            this.panel6.Location = new System.Drawing.Point(374, 282);
+            this.panel6.Location = new System.Drawing.Point(374, 160);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(266, 99);
             this.panel6.TabIndex = 4;
@@ -212,11 +171,11 @@
             // 
             this.btn_ballot_preview.BackColor = System.Drawing.Color.Gold;
             this.btn_ballot_preview.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_ballot_preview.Location = new System.Drawing.Point(13, 38);
+            this.btn_ballot_preview.Location = new System.Drawing.Point(14, 42);
             this.btn_ballot_preview.Name = "btn_ballot_preview";
             this.btn_ballot_preview.Size = new System.Drawing.Size(233, 37);
             this.btn_ballot_preview.TabIndex = 5;
-            this.btn_ballot_preview.Text = "VIEW CANDIDATES";
+            this.btn_ballot_preview.Text = "VIEW RECEIPT";
             this.btn_ballot_preview.UseVisualStyleBackColor = false;
             this.btn_ballot_preview.Click += new System.EventHandler(this.btn_ballot_preview_Click);
             // 
@@ -241,6 +200,38 @@
             this.lb_logout.Text = "Logout";
             this.lb_logout.Click += new System.EventHandler(this.lb_logout_Click);
             // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.btn_result);
+            this.panel4.Controls.Add(this.label1);
+            this.panel4.Location = new System.Drawing.Point(374, 282);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(266, 99);
+            this.panel4.TabIndex = 6;
+            // 
+            // btn_result
+            // 
+            this.btn_result.BackColor = System.Drawing.Color.Gold;
+            this.btn_result.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_result.Location = new System.Drawing.Point(14, 42);
+            this.btn_result.Name = "btn_result";
+            this.btn_result.Size = new System.Drawing.Size(233, 37);
+            this.btn_result.TabIndex = 5;
+            this.btn_result.Text = "VIEW RESULT";
+            this.btn_result.UseVisualStyleBackColor = false;
+            this.btn_result.Click += new System.EventHandler(this.btn_result_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(10, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(63, 19);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "RESULT";
+            // 
             // VoterStatus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -248,10 +239,10 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(707, 470);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.lb_logout);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel5);
-            this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
             this.Name = "VoterStatus";
@@ -262,12 +253,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pb_profile)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -280,10 +271,6 @@
         private System.Windows.Forms.Label lb_student_id;
         private System.Windows.Forms.Label lb_name;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
@@ -292,5 +279,8 @@
         private System.Windows.Forms.Button btn_ballot_preview;
         private System.Windows.Forms.Label lb_logout;
         private System.Windows.Forms.PictureBox pb_profile;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button btn_result;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -26,6 +26,131 @@ namespace Nursing_Election
         private static ArrayList academicRepresentativeCandidates = new ArrayList();
         private static ArrayList caresRepresentativeCandidates = new ArrayList();
 
+        private string selectedPresident = "";
+        private string selectedVicePresident = "";
+        private string selectedSecretary = "";
+        private string selectedTreasurer = "";
+        private string selectedAuditor = "";
+        private string selectedPublicRelations = "";
+        private string selectedRepresentative = "";
+        private string selectedFirstYearRepresentative = "";
+        private string selectedSecondYearRepresentative = "";
+        private string selectedThirdYearRepresentative = "";
+        private string selectedFourthYearRepresentative = "";
+        private string selectedCaresRepresentative = "";
+        private string selectedAcademicRepresentative = "";
+
+
+        public void SetSelectedPresident(string name)
+        {
+            selectedPresident = name;
+        }
+        public string GetSelectedPresident()
+        {
+            return selectedPresident;
+        }
+        public void SetSelectedVicePresident(string name)
+        {
+            selectedVicePresident = name;
+        }
+        public string GetSelectedVicePresident()
+        {
+            return selectedVicePresident;
+        }
+
+        public void SetSelectedSecretary(string name)
+        {
+            selectedSecretary = name;
+        }
+        public string GetSelectedSecretary()
+        {
+            return selectedSecretary;
+        }
+        public void SetSelectedTreasurer(string name)
+        {
+            selectedTreasurer = name;
+        }
+        public string GetSelectedTreasurer()
+        {
+            return selectedTreasurer;
+        }
+        public void SetSelectedAuditor(string name)
+        {
+            selectedAuditor = name;
+        }
+        public string GetSelectedAuditor()
+        {
+            return selectedAuditor;
+        }
+        public void SetSelectedPublicRelations(string name)
+        {
+            selectedPublicRelations = name;
+        }
+        public string GetSelectedPublicRelations()
+        {
+            return selectedPublicRelations;
+        }
+        public void SetSelectedRepresentative(string name)
+        {
+            selectedRepresentative = name;
+        }
+        public string GetSelectedRepresentative()
+        {
+            return selectedRepresentative;
+        }
+        public void SetSelectedFirstYearRepresentative(string name)
+        {
+            selectedFirstYearRepresentative = name;
+        }
+        public string GetSelectedFirstYearRepresentative()
+        {
+            return selectedFirstYearRepresentative;
+        }
+
+        public void SetSelectedSecondYearRepresentative(string name)
+        {
+            selectedSecondYearRepresentative = name;
+        }
+        public string GetSelectedSecondYearRepresentative()
+        {
+            return selectedSecondYearRepresentative;
+        }
+        public void SetSelectedThirdYearRepresentative(string name)
+        {
+            selectedThirdYearRepresentative = name;
+        }
+        public string GetSelectedThirdYearRepresentative()
+        {
+            return selectedThirdYearRepresentative;
+        }
+
+        public void SetSelectedFourthYearRepresentative(string name)
+        {
+            selectedFourthYearRepresentative = name;
+        }
+        public string GetSelectedFourthYearRepresentative()
+        {
+            return selectedFourthYearRepresentative;
+        }
+        public void SetSelectedCaresRepresentative(string name)
+        {
+            selectedCaresRepresentative = name;
+        }
+        public string GetSelectedCaresRepresentative()
+        {
+            return selectedCaresRepresentative;
+        }
+        public void SetSelectedAcademicRepresentative(string name)
+        {
+            selectedAcademicRepresentative = name;
+        }
+        public string GetSelectedAcademicRepresentative()
+        {
+            return selectedAcademicRepresentative;
+        }
+
+
+
         public void SetPositionsCount(int count)
         {
             positionsCount = count;
@@ -149,6 +274,7 @@ namespace Nursing_Election
         {
             return academicRepresentativeCandidates;
         }
+        
 
 
         public void ClearAll()
