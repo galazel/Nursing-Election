@@ -76,7 +76,8 @@ namespace Nursing_Election
             if (start.IsElectionFinished())
             {
                 MessageBox.Show("Election is finished.");
-                new ViewResultClass();
+                ViewResultClass viewResultClass = new ViewResultClass();
+                viewResultClass.ShowElectionResults();
             }
             else
             {

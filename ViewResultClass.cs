@@ -6,7 +6,7 @@ namespace Nursing_Election
 {
     internal class ViewResultClass
     {
-        private string filePath = "D:\\Glyzel's Files\\C#\\Nursing Election\\HistoryResults.txt";
+        private readonly string filePath = "D:\\Glyzel's Files\\C#\\Nursing Election\\HistoryResults.txt";
 
         public void ShowElectionResults()
         {
@@ -15,7 +15,14 @@ namespace Nursing_Election
                 if (File.Exists(filePath))
                 {
                     string results = File.ReadAllText(filePath);
-                    MessageBox.Show(results, "Election Results", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (!string.IsNullOrWhiteSpace(results))
+                    {
+                        MessageBox.Show(results, "Election Results", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("The results file is empty.", "Election Results", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
                 else
                 {

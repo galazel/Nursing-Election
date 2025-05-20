@@ -331,8 +331,6 @@ namespace Nursing_Election
                 fp_acad.Controls.Clear();
                 flowLayoutPanel1.Controls.Clear();
                 flowLayoutPanel2.Controls.Clear();
-
-                SaveButton();
                 btn_start_election.Enabled = true;
                 btn_end_election.Enabled = false;
             }
@@ -1586,12 +1584,13 @@ namespace Nursing_Election
         {
             btn_end_election.BackColor = Color.HotPink;
             btn_end_election.Enabled = false;
-
-            MessageBox.Show("Election ended successfully.\nThe data will be stored in the database.");
+            SaveButton();
+            MessageBox.Show("Election ended successfully. The data will be stored in the database.");
             StartElectionClass startElectionClass = new StartElectionClass();
             startElectionClass.SetElectionStarted(false);
             startElectionClass.SetStartButtonClicked(false);
             startElectionClass.SetElectionFinished(true);
+            
 
         }
 
@@ -1681,6 +1680,7 @@ namespace Nursing_Election
         public void SaveButton()
         {
             StartElectionClass startElectionClass = new StartElectionClass();
+
             if (btn_end_election.Enabled == false && btn_start_election.Enabled == false)
             {
                 string presWinner = GetWinner(presidentVotes, out int presVotes);
@@ -1696,6 +1696,7 @@ namespace Nursing_Election
                 string caresWinner = GetWinner(caresRepVotes, out int caresVotes);
                 string acadWinner = GetWinner(academicRepresentativeVotes, out int acadVotes);
 
+                // Generate timestamp and results
                 string timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                 string electionResults =
                  $"President: {presWinner} - {presVotes} votes\n" +
@@ -1713,28 +1714,23 @@ namespace Nursing_Election
 
                 viewResult = electionResults;
 
+                Console.WriteLine("Winners: "+electionResults);
+
+                string filePath = "D:\\Glyzel's Files\\C#\\Nursing Election\\HistoryResults.txt";
+
                 try
                 {
-                    string filePath = "D:\\Glyzel's Files\\C#\\Nursing Election\\HistoryResults.txt";
-                    var lines = File.ReadAllLines(filePath).ToList();
-
-                    int startIndex = lines.FindIndex(line => line.Contains(timestamp));
-                    if (startIndex != -1)
+                    // Save the results to the file
+                    using (StreamWriter sw = File.AppendText(filePath))
                     {
-                        int endIndex = startIndex;
-                        while (endIndex < lines.Count && !lines[endIndex].Contains("=== END OF RECORD ==="))
-                            endIndex++;
-
-                        if (endIndex < lines.Count)
-                            endIndex++;
-
-                        lines.RemoveRange(startIndex, endIndex - startIndex);
-                        File.WriteAllLines(filePath, lines);
+                        sw.WriteLine($"=== RECORD: {timestamp} ===");
+                        sw.WriteLine(electionResults);
+                        sw.WriteLine("=== END OF RECORD ===\n");
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error deleting record from file: " + ex.Message);
+                    MessageBox.Show("Error saving record to file: " + ex.Message);
                 }
             }
             else if (btn_end_election.Enabled == false && btn_start_election.Enabled == true)
@@ -1745,8 +1741,8 @@ namespace Nursing_Election
             {
                 MessageBox.Show("End the election first");
             }
-
         }
+
         private string GetWinner(string[,] votes, out int highestVotes)
         {
             string winner = "";
