@@ -82,7 +82,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.btn_view_result = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tb_results.SuspendLayout();
@@ -123,7 +122,6 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.White;
-            this.tabPage1.Controls.Add(this.btn_view_result);
             this.tabPage1.Controls.Add(this.tb_results);
             this.tabPage1.Controls.Add(this.label9);
             this.tabPage1.Controls.Add(this.panel3);
@@ -171,7 +169,6 @@
             this.tabPage4.Size = new System.Drawing.Size(989, 462);
             this.tabPage4.TabIndex = 0;
             this.tabPage4.Text = "President";
-            this.tabPage4.Click += new System.EventHandler(this.tabPage4_Click);
             // 
             // fp_pres
             // 
@@ -672,17 +669,6 @@
             this.timer1.Enabled = true;
             this.timer1.Interval = 1000;
             // 
-            // btn_view_result
-            // 
-            this.btn_view_result.Font = new System.Drawing.Font("Consolas", 8F);
-            this.btn_view_result.Location = new System.Drawing.Point(146, 178);
-            this.btn_view_result.Name = "btn_view_result";
-            this.btn_view_result.Size = new System.Drawing.Size(137, 23);
-            this.btn_view_result.TabIndex = 4;
-            this.btn_view_result.Text = "View Result";
-            this.btn_view_result.UseVisualStyleBackColor = true;
-            this.btn_view_result.Click += new System.EventHandler(this.btn_view_result_Click);
-            // 
             // form_admin_dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -790,6 +776,5 @@
         private System.Windows.Forms.FlowLayoutPanel fp_cares;
         private System.Windows.Forms.TabPage tabPage15;
         private System.Windows.Forms.FlowLayoutPanel fp_pio;
-        private System.Windows.Forms.Button btn_view_result;
     }
 }

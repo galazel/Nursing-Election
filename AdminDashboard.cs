@@ -30,7 +30,7 @@ namespace Nursing_Election
         private static ArrayList firstYearRepCandidates = new ArrayList();
         private static ArrayList secondYearRepCandidates = new ArrayList();
         private static ArrayList thirdYearRepCandidates = new ArrayList();
-        private static ArrayList fourthYearRepCandidates = new ArrayList(); 
+        private static ArrayList fourthYearRepCandidates = new ArrayList();
         private static ArrayList caresRepCandidates = new ArrayList();
         private static ArrayList academicrepresentativeCandidates = new ArrayList();
         private static ArrayList history = new ArrayList();
@@ -54,9 +54,6 @@ namespace Nursing_Election
         {
             InitializeComponent();
             btn_end_election.Enabled = false;
-
-            
-
             string connectionString = "Data Source=localhost;Initial Catalog=election2025;Integrated Security=True;TrustServerCertificate=True";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -64,7 +61,7 @@ namespace Nursing_Election
                 try
                 {
                     connection.Open();
-   
+
                     string countQuery = "SELECT COUNT(*) FROM Voters";
                     SqlCommand countCommand = new SqlCommand(countQuery, connection);
                     int totalVoters = (int)countCommand.ExecuteScalar();
@@ -98,6 +95,12 @@ namespace Nursing_Election
             fp_acad.Controls.Clear();
 
             StartElectionClass startElectionClass1 = new StartElectionClass();
+
+            
+
+
+
+
 
             if (!startElectionClass1.IsElectionStarted())
             {
@@ -186,26 +189,20 @@ namespace Nursing_Election
                 acadResult.Location = new Point(20, 20);
                 fp_acad.Controls.Add(acadResult);
             }
-               presidentVotes = numberOfVotes.GetPresidentVotes();
-               vicePresidentVotes = numberOfVotes.GetVicePresidentVotes();
-               secretaryVotes = numberOfVotes.GetSecretaryVotes();
-               treasurerVotes = numberOfVotes.GetTreasurerVotes();
-               auditorVotes = numberOfVotes.GetAuditorVotes();
-               publicRelationsVotes = numberOfVotes.GetPIOVotes();
-               firstYearRepVotes = numberOfVotes.GetFirstYearRepVotes();
-               secondYearRepVotes = numberOfVotes.GetSecondYearRepVotes();
-               thirdYearRepVotes = numberOfVotes.GetThirdYearRepVotes();
-               fourthYearRepVotes = numberOfVotes.GetFourthYearRepVotes();
-               caresRepVotes = numberOfVotes.GetAcademicRepVotes();
-               academicRepresentativeVotes = numberOfVotes.GetCaresRepVotes();
-
-            for (int i = 0; i < presidentVotes.GetLength(0); i++)
+            else
             {
-                string name = presidentVotes[i, 0];
-                string count = presidentVotes[i, 1];
-
-                if (!string.IsNullOrEmpty(name))
-                    Console.WriteLine($"{name} - {count} votes");
+                fp_pres.Controls.Clear();
+                fp_vice.Controls.Clear();
+                fp_sec.Controls.Clear();
+                fp_treas.Controls.Clear();
+                fp_auditor.Controls.Clear();
+                fp_pio.Controls.Clear();
+                fp_first.Controls.Clear();
+                fp_second.Controls.Clear();
+                fp_third.Controls.Clear();
+                fp_fourth.Controls.Clear();
+                fp_cares.Controls.Clear();
+                fp_acad.Controls.Clear();
             }
 
 
@@ -223,7 +220,22 @@ namespace Nursing_Election
                 fp_fourth.Controls.Clear();
                 fp_cares.Controls.Clear();
                 fp_acad.Controls.Clear();
-                AddPanelOfVotes("PRESIDENT", presidentCandidates,presidentVotes);
+
+
+                presidentVotes = numberOfVotes.GetPresidentVotes();
+                vicePresidentVotes = numberOfVotes.GetVicePresidentVotes();
+                secretaryVotes = numberOfVotes.GetSecretaryVotes();
+                treasurerVotes = numberOfVotes.GetTreasurerVotes();
+                auditorVotes = numberOfVotes.GetAuditorVotes();
+                publicRelationsVotes = numberOfVotes.GetPIOVotes();
+                firstYearRepVotes = numberOfVotes.GetFirstYearRepVotes();
+                secondYearRepVotes = numberOfVotes.GetSecondYearRepVotes();
+                thirdYearRepVotes = numberOfVotes.GetThirdYearRepVotes();
+                fourthYearRepVotes = numberOfVotes.GetFourthYearRepVotes();
+                caresRepVotes = numberOfVotes.GetAcademicRepVotes();
+                academicRepresentativeVotes = numberOfVotes.GetCaresRepVotes();
+
+                AddPanelOfVotes("PRESIDENT", presidentCandidates, presidentVotes);
                 AddPanelOfVotes("VICE PRESIDENT", vicePresidentCandidates, vicePresidentVotes);
                 AddPanelOfVotes("SECRETARY", secretaryCandidates, secretaryVotes);
                 AddPanelOfVotes("TREASURER", treasurerCandidates, treasurerVotes);
@@ -240,24 +252,23 @@ namespace Nursing_Election
                 btn_end_election.Enabled = true;
             }
 
-            if(startElectionClass1.IsElectionFinished())
+            if (startElectionClass1.IsElectionFinished())
             {
-                string a = "D:\\Glyzel's Files\\C#\\Nursing Election\\HistoryResults.txt";
                 string b = "D:\\Glyzel's Files\\C#\\Nursing Election\\PositionData.txt";
                 string c = "D:\\Glyzel's Files\\C#\\Nursing Election\\CandidateData.txt";
                 string d = "D:\\Glyzel's Files\\C#\\Nursing Election\\Count.txt";
+                string e = "D:\\Glyzel's Files\\C#\\Nursing Election\\PositionAndCandidates.txt";
 
-                File.WriteAllText(a, string.Empty);
                 File.WriteAllText(b, string.Empty);
                 File.WriteAllText(c, string.Empty);
                 File.WriteAllText(d, string.Empty);
+                File.WriteAllText(e, string.Empty);
 
                 LabelCount labelCount = new LabelCount();
                 labelCount.ClearAll();
 
                 positionTitles.Clear();
                 history.Clear();
-
 
                 presidentCandidates.Clear();
                 vicePresidentCandidates.Clear();
@@ -286,6 +297,26 @@ namespace Nursing_Election
                 caresRepVotes = numberOfVotes.GetAcademicRepVotes();
                 academicRepresentativeVotes = numberOfVotes.GetCaresRepVotes();
 
+                position.SetNoOfPositions(0);
+                candidate.SetNoOfCandidates(0);
+                startElectionClass1.SetNoOfVoters(0);
+                startElectionClass1.SetNoOfVotersVoted(0);
+                startElectionClass1.SetStartButtonClicked(false);
+                startElectionClass1.SetElectionFinished(false);
+                startElectionClass1.SetElectionStarted(false);
+                presidentVotes = new string[0, 0];
+                vicePresidentVotes = new string[0, 0];
+                secretaryVotes = new string[0, 0];
+                treasurerVotes = new string[0, 0];
+                auditorVotes = new string[0, 0];
+                publicRelationsVotes = new string[0, 0];
+                firstYearRepVotes = new string[0, 0];
+                secondYearRepVotes = new string[0, 0];
+                thirdYearRepVotes = new string[0, 0];
+                fourthYearRepVotes = new string[0, 0];
+                caresRepVotes = new string[0, 0];
+                academicRepresentativeVotes = new string[0, 0];
+
                 fp_pres.Controls.Clear();
                 fp_vice.Controls.Clear();
                 fp_sec.Controls.Clear();
@@ -298,11 +329,36 @@ namespace Nursing_Election
                 fp_fourth.Controls.Clear();
                 fp_cares.Controls.Clear();
                 fp_acad.Controls.Clear();
+                flowLayoutPanel1.Controls.Clear();
+                flowLayoutPanel2.Controls.Clear();
 
                 SaveButton();
                 btn_start_election.Enabled = true;
                 btn_end_election.Enabled = false;
             }
+
+            presidentVotes = numberOfVotes.GetPresidentVotes();
+            vicePresidentVotes = numberOfVotes.GetVicePresidentVotes();
+            secretaryVotes = numberOfVotes.GetSecretaryVotes();
+            treasurerVotes = numberOfVotes.GetTreasurerVotes();
+            auditorVotes = numberOfVotes.GetAuditorVotes();
+            publicRelationsVotes = numberOfVotes.GetPIOVotes();
+            firstYearRepVotes = numberOfVotes.GetFirstYearRepVotes();
+            secondYearRepVotes = numberOfVotes.GetSecondYearRepVotes();
+            thirdYearRepVotes = numberOfVotes.GetThirdYearRepVotes();
+            fourthYearRepVotes = numberOfVotes.GetFourthYearRepVotes();
+            caresRepVotes = numberOfVotes.GetAcademicRepVotes();
+            academicRepresentativeVotes = numberOfVotes.GetCaresRepVotes();
+
+            for (int i = 0; i < presidentVotes.GetLength(0); i++)
+            {
+                string name = presidentVotes[i, 0];
+                string count = presidentVotes[i, 1];
+
+                if (!string.IsNullOrEmpty(name))
+                    Console.WriteLine($"{name} - {count} votes");
+            }
+           
             lb_no_voters_voted.Text = startElectionClass1.GetNoOfVotersVoted().ToString();
             lb_no_of_voters.Text = startElectionClass1.GetNoOfVoters().ToString();
 
@@ -351,6 +407,8 @@ namespace Nursing_Election
                 fourthYearRepCandidates = labelCount.GetFourthYearRepresentativeCandidates();
                 caresRepCandidates = labelCount.GetCaresRepresentativeCandidates();
                 academicrepresentativeCandidates = labelCount.GetAcademicRepresentativeCandidates();
+
+
 
                 try
                 {
@@ -404,7 +462,7 @@ namespace Nursing_Election
                     MessageBox.Show("Error reading file ff: " + ex.Message);
                 }
             }
-            
+
         }
 
 
@@ -450,7 +508,7 @@ namespace Nursing_Election
             viewButton.Font = new Font("Segoe UI", 8);
             viewButton.Click += (s, e) =>
             {
-                
+
 
                 if (titleLabel.Text.Equals("PRESIDENT"))
                 {
@@ -616,8 +674,9 @@ namespace Nursing_Election
                 {
                     MessageBox.Show("Please end the election first.");
                     return;
-                }else
-                { 
+                }
+                else
+                {
                     positionTitles.Remove(removed);
                     candidate.SetPositionTitles(positionTitles);
                     flowLayoutPanel1.Controls.Remove(positionPanel);
@@ -682,7 +741,7 @@ namespace Nursing_Election
                 MessageBox.Show("You have reached the maximum number of positions.");
                 return;
             }
-           
+
 
             AddPostion position1 = new AddPostion();
             position1.Show();
@@ -737,7 +796,7 @@ namespace Nursing_Election
                     position.SetNoOfPositions(position.GetNoOfPositions() - 1);
                     return;
                 }
-                foreach(string title in positionTitles)
+                foreach (string title in positionTitles)
                 {
                     if (title.Equals(positionTitle.ToUpper()))
                     {
@@ -745,7 +804,7 @@ namespace Nursing_Election
                         MessageBox.Show("Position already exists.");
                         return;
                     }
-                }             
+                }
 
                 if (!string.IsNullOrEmpty(positionTitle) && !string.IsNullOrEmpty(description))
                 {
@@ -844,7 +903,7 @@ namespace Nursing_Election
             deleteButton.Click += (s, e) =>
             {
 
-                if(btn_start_election.Enabled == false && btn_end_election.Enabled == false)
+                if (btn_start_election.Enabled == false && btn_end_election.Enabled == false)
                 {
                     flowLayoutPanel2.Controls.Remove(candidatePanel);
                     candidatePanel.Dispose();
@@ -929,7 +988,8 @@ namespace Nursing_Election
                 {
                     MessageBox.Show("Please end the election first.");
                     return;
-                }else
+                }
+                else
                 {
                     flowLayoutPanel2.Controls.Remove(candidatePanel);
                     candidatePanel.Dispose();
@@ -1025,7 +1085,7 @@ namespace Nursing_Election
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            if(positionTitles.Count == 0 && btn_start_election.Enabled == false && btn_end_election.Enabled == false)
+            if (positionTitles.Count == 0 && btn_start_election.Enabled == false && btn_end_election.Enabled == false)
             {
                 btn_end_election.Enabled = false;
                 btn_start_election.Enabled = true;
@@ -1035,7 +1095,7 @@ namespace Nursing_Election
                 MessageBox.Show("Please add a position first.");
                 return;
             }
-            if(btn_start_election.Enabled == false && btn_end_election.Enabled == false)
+            if (btn_start_election.Enabled == false && btn_end_election.Enabled == false)
             {
                 MessageBox.Show("Please start the election first.");
                 return;
@@ -1048,7 +1108,7 @@ namespace Nursing_Election
             AddCandidate candidate1 = new AddCandidate();
             candidate1.Show();
 
-            
+
             candidate1.FormClosing += (s, args) =>
             {
                 string name = candidate1.GetName();
@@ -1056,16 +1116,16 @@ namespace Nursing_Election
                 int studentId = candidate1.GetStudentId();
                 Image candidateImage = candidate1.GetCandidateImage();
 
-                
+
                 if (string.IsNullOrEmpty(name) && string.IsNullOrEmpty(motto) && studentId == 0)
                     return;
                 if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(motto) && studentId > 0)
-                { 
+                {
                     AddCandidate(name, motto, studentId, candidateImage, candidate1.GetPositionTitle());
                     lb_no_of_candidates.Text = candidate1.GetNoOfCandidates().ToString();
 
 
-                    string positionTitle = candidate1.GetPositionTitle(); 
+                    string positionTitle = candidate1.GetPositionTitle();
                     if (positionTitle.ToUpper().Equals("PRESIDENT"))
                         presidentCandidates.Add(name);
                     else if (positionTitle.ToUpper().Equals("VICE PRESIDENT") || name.Equals("VICE-PRESIDENT"))
@@ -1200,7 +1260,14 @@ namespace Nursing_Election
         }
         private void btn_start_election_Click_1(object sender, EventArgs e)
         {
-            
+            string historyPath = "D:\\Glyzel's Files\\C#\\Nursing Election\\History.txt";
+
+            FileInfo fileInfo = new FileInfo(historyPath);
+
+            if (fileInfo.Exists && fileInfo.Length > 0)
+            {
+                File.WriteAllText(historyPath, string.Empty);
+            }
 
             if (position.GetNoOfPositions() == 0)
             {
@@ -1217,12 +1284,12 @@ namespace Nursing_Election
                 MessageBox.Show("Candidates should atleast 10.");
                 return;
             }
-            
+
             if (position.GetNoOfPositions() < 12)
 
             { MessageBox.Show("The number of positions must exactly 12"); return; }
 
-            if(presidentCandidates.Count  < 2 || vicePresidentCandidates.Count < 2  || secretaryCandidates.Count < 2 || treasurerCandidates.Count < 2 || auditorCandidates.Count < 2 || publicRelationsCandidates.Count < 2 || firstYearRepCandidates.Count < 2 || secondYearRepCandidates.Count < 2 || thirdYearRepCandidates.Count < 2 || fourthYearRepCandidates.Count < 2 || caresRepCandidates.Count < 2 || academicrepresentativeCandidates.Count < 2)
+            if (presidentCandidates.Count < 2 || vicePresidentCandidates.Count < 2 || secretaryCandidates.Count < 2 || treasurerCandidates.Count < 2 || auditorCandidates.Count < 2 || publicRelationsCandidates.Count < 2 || firstYearRepCandidates.Count < 2 || secondYearRepCandidates.Count < 2 || thirdYearRepCandidates.Count < 2 || fourthYearRepCandidates.Count < 2 || caresRepCandidates.Count < 2 || academicrepresentativeCandidates.Count < 2)
             {
                 MessageBox.Show("Candidates should atleast 2");
                 return;
@@ -1231,104 +1298,104 @@ namespace Nursing_Election
 
 
             foreach (var item in positionTitles)
+            {
+                if (item.Equals("PRESIDENT"))
                 {
-                    if (item.Equals("PRESIDENT"))
+                    if (presidentCandidates.Count == 0)
                     {
-                        if (presidentCandidates.Count == 0)
-                        {
-                            MessageBox.Show("Please add a candidate for President.");
-                            return;
-                        }
+                        MessageBox.Show("Please add a candidate for President.");
+                        return;
                     }
-                    else if (item.Equals("VICE PRESIDENT") || item.Equals("VICE-PRESIDENT"))
+                }
+                else if (item.Equals("VICE PRESIDENT") || item.Equals("VICE-PRESIDENT"))
+                {
+                    if (vicePresidentCandidates.Count == 0)
                     {
-                        if (vicePresidentCandidates.Count == 0)
-                        {
-                            MessageBox.Show("Please add a candidate for Vice President.");
-                            return;
-                        }
+                        MessageBox.Show("Please add a candidate for Vice President.");
+                        return;
                     }
-                    else if (item.Equals("SECRETARY"))
+                }
+                else if (item.Equals("SECRETARY"))
+                {
+                    if (secretaryCandidates.Count == 0)
                     {
-                        if (secretaryCandidates.Count == 0)
-                        {
-                            MessageBox.Show("Please add a candidate for Secretary.");
-                            return;
-                        }
+                        MessageBox.Show("Please add a candidate for Secretary.");
+                        return;
                     }
-                    else if (item.Equals("TREASURER"))
+                }
+                else if (item.Equals("TREASURER"))
+                {
+                    if (treasurerCandidates.Count == 0)
                     {
-                        if (treasurerCandidates.Count == 0)
-                        {
-                            MessageBox.Show("Please add a candidate for Treasurer.");
-                            return;
-                        }
+                        MessageBox.Show("Please add a candidate for Treasurer.");
+                        return;
                     }
-                    else if (item.Equals("AUDITOR"))
+                }
+                else if (item.Equals("AUDITOR"))
+                {
+                    if (auditorCandidates.Count == 0)
                     {
-                        if (auditorCandidates.Count == 0)
-                        {
-                            MessageBox.Show("Please add a candidate for Auditor.");
-                            return;
-                        }
+                        MessageBox.Show("Please add a candidate for Auditor.");
+                        return;
                     }
-                    else if (item.Equals("PUBLIC RELATIONS OFFICER"))
+                }
+                else if (item.Equals("PUBLIC RELATIONS OFFICER"))
+                {
+                    if (publicRelationsCandidates.Count == 0)
                     {
-                        if (publicRelationsCandidates.Count == 0)
-                        {
-                            MessageBox.Show("Please add a candidate for Public Relations Officer.");
-                            return;
-                        }
+                        MessageBox.Show("Please add a candidate for Public Relations Officer.");
+                        return;
                     }
-                    else if (item.Equals("FIRST YEAR REPRESENTATIVE"))
+                }
+                else if (item.Equals("FIRST YEAR REPRESENTATIVE"))
+                {
+                    if (firstYearRepCandidates.Count == 0)
                     {
-                        if (firstYearRepCandidates.Count == 0)
-                        {
-                            MessageBox.Show("Please add a candidate for First Year Representative.");
-                            return;
-                        }
+                        MessageBox.Show("Please add a candidate for First Year Representative.");
+                        return;
                     }
-                    else if (item.Equals("SECOND YEAR REPRESENTATIVE"))
+                }
+                else if (item.Equals("SECOND YEAR REPRESENTATIVE"))
+                {
+                    if (secondYearRepCandidates.Count == 0)
                     {
-                        if (secondYearRepCandidates.Count == 0)
-                        {
-                            MessageBox.Show("Please add a candidate for Second Year Representative.");
-                            return;
-                        }
+                        MessageBox.Show("Please add a candidate for Second Year Representative.");
+                        return;
                     }
-                    else if (item.Equals("THIRD YEAR REPRESENTATIVE"))
+                }
+                else if (item.Equals("THIRD YEAR REPRESENTATIVE"))
+                {
+                    if (thirdYearRepCandidates.Count == 0)
                     {
-                        if (thirdYearRepCandidates.Count == 0)
-                        {
-                            MessageBox.Show("Please add a candidate for Third Year Representative.");
-                            return;
-                        }
+                        MessageBox.Show("Please add a candidate for Third Year Representative.");
+                        return;
                     }
-                    else if (item.Equals("FOURTH YEAR REPRESENTATIVE"))
+                }
+                else if (item.Equals("FOURTH YEAR REPRESENTATIVE"))
+                {
+                    if (fourthYearRepCandidates.Count == 0)
                     {
-                        if (fourthYearRepCandidates.Count == 0)
-                        {
-                            MessageBox.Show("Please add a candidate for Fourth Year Representative.");
-                            return;
-                        }
+                        MessageBox.Show("Please add a candidate for Fourth Year Representative.");
+                        return;
                     }
-                    else if (item.Equals("CARES REPRESENTATIVE"))
+                }
+                else if (item.Equals("CARES REPRESENTATIVE"))
+                {
+                    if (caresRepCandidates.Count == 0)
                     {
-                        if (caresRepCandidates.Count == 0)
-                        {
-                            MessageBox.Show("Please add a candidate for Cares Representative.");
-                            return;
-                        }
+                        MessageBox.Show("Please add a candidate for Cares Representative.");
+                        return;
                     }
-                    else if (item.Equals("ACADEMIC REPRESENTATIVE"))
+                }
+                else if (item.Equals("ACADEMIC REPRESENTATIVE"))
+                {
+                    if (academicrepresentativeCandidates.Count == 0)
                     {
-                        if (academicrepresentativeCandidates.Count == 0)
-                        {
-                            MessageBox.Show("Please add a candidate for Academic Representative.");
-                            return;
-                        }
+                        MessageBox.Show("Please add a candidate for Academic Representative.");
+                        return;
                     }
-                
+                }
+
             }
             btn_start_election.BackColor = Color.Gray;
             StartElectionClass start = new StartElectionClass();
@@ -1346,9 +1413,9 @@ namespace Nursing_Election
                 try
                 {
                     using (System.IO.StreamWriter sw = new System.IO.StreamWriter("D:\\Glyzel's Files\\C#\\Nursing Election\\PositionAndCandidates.txt", true))
-                    { 
+                    {
 
-                        if(positionTitles.Contains("PRESIDENT"))
+                        if (positionTitles.Contains("PRESIDENT"))
                         {
                             sw.WriteLine("PRESIDENT");
                             foreach (var item in presidentCandidates)
@@ -1421,7 +1488,7 @@ namespace Nursing_Election
                                 sw.WriteLine(item);
                         }
 
-                        
+
 
                     }
                 }
@@ -1476,9 +1543,10 @@ namespace Nursing_Election
                             sw.WriteLine(lb_no_of_candidates.Text);
                         }
 
-                    }else if (countFile.Exists && countFile.Length > 0)
+                    }
+                    else if (countFile.Exists && countFile.Length > 0)
                     {
-                        File.WriteAllText(filePath,string.Empty);
+                        File.WriteAllText(filePath, string.Empty);
                         for (int i = 0; i < 2; i++)
                         {
                             if (i == 0)
@@ -1518,6 +1586,8 @@ namespace Nursing_Election
         {
             btn_end_election.BackColor = Color.HotPink;
             btn_end_election.Enabled = false;
+
+            MessageBox.Show("Election ended successfully.\nThe data will be stored in the database.");
             StartElectionClass startElectionClass = new StartElectionClass();
             startElectionClass.SetElectionStarted(false);
             startElectionClass.SetStartButtonClicked(false);
@@ -1608,9 +1678,6 @@ namespace Nursing_Election
             else if (pos == "ACADEMIC REPRESENTATIVE")
                 fp_acad.Controls.Add(positionPanel);
         }
-
-
-
         public void SaveButton()
         {
             StartElectionClass startElectionClass = new StartElectionClass();
@@ -1645,31 +1712,30 @@ namespace Nursing_Election
                  $"Academic Representative: {acadWinner} - {acadVotes} votes";
 
                 viewResult = electionResults;
-                startElectionClass.SetResult(electionResults);
 
-                    try
+                try
+                {
+                    string filePath = "D:\\Glyzel's Files\\C#\\Nursing Election\\HistoryResults.txt";
+                    var lines = File.ReadAllLines(filePath).ToList();
+
+                    int startIndex = lines.FindIndex(line => line.Contains(timestamp));
+                    if (startIndex != -1)
                     {
-                        string filePath = "D:\\Glyzel's Files\\C#\\Nursing Election\\HistoryResults.txt";
-                        var lines = File.ReadAllLines(filePath).ToList();
+                        int endIndex = startIndex;
+                        while (endIndex < lines.Count && !lines[endIndex].Contains("=== END OF RECORD ==="))
+                            endIndex++;
 
-                        int startIndex = lines.FindIndex(line => line.Contains(timestamp));
-                        if (startIndex != -1)
-                        {
-                            int endIndex = startIndex;
-                            while (endIndex < lines.Count && !lines[endIndex].Contains("=== END OF RECORD ==="))
-                                endIndex++;
+                        if (endIndex < lines.Count)
+                            endIndex++;
 
-                            if (endIndex < lines.Count)
-                                endIndex++;
-
-                            lines.RemoveRange(startIndex, endIndex - startIndex);
-                            File.WriteAllLines(filePath, lines);
-                        }
+                        lines.RemoveRange(startIndex, endIndex - startIndex);
+                        File.WriteAllLines(filePath, lines);
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error deleting record from file: " + ex.Message);
-                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error deleting record from file: " + ex.Message);
+                }
             }
             else if (btn_end_election.Enabled == false && btn_start_election.Enabled == true)
             {
@@ -1698,42 +1764,6 @@ namespace Nursing_Election
             }
 
             return winner;
-        }
-
-        private void flowLayoutPanel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void tabPage4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btn_view_result_Click(object sender, EventArgs e)
-        {
-            if (position.GetNoOfPositions() == 0)
-            {
-                MessageBox.Show("Please add a position first.");
-                return;
-            }
-            if (btn_start_election.Enabled == true && btn_end_election.Enabled == false)
-            {
-                MessageBox.Show("Please start the election first.");
-                return;
-            }
-            
-            if (btn_end_election.Enabled == true)
-            {
-                MessageBox.Show("Please end the election first.");
-                return;
-            }
-
-            if (btn_start_election.Enabled == false && btn_end_election.Enabled == false)
-                MessageBox.Show(viewResult);
-            
-            if(btn_end_election.Enabled == true && btn_start_election.Enabled == false)
-                MessageBox.Show("Election is still in progress");
         }
     }
 

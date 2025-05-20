@@ -116,13 +116,6 @@ namespace Nursing_Election
 
 
         //}
-
-        public void SetResult(string res)
-        {
-            ViewResultClass viewResultClass = new ViewResultClass();
-            viewResultClass.SetResult(res);
-        }
-
       
 
     }
