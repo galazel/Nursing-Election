@@ -57,7 +57,9 @@
             // lb_name_candidate
             // 
             this.lb_name_candidate.AutoSize = true;
+            this.lb_name_candidate.BackColor = System.Drawing.Color.Transparent;
             this.lb_name_candidate.Font = new System.Drawing.Font("Consolas", 14F);
+            this.lb_name_candidate.ForeColor = System.Drawing.Color.White;
             this.lb_name_candidate.Location = new System.Drawing.Point(295, 70);
             this.lb_name_candidate.Name = "lb_name_candidate";
             this.lb_name_candidate.Size = new System.Drawing.Size(50, 22);
@@ -67,7 +69,9 @@
             // lb_student_id_candidate
             // 
             this.lb_student_id_candidate.AutoSize = true;
+            this.lb_student_id_candidate.BackColor = System.Drawing.Color.Transparent;
             this.lb_student_id_candidate.Font = new System.Drawing.Font("Consolas", 14F);
+            this.lb_student_id_candidate.ForeColor = System.Drawing.Color.White;
             this.lb_student_id_candidate.Location = new System.Drawing.Point(295, 127);
             this.lb_student_id_candidate.Name = "lb_student_id_candidate";
             this.lb_student_id_candidate.Size = new System.Drawing.Size(110, 22);
@@ -77,7 +81,9 @@
             // lb_motto
             // 
             this.lb_motto.AutoSize = true;
+            this.lb_motto.BackColor = System.Drawing.Color.Transparent;
             this.lb_motto.Font = new System.Drawing.Font("Consolas", 14F);
+            this.lb_motto.ForeColor = System.Drawing.Color.White;
             this.lb_motto.Location = new System.Drawing.Point(295, 184);
             this.lb_motto.Name = "lb_motto";
             this.lb_motto.Size = new System.Drawing.Size(60, 22);
@@ -114,7 +120,8 @@
             // btn_confirm_candidate
             // 
             this.btn_confirm_candidate.Font = new System.Drawing.Font("Consolas", 14F);
-            this.btn_confirm_candidate.Location = new System.Drawing.Point(527, 317);
+            this.btn_confirm_candidate.ForeColor = System.Drawing.Color.Black;
+            this.btn_confirm_candidate.Location = new System.Drawing.Point(527, 321);
             this.btn_confirm_candidate.Name = "btn_confirm_candidate";
             this.btn_confirm_candidate.Size = new System.Drawing.Size(104, 34);
             this.btn_confirm_candidate.TabIndex = 7;
@@ -125,7 +132,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Consolas", 14F);
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(295, 243);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(90, 22);
@@ -148,7 +157,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(690, 376);
             this.Controls.Add(this.cb_positions);
             this.Controls.Add(this.label1);

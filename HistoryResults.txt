@@ -1,15 +1,15 @@
-=== RECORD: 2025-05-20 11:25:19 ===
-President: apple - 1 votes
-Vice President: banana - 2 votes
-Secretary: avocado - 2 votes
-Treasurer: eight - 1 votes
-Auditor: one - 2 votes
-PRO: seventee - 2 votes
-First Year Representative: nine - 1 votes
-Second Year Representative: eleven - 2 votes
-Third Year Representative: fourteen - 1 votes
-Fourth Year Representative: sixteen - 2 votes
-CARES Representative: five - 2 votes
-Academic Representative: four - 2 votes
+=== RECORD: 2025-05-20 18:54:36 ===
+President: Comprog11 - 1 votes
+Vice President: English - 1 votes
+Secretary: Math - 1 votes
+Treasurer: Biology 1 - 1 votes
+Auditor: Hekasi - 1 votes
+PRO: Harvard - 1 votes
+First Year Representative: C Programming - 1 votes
+Second Year Representative: Netacad - 2 votes
+Third Year Representative: C# Programmin - 1 votes
+Fourth Year Representative: Github - 1 votes
+CARES Representative: Information Tech - 2 votes
+Academic Representative: Biochemistry 1 - 1 votes
 === END OF RECORD ===
 

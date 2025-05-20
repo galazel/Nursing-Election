@@ -46,6 +46,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.btn_result = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.btn_edit = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_profile)).BeginInit();
             this.panel3.SuspendLayout();
@@ -79,6 +80,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.label7);
             this.panel3.Controls.Add(this.lb_block_section);
             this.panel3.Controls.Add(this.lb_student_id);
             this.panel3.Controls.Add(this.lb_name);
@@ -106,7 +108,6 @@
             this.lb_student_id.Size = new System.Drawing.Size(45, 12);
             this.lb_student_id.TabIndex = 2;
             this.lb_student_id.Text = "24225435";
-
             // 
             // lb_name
             // 
@@ -117,7 +118,6 @@
             this.lb_name.Size = new System.Drawing.Size(135, 19);
             this.lb_name.TabIndex = 1;
             this.lb_name.Text = "GLYZEL GALAGAR";
-
             // 
             // panel2
             // 
@@ -130,7 +130,7 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.White;
-            this.panel5.Controls.Add(this.label7);
+            this.panel5.Controls.Add(this.btn_edit);
             this.panel5.Controls.Add(this.label8);
             this.panel5.Location = new System.Drawing.Point(75, 282);
             this.panel5.Name = "panel5";
@@ -141,7 +141,8 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Consolas", 7F);
-            this.label7.Location = new System.Drawing.Point(12, 44);
+            this.label7.ForeColor = System.Drawing.Color.DarkGreen;
+            this.label7.Location = new System.Drawing.Point(5, 53);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(35, 12);
             this.label7.TabIndex = 4;
@@ -151,11 +152,11 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(10, 21);
+            this.label8.Location = new System.Drawing.Point(9, 20);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(117, 19);
+            this.label8.Size = new System.Drawing.Size(135, 19);
             this.label8.TabIndex = 2;
-            this.label8.Text = "Voter Status";
+            this.label8.Text = "UPDATE PROFILE";
             // 
             // panel6
             // 
@@ -232,6 +233,18 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "RESULT";
             // 
+            // btn_edit
+            // 
+            this.btn_edit.BackColor = System.Drawing.Color.Gold;
+            this.btn_edit.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_edit.Location = new System.Drawing.Point(13, 42);
+            this.btn_edit.Name = "btn_edit";
+            this.btn_edit.Size = new System.Drawing.Size(233, 37);
+            this.btn_edit.TabIndex = 6;
+            this.btn_edit.Text = "EDIT";
+            this.btn_edit.UseVisualStyleBackColor = false;
+            this.btn_edit.Click += new System.EventHandler(this.btn_edit_Click);
+            // 
             // VoterStatus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -282,5 +295,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button btn_result;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btn_edit;
     }
 }

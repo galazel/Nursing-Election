@@ -95,99 +95,9 @@ namespace Nursing_Election
             fp_acad.Controls.Clear();
 
             StartElectionClass startElectionClass1 = new StartElectionClass();
-
-            
-
-
-
-
-
             if (!startElectionClass1.IsElectionStarted())
             {
-                Label presidentResult = new Label();
-                presidentResult.Text = "No President Yet.";
-                presidentResult.Font = new Font("Segoe UI", 10, FontStyle.Italic);
-                presidentResult.ForeColor = Color.DimGray;
-                presidentResult.AutoSize = true;
-                presidentResult.Location = new Point(20, 20);
-                fp_pres.Controls.Add(presidentResult);
-                Label viceResult = new Label();
-                viceResult.Text = "No Vice President Yet.";
-                viceResult.Font = new Font("Segoe UI", 10, FontStyle.Italic);
-                viceResult.ForeColor = Color.DimGray;
-                viceResult.AutoSize = true;
-                viceResult.Location = new Point(20, 20);
-                fp_vice.Controls.Add(viceResult);
-                Label secretaryResult = new Label();
-                secretaryResult.Text = "No Secretary Yet.";
-                secretaryResult.Font = new Font("Segoe UI", 10, FontStyle.Italic);
-                secretaryResult.ForeColor = Color.DimGray;
-                secretaryResult.AutoSize = true;
-                secretaryResult.Location = new Point(20, 20);
-                fp_sec.Controls.Add(secretaryResult);
-                Label treasurerResult = new Label();
-                treasurerResult.Text = "No Treasurer Yet.";
-                treasurerResult.Font = new Font("Segoe UI", 10, FontStyle.Italic);
-                treasurerResult.ForeColor = Color.DimGray;
-                treasurerResult.AutoSize = true;
-                treasurerResult.Location = new Point(20, 20);
-                fp_treas.Controls.Add(treasurerResult);
-                Label auditorResult = new Label();
-                auditorResult.Text = "No Auditor Yet.";
-                auditorResult.Font = new Font("Segoe UI", 10, FontStyle.Italic);
-                auditorResult.ForeColor = Color.DimGray;
-                auditorResult.AutoSize = true;
-                auditorResult.Location = new Point(20, 20);
-                fp_auditor.Controls.Add(auditorResult);
-                Label pioResult = new Label();
-                pioResult.Text = "No Public Relations Officer Yet.";
-                pioResult.Font = new Font("Segoe UI", 10, FontStyle.Italic);
-                pioResult.ForeColor = Color.DimGray;
-                pioResult.AutoSize = true;
-                pioResult.Location = new Point(20, 20);
-                fp_pio.Controls.Add(pioResult);
-                Label firstResult = new Label();
-                firstResult.Text = "No First Year Representative Yet.";
-                firstResult.Font = new Font("Segoe UI", 10, FontStyle.Italic);
-                firstResult.ForeColor = Color.DimGray;
-                firstResult.AutoSize = true;
-                firstResult.Location = new Point(20, 20);
-                fp_first.Controls.Add(firstResult);
-                Label secondResult = new Label();
-                secondResult.Text = "No Second Year Representative Yet.";
-                secondResult.Font = new Font("Segoe UI", 10, FontStyle.Italic);
-                secondResult.ForeColor = Color.DimGray;
-                secondResult.AutoSize = true;
-                secondResult.Location = new Point(20, 20);
-                fp_second.Controls.Add(secondResult);
-                Label thirdResult = new Label();
-                thirdResult.Text = "No Third Year Representative Yet.";
-                thirdResult.Font = new Font("Segoe UI", 10, FontStyle.Italic);
-                thirdResult.ForeColor = Color.DimGray;
-                thirdResult.AutoSize = true;
-                thirdResult.Location = new Point(20, 20);
-                fp_third.Controls.Add(thirdResult);
-                Label fourthResult = new Label();
-                fourthResult.Text = "No Fourth Year Representative Yet.";
-                fourthResult.Font = new Font("Segoe UI", 10, FontStyle.Italic);
-                fourthResult.ForeColor = Color.DimGray;
-                fourthResult.AutoSize = true;
-                fourthResult.Location = new Point(20, 20);
-                fp_fourth.Controls.Add(fourthResult);
-                Label caresResult = new Label();
-                caresResult.Text = "No Cares Representative Yet.";
-                caresResult.Font = new Font("Segoe UI", 10, FontStyle.Italic);
-                caresResult.ForeColor = Color.DimGray;
-                caresResult.AutoSize = true;
-                caresResult.Location = new Point(20, 20);
-                fp_cares.Controls.Add(caresResult);
-                Label acadResult = new Label();
-                acadResult.Text = "No Academic Representative Yet.";
-                acadResult.Font = new Font("Segoe UI", 10, FontStyle.Italic);
-                acadResult.ForeColor = Color.DimGray;
-                acadResult.AutoSize = true;
-                acadResult.Location = new Point(20, 20);
-                fp_acad.Controls.Add(acadResult);
+                SetPanelForResult();
             }
             else
             {
@@ -329,6 +239,9 @@ namespace Nursing_Election
                 fp_fourth.Controls.Clear();
                 fp_cares.Controls.Clear();
                 fp_acad.Controls.Clear();
+
+                SetPanelForResult();
+
                 flowLayoutPanel1.Controls.Clear();
                 flowLayoutPanel2.Controls.Clear();
                 btn_start_election.Enabled = true;
@@ -463,6 +376,94 @@ namespace Nursing_Election
 
         }
 
+
+        public void SetPanelForResult()
+        {
+            Label presidentResult = new Label();
+            presidentResult.Text = "No President Yet.";
+            presidentResult.Font = new Font("Segoe UI", 10, FontStyle.Italic);
+            presidentResult.ForeColor = Color.DimGray;
+            presidentResult.AutoSize = true;
+            presidentResult.Location = new Point(20, 20);
+            fp_pres.Controls.Add(presidentResult);
+            Label viceResult = new Label();
+            viceResult.Text = "No Vice President Yet.";
+            viceResult.Font = new Font("Segoe UI", 10, FontStyle.Italic);
+            viceResult.ForeColor = Color.DimGray;
+            viceResult.AutoSize = true;
+            viceResult.Location = new Point(20, 20);
+            fp_vice.Controls.Add(viceResult);
+            Label secretaryResult = new Label();
+            secretaryResult.Text = "No Secretary Yet.";
+            secretaryResult.Font = new Font("Segoe UI", 10, FontStyle.Italic);
+            secretaryResult.ForeColor = Color.DimGray;
+            secretaryResult.AutoSize = true;
+            secretaryResult.Location = new Point(20, 20);
+            fp_sec.Controls.Add(secretaryResult);
+            Label treasurerResult = new Label();
+            treasurerResult.Text = "No Treasurer Yet.";
+            treasurerResult.Font = new Font("Segoe UI", 10, FontStyle.Italic);
+            treasurerResult.ForeColor = Color.DimGray;
+            treasurerResult.AutoSize = true;
+            treasurerResult.Location = new Point(20, 20);
+            fp_treas.Controls.Add(treasurerResult);
+            Label auditorResult = new Label();
+            auditorResult.Text = "No Auditor Yet.";
+            auditorResult.Font = new Font("Segoe UI", 10, FontStyle.Italic);
+            auditorResult.ForeColor = Color.DimGray;
+            auditorResult.AutoSize = true;
+            auditorResult.Location = new Point(20, 20);
+            fp_auditor.Controls.Add(auditorResult);
+            Label pioResult = new Label();
+            pioResult.Text = "No Public Relations Officer Yet.";
+            pioResult.Font = new Font("Segoe UI", 10, FontStyle.Italic);
+            pioResult.ForeColor = Color.DimGray;
+            pioResult.AutoSize = true;
+            pioResult.Location = new Point(20, 20);
+            fp_pio.Controls.Add(pioResult);
+            Label firstResult = new Label();
+            firstResult.Text = "No First Year Representative Yet.";
+            firstResult.Font = new Font("Segoe UI", 10, FontStyle.Italic);
+            firstResult.ForeColor = Color.DimGray;
+            firstResult.AutoSize = true;
+            firstResult.Location = new Point(20, 20);
+            fp_first.Controls.Add(firstResult);
+            Label secondResult = new Label();
+            secondResult.Text = "No Second Year Representative Yet.";
+            secondResult.Font = new Font("Segoe UI", 10, FontStyle.Italic);
+            secondResult.ForeColor = Color.DimGray;
+            secondResult.AutoSize = true;
+            secondResult.Location = new Point(20, 20);
+            fp_second.Controls.Add(secondResult);
+            Label thirdResult = new Label();
+            thirdResult.Text = "No Third Year Representative Yet.";
+            thirdResult.Font = new Font("Segoe UI", 10, FontStyle.Italic);
+            thirdResult.ForeColor = Color.DimGray;
+            thirdResult.AutoSize = true;
+            thirdResult.Location = new Point(20, 20);
+            fp_third.Controls.Add(thirdResult);
+            Label fourthResult = new Label();
+            fourthResult.Text = "No Fourth Year Representative Yet.";
+            fourthResult.Font = new Font("Segoe UI", 10, FontStyle.Italic);
+            fourthResult.ForeColor = Color.DimGray;
+            fourthResult.AutoSize = true;
+            fourthResult.Location = new Point(20, 20);
+            fp_fourth.Controls.Add(fourthResult);
+            Label caresResult = new Label();
+            caresResult.Text = "No Cares Representative Yet.";
+            caresResult.Font = new Font("Segoe UI", 10, FontStyle.Italic);
+            caresResult.ForeColor = Color.DimGray;
+            caresResult.AutoSize = true;
+            caresResult.Location = new Point(20, 20);
+            fp_cares.Controls.Add(caresResult);
+            Label acadResult = new Label();
+            acadResult.Text = "No Academic Representative Yet.";
+            acadResult.Font = new Font("Segoe UI", 10, FontStyle.Italic);
+            acadResult.ForeColor = Color.DimGray;
+            acadResult.AutoSize = true;
+            acadResult.Location = new Point(20, 20);
+            fp_acad.Controls.Add(acadResult);
+        }
 
         private void AddPosition(string positionTitle, string description)
         {
@@ -1070,6 +1071,39 @@ namespace Nursing_Election
                 }
             };
 
+            //string connectionString = "Data Source=localhost;Initial Catalog=election2025;Integrated Security=True;TrustServerCertificate=True";
+
+            //using (SqlConnection connection = new SqlConnection(connectionString))
+            //{
+            //    try
+            //    {
+            //        connection.Open();
+            //        string query = "INSERT INTO Result (time_and_date, president_winner, vp_winner, secretary_winner, treasurer_winner, pro_winner, auditor_winner, first_rep_winner, second_rep_winner, third_rep_winner, fourth_rep_winner, cares_rep_winner, acad_rep_winner) " +
+            //            "VALUES (@timestamp, @presWinner, @viceWinner, @secWinner, @treasWinner, @auditorWinner, @pioWinner, @firstWinner, @secondWinner, @thirdWinner, @fourthWinner , @caresWinner , @acadWinner)";
+            //        using (SqlCommand command = new SqlCommand(query, connection))
+            //        {
+            //            command.Parameters.AddWithValue("@timestamp", timestamp);
+            //            command.Parameters.AddWithValue("@presWinner", presWinner);
+            //            command.Parameters.AddWithValue("@viceWinner", viceWinner);
+            //            command.Parameters.AddWithValue("@secWinner", secWinner);
+            //            command.Parameters.AddWithValue("@treasWinner", treasWinner);
+            //            command.Parameters.AddWithValue("@auditorWinner", auditorWinner);
+            //            command.Parameters.AddWithValue("@pioWinner", pioWinner);
+            //            command.Parameters.AddWithValue("@firstWinner", firstWinner);
+            //            command.Parameters.AddWithValue("@secondWinner", secondWinner);
+            //            command.Parameters.AddWithValue("@thirdWinner", thirdWinner);
+            //            command.Parameters.AddWithValue("@fourthWinner", fourthWinner);
+            //            command.Parameters.AddWithValue("@caresWinner", caresWinner);
+            //            command.Parameters.AddWithValue("@acadWinner", acadWinner);
+            //            command.ExecuteNonQuery();
+            //        }
+
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        MessageBox.Show("Error counting votes: " + ex.Message);
+            //    }
+            //}
 
             buttonPanel.Controls.Add(viewButton);
             buttonPanel.Controls.Add(deleteButton);
@@ -1696,7 +1730,6 @@ namespace Nursing_Election
                 string caresWinner = GetWinner(caresRepVotes, out int caresVotes);
                 string acadWinner = GetWinner(academicRepresentativeVotes, out int acadVotes);
 
-                // Generate timestamp and results
                 string timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                 string electionResults =
                  $"President: {presWinner} - {presVotes} votes\n" +
@@ -1716,11 +1749,43 @@ namespace Nursing_Election
 
                 Console.WriteLine("Winners: "+electionResults);
 
+                string connectionString = "Data Source=localhost;Initial Catalog=election2025;Integrated Security=True;TrustServerCertificate=True";
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    try
+                    {
+                        connection.Open();
+                        string query = "INSERT INTO Result (time_and_date, president_winner, vp_winner, secretary_winner, treasurer_winner, pro_winner, auditor_winner, first_rep_winner, second_rep_winner, third_rep_winner, fourth_rep_winner, cares_rep_winner, acad_rep_winner) " +
+                            "VALUES (@timestamp, @presWinner, @viceWinner, @secWinner, @treasWinner, @auditorWinner, @pioWinner, @firstWinner, @secondWinner, @thirdWinner, @fourthWinner , @caresWinner , @acadWinner)";
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            command.Parameters.AddWithValue("@timestamp", timestamp);
+                            command.Parameters.AddWithValue("@presWinner", presWinner);
+                            command.Parameters.AddWithValue("@viceWinner", viceWinner);
+                            command.Parameters.AddWithValue("@secWinner", secWinner);
+                            command.Parameters.AddWithValue("@treasWinner", treasWinner);
+                            command.Parameters.AddWithValue("@auditorWinner", auditorWinner);
+                            command.Parameters.AddWithValue("@pioWinner", pioWinner);
+                            command.Parameters.AddWithValue("@firstWinner", firstWinner);
+                            command.Parameters.AddWithValue("@secondWinner", secondWinner);
+                            command.Parameters.AddWithValue("@thirdWinner", thirdWinner);
+                            command.Parameters.AddWithValue("@fourthWinner", fourthWinner);
+                            command.Parameters.AddWithValue("@caresWinner", caresWinner);
+                            command.Parameters.AddWithValue("@acadWinner", acadWinner);
+                            command.ExecuteNonQuery();
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error counting votes: " + ex.Message);
+                    }
+                }
                 string filePath = "D:\\Glyzel's Files\\C#\\Nursing Election\\HistoryResults.txt";
 
                 try
                 {
-                    // Save the results to the file
                     using (StreamWriter sw = File.AppendText(filePath))
                     {
                         sw.WriteLine($"=== RECORD: {timestamp} ===");

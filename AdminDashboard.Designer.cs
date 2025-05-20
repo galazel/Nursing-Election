@@ -122,6 +122,7 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.White;
+            this.tabPage1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabPage1.Controls.Add(this.tb_results);
             this.tabPage1.Controls.Add(this.label9);
             this.tabPage1.Controls.Add(this.panel3);
@@ -159,7 +160,7 @@
             // 
             // tabPage4
             // 
-            this.tabPage4.BackColor = System.Drawing.Color.PaleVioletRed;
+            this.tabPage4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(56)))), ((int)(((byte)(96)))));
             this.tabPage4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabPage4.Controls.Add(this.fp_pres);
             this.tabPage4.Font = new System.Drawing.Font("Consolas", 10F);
@@ -172,6 +173,7 @@
             // 
             // fp_pres
             // 
+            this.fp_pres.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(56)))), ((int)(((byte)(96)))));
             this.fp_pres.Location = new System.Drawing.Point(47, 16);
             this.fp_pres.Name = "fp_pres";
             this.fp_pres.Size = new System.Drawing.Size(877, 424);
@@ -179,7 +181,7 @@
             // 
             // tabPage5
             // 
-            this.tabPage5.BackColor = System.Drawing.Color.PaleVioletRed;
+            this.tabPage5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(56)))), ((int)(((byte)(96)))));
             this.tabPage5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabPage5.Controls.Add(this.fp_vice);
             this.tabPage5.Location = new System.Drawing.Point(4, 27);
@@ -198,7 +200,7 @@
             // 
             // tabPage6
             // 
-            this.tabPage6.BackColor = System.Drawing.Color.PaleVioletRed;
+            this.tabPage6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(56)))), ((int)(((byte)(96)))));
             this.tabPage6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabPage6.Controls.Add(this.fp_sec);
             this.tabPage6.Location = new System.Drawing.Point(4, 27);
@@ -216,7 +218,7 @@
             // 
             // tabPage7
             // 
-            this.tabPage7.BackColor = System.Drawing.Color.PaleVioletRed;
+            this.tabPage7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(56)))), ((int)(((byte)(96)))));
             this.tabPage7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabPage7.Controls.Add(this.fp_treas);
             this.tabPage7.Location = new System.Drawing.Point(4, 27);
@@ -234,7 +236,7 @@
             // 
             // tabPage8
             // 
-            this.tabPage8.BackColor = System.Drawing.Color.PaleVioletRed;
+            this.tabPage8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(56)))), ((int)(((byte)(96)))));
             this.tabPage8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabPage8.Controls.Add(this.fp_auditor);
             this.tabPage8.Location = new System.Drawing.Point(4, 27);
@@ -252,7 +254,7 @@
             // 
             // tabPage15
             // 
-            this.tabPage15.BackColor = System.Drawing.Color.PaleVioletRed;
+            this.tabPage15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(56)))), ((int)(((byte)(96)))));
             this.tabPage15.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabPage15.Controls.Add(this.fp_pio);
             this.tabPage15.Location = new System.Drawing.Point(4, 27);
@@ -270,7 +272,7 @@
             // 
             // tabPage9
             // 
-            this.tabPage9.BackColor = System.Drawing.Color.PaleVioletRed;
+            this.tabPage9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(56)))), ((int)(((byte)(96)))));
             this.tabPage9.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabPage9.Controls.Add(this.fp_first);
             this.tabPage9.Location = new System.Drawing.Point(4, 27);
@@ -288,7 +290,7 @@
             // 
             // tabPage10
             // 
-            this.tabPage10.BackColor = System.Drawing.Color.PaleVioletRed;
+            this.tabPage10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(56)))), ((int)(((byte)(96)))));
             this.tabPage10.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabPage10.Controls.Add(this.fp_second);
             this.tabPage10.Location = new System.Drawing.Point(4, 27);
@@ -306,7 +308,7 @@
             // 
             // tabPage11
             // 
-            this.tabPage11.BackColor = System.Drawing.Color.PaleVioletRed;
+            this.tabPage11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(56)))), ((int)(((byte)(96)))));
             this.tabPage11.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabPage11.Controls.Add(this.fp_third);
             this.tabPage11.Location = new System.Drawing.Point(4, 27);
@@ -324,7 +326,7 @@
             // 
             // tabPage12
             // 
-            this.tabPage12.BackColor = System.Drawing.Color.PaleVioletRed;
+            this.tabPage12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(56)))), ((int)(((byte)(96)))));
             this.tabPage12.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabPage12.Controls.Add(this.fp_fourth);
             this.tabPage12.Location = new System.Drawing.Point(4, 27);
@@ -342,7 +344,7 @@
             // 
             // tabPage13
             // 
-            this.tabPage13.BackColor = System.Drawing.Color.PaleVioletRed;
+            this.tabPage13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(56)))), ((int)(((byte)(96)))));
             this.tabPage13.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabPage13.Controls.Add(this.fp_acad);
             this.tabPage13.Location = new System.Drawing.Point(4, 27);
@@ -360,7 +362,7 @@
             // 
             // tabPage14
             // 
-            this.tabPage14.BackColor = System.Drawing.Color.PaleVioletRed;
+            this.tabPage14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(56)))), ((int)(((byte)(96)))));
             this.tabPage14.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabPage14.Controls.Add(this.fp_cares);
             this.tabPage14.Location = new System.Drawing.Point(4, 27);
@@ -388,7 +390,7 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.PaleVioletRed;
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(56)))), ((int)(((byte)(96)))));
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.lb_no_of_voters);
@@ -410,7 +412,7 @@
             // lb_no_of_voters
             // 
             this.lb_no_of_voters.AutoSize = true;
-            this.lb_no_of_voters.BackColor = System.Drawing.Color.PaleVioletRed;
+            this.lb_no_of_voters.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(56)))), ((int)(((byte)(96)))));
             this.lb_no_of_voters.Font = new System.Drawing.Font("Consolas", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_no_of_voters.Location = new System.Drawing.Point(73, 27);
             this.lb_no_of_voters.Name = "lb_no_of_voters";
@@ -420,7 +422,7 @@
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.PaleVioletRed;
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(56)))), ((int)(((byte)(96)))));
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel4.Controls.Add(this.label3);
             this.panel4.Controls.Add(this.lb_no_of_candidates);
@@ -451,7 +453,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.PaleVioletRed;
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(56)))), ((int)(((byte)(96)))));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.lb_no_voters_voted);
@@ -482,7 +484,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.PaleVioletRed;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(56)))), ((int)(((byte)(96)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.lb_no_of_positions);
@@ -515,7 +517,7 @@
             // 
             this.tabPage2.BackColor = System.Drawing.Color.White;
             this.tabPage2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.tabPage2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPage2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabPage2.Controls.Add(this.btn_end_election);
             this.tabPage2.Controls.Add(this.btn_start_election);
             this.tabPage2.Controls.Add(this.label10);
@@ -530,7 +532,7 @@
             // 
             // btn_end_election
             // 
-            this.btn_end_election.BackColor = System.Drawing.Color.Red;
+            this.btn_end_election.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
             this.btn_end_election.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_end_election.Font = new System.Drawing.Font("Consolas", 9F);
             this.btn_end_election.Location = new System.Drawing.Point(920, 35);
@@ -543,7 +545,7 @@
             // 
             // btn_start_election
             // 
-            this.btn_start_election.BackColor = System.Drawing.Color.LimeGreen;
+            this.btn_start_election.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(140)))), ((int)(((byte)(76)))));
             this.btn_start_election.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_start_election.Font = new System.Drawing.Font("Consolas", 9F);
             this.btn_start_election.Location = new System.Drawing.Point(798, 35);
@@ -566,7 +568,7 @@
             // 
             // btn_add_position
             // 
-            this.btn_add_position.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btn_add_position.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(104)))), ((int)(((byte)(191)))));
             this.btn_add_position.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_add_position.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_add_position.Location = new System.Drawing.Point(764, 35);
@@ -581,13 +583,13 @@
             // 
             this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.BackColor = System.Drawing.Color.PaleVioletRed;
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.flowLayoutPanel1.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(54, 95);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(53, 95);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(906, 582);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(906, 580);
             this.flowLayoutPanel1.TabIndex = 1;
             this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
@@ -595,7 +597,7 @@
             // 
             this.tabPage3.BackColor = System.Drawing.Color.White;
             this.tabPage3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.tabPage3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPage3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabPage3.Controls.Add(this.label11);
             this.tabPage3.Controls.Add(this.btn_add_candidate);
             this.tabPage3.Controls.Add(this.flowLayoutPanel2);
@@ -618,7 +620,7 @@
             // 
             // btn_add_candidate
             // 
-            this.btn_add_candidate.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btn_add_candidate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(104)))), ((int)(((byte)(191)))));
             this.btn_add_candidate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_add_candidate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_add_candidate.ForeColor = System.Drawing.Color.Black;
@@ -633,7 +635,7 @@
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.AutoScroll = true;
-            this.flowLayoutPanel2.BackColor = System.Drawing.Color.PaleVioletRed;
+            this.flowLayoutPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.flowLayoutPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.flowLayoutPanel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.flowLayoutPanel2.Cursor = System.Windows.Forms.Cursors.Arrow;
@@ -644,7 +646,7 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.PaleVioletRed;
+            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(13)))), ((int)(((byte)(47)))));
             this.menuStrip1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.menuStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -659,6 +661,7 @@
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Font = new System.Drawing.Font("Consolas", 12F);
+            this.logoutToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
             this.logoutToolStripMenuItem.Size = new System.Drawing.Size(75, 23);
             this.logoutToolStripMenuItem.Text = "Logout";
@@ -673,6 +676,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1061, 801);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);

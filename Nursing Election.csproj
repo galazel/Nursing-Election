@@ -139,6 +139,12 @@
     <Compile Include="DashboardVoter.Designer.cs">
       <DependentUpon>DashboardVoter.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditLevelBlock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditLevelBlock.Designer.cs">
+      <DependentUpon>EditLevelBlock.cs</DependentUpon>
+    </Compile>
     <Compile Include="LabelCount.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -196,6 +202,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DashboardVoter.resx">
       <DependentUpon>DashboardVoter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditLevelBlock.resx">
+      <DependentUpon>EditLevelBlock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
